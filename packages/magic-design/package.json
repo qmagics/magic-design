@@ -1,8 +1,8 @@
 {
   "name": "magic-design",
   "version": "0.0.2",
-  "description": "> TODO: description",
-  "author": "qmagics <949959378@qq.com>",
+  "description": "",
+  "author": "",
   "homepage": "",
   "license": "MIT",
   "main": "lib/magic-design.js",
@@ -16,5 +16,5 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "78c546314f54dfd3e233d06f9b3c75154e709817"
+  "gitHead": "fc58840b6d300366726f1fb77c864db5ce48fcb8"
 }
