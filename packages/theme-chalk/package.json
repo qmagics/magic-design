@@ -1,7 +1,7 @@
 {
     "name": "theme-chalk",
     "private": true,
-    "version": "0.0.5",
+    "version": "0.0.6",
     "gitHead": "d2b4444558bf0c2aa33c691d432fda4417df4fab",
     "license": "MIT",
     "publishConfig": {
