@@ -3,5 +3,9 @@
     "private": true,
     "version": "0.0.5",
     "gitHead": "d2b4444558bf0c2aa33c691d432fda4417df4fab",
-    "license": "MIT"
+    "license": "MIT",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.com/",
+        "access": "public"
+    }
 }
