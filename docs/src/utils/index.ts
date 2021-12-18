@@ -1,0 +1,1 @@
+export const some = Array.prototype.some;

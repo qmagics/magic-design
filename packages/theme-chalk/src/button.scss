@@ -1,0 +1,401 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"button";
+$btn-border-radius: 3px;
+$btn-border-width: 1px;
+$btn-padding-h: 14px;
+
+$btn: ("primary": ("default": ("text-color": ("default": $color-white,
+                "disabled": $color-white,
+                "hover": $color-white,
+                "active": $color-white,
+            ),
+            "bg-color": ("default": $color-primary-6,
+                "disabled": $color-primary-2,
+                "hover": $color-primary-5,
+                "active": $color-primary-7,
+                "loading": $color-primary-4,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "success": ("text-color": ("default": $color-white,
+                "disabled": $color-white,
+                "hover": $color-white,
+                "active": $color-white,
+            ),
+            "bg-color": ("default": $color-success-6,
+                "disabled": $color-success-2,
+                "hover": $color-success-5,
+                "active": $color-success-7,
+                "loading": $color-success-4,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "warning": ("text-color": ("default": $color-white,
+                "disabled": $color-white,
+                "hover": $color-white,
+                "active": $color-white,
+            ),
+            "bg-color": ("default": $color-warning-6,
+                "disabled": $color-warning-2,
+                "hover": $color-warning-5,
+                "active": $color-warning-7,
+                "loading": $color-warning-4,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "danger": ("text-color": ("default": $color-white,
+                "disabled": $color-white,
+                "hover": $color-white,
+                "active": $color-white,
+            ),
+            "bg-color": ("default": $color-danger-6,
+                "disabled": $color-danger-2,
+                "hover": $color-danger-5,
+                "active": $color-danger-7,
+                "loading": $color-danger-4,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+    ),
+    "secondary": ("default": ("text-color": ("default": $color-text-2,
+                "disabled": $color-text-4,
+                "hover": $color-text-2,
+                "active": $color-text-2,
+                "loading": $color-text-4,
+            ),
+            "bg-color": ("default": $color-secondary-2,
+                "disabled": $color-secondary-1,
+                "hover": $color-secondary-3,
+                "active": $color-secondary-4,
+                "loading": $color-secondary-1,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "success": ("text-color": ("default": $color-success-6,
+                "disabled": $color-success-6,
+                "hover": $color-success-6,
+                "active": $color-success-6,
+                "loading": $color-success-4,
+            ),
+            "bg-color": ("default": $color-success-1,
+                "disabled": $color-success-1,
+                "hover": $color-success-2,
+                "active": $color-success-3,
+                "loading": $color-success-1,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "warning": ("text-color": ("default": $color-warning-6,
+                "disabled": $color-warning-6,
+                "hover": $color-warning-6,
+                "active": $color-warning-6,
+                "loading": $color-warning-4,
+            ),
+            "bg-color": ("default": $color-warning-1,
+                "disabled": $color-warning-1,
+                "hover": $color-warning-2,
+                "active": $color-warning-3,
+                "loading": $color-warning-1,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "danger": ("text-color": ("default": $color-danger-6,
+                "disabled": $color-danger-6,
+                "hover": $color-danger-6,
+                "active": $color-danger-6,
+                "loading": $color-danger-4,
+            ),
+            "bg-color": ("default": $color-danger-1,
+                "disabled": $color-danger-1,
+                "hover": $color-danger-2,
+                "active": $color-danger-3,
+                "loading": $color-danger-1,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+    ),
+    "outline": ("default": ("text-color": ("default": $color-primary-6,
+                "disabled": $color-primary-2,
+                "hover": $color-primary-6,
+                "active": $color-primary-6,
+                "loading": $color-primary-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+            "border-color": ("default": $color-primary-6,
+                "disabled": $color-primary-2,
+                "hover": $color-primary-5,
+                "active": $color-primary-7,
+                "loading": $color-primary-2,
+            ),
+        ),
+        "success": ("text-color": ("default": $color-success-6,
+                "disabled": $color-success-2,
+                "hover": $color-success-6,
+                "active": $color-success-6,
+                "loading": $color-success-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+            "border-color": ("default": $color-success-6,
+                "disabled": $color-success-2,
+                "hover": $color-success-5,
+                "active": $color-success-7,
+                "loading": $color-success-2,
+            ),
+        ),
+        "warning": ("text-color": ("default": $color-warning-6,
+                "disabled": $color-warning-2,
+                "hover": $color-warning-6,
+                "active": $color-warning-6,
+                "loading": $color-warning-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+            "border-color": ("default": $color-warning-6,
+                "disabled": $color-warning-2,
+                "hover": $color-warning-5,
+                "active": $color-warning-7,
+                "loading": $color-warning-2,
+            ),
+        ),
+        "danger": ("text-color": ("default": $color-danger-6,
+                "disabled": $color-danger-2,
+                "hover": $color-danger-6,
+                "active": $color-danger-6,
+                "loading": $color-danger-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+            "border-color": ("default": $color-danger-6,
+                "disabled": $color-danger-2,
+                "hover": $color-danger-5,
+                "active": $color-danger-7,
+                "loading": $color-danger-2,
+            ),
+        ),
+    ),
+    "text": ("default": ("text-color": ("default": $color-primary-6,
+                "disabled": $color-primary-2,
+                "hover": $color-primary-6,
+                "active": $color-primary-6,
+                "loading": $color-primary-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-primary-1,
+                "active": $color-primary-2,
+                "loading": $color-transparent,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "success": ("text-color": ("default": $color-success-6,
+                "disabled": $color-success-2,
+                "hover": $color-success-6,
+                "active": $color-success-6,
+                "loading": $color-success-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-success-1,
+                "active": $color-success-2,
+                "loading": $color-transparent,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "warning": ("text-color": ("default": $color-warning-6,
+                "disabled": $color-warning-2,
+                "hover": $color-warning-6,
+                "active": $color-warning-6,
+                "loading": $color-warning-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-warning-1,
+                "active": $color-warning-2,
+                "loading": $color-transparent,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+        "danger": ("text-color": ("default": $color-danger-6,
+                "disabled": $color-danger-2,
+                "hover": $color-danger-6,
+                "active": $color-danger-6,
+                "loading": $color-danger-4,
+            ),
+            "bg-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-danger-1,
+                "active": $color-danger-2,
+                "loading": $color-transparent,
+            ),
+            "border-color": ("default": $color-transparent,
+                "disabled": $color-transparent,
+                "hover": $color-transparent,
+                "active": $color-transparent,
+            ),
+        ),
+    ),
+);
+
+$btnSizes: ("mini": ("height": 22px,
+        "font-size":12px,
+        "padding-h": $btn-padding-h,
+    ),
+    "small": ("height": 24px,
+        "font-size":12px,
+        "padding-h": $btn-padding-h,
+    ),
+    "medium": ("height": 32px,
+        "font-size":14px,
+        "padding-h": $btn-padding-h,
+    ),
+    "large": ("height": 38px,
+        "font-size":16px,
+        "padding-h": $btn-padding-h,
+    ),
+);
+
+@include b(button) {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    font-weight: 400;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+    -webkit-appearance: none;
+    user-select: none;
+    border: $btn-border-width solid transparent;
+    border-radius: $btn-border-radius;
+    padding: 0 $btn-padding-h;
+
+    @each $size,
+    $item in $btnSizes {
+        @include m('size-'+$size) {
+            height: map.get($item, "height");
+            font-size: map.get($item, "font-size");
+        }
+    }
+
+    .#{$namespace}-button-icon {
+        margin-right: 5px;
+    }
+
+    @include when(icon-only) {
+        .#{$namespace}-button-icon {
+            margin-right: 0;
+        }
+    }
+
+    @include when(disabled) {
+        cursor: not-allowed;
+    }
+
+    @include when(loading) {
+        cursor: default;
+    }
+
+    @each $type,
+    $item in $btn {
+        @include m('type-'+$type) {
+
+            @each $stateKey,
+            $stateItem in $item {
+                &.#{$namespace}-button--state-#{$stateKey} {
+                    color: map.get($stateItem, "text-color", "default");
+                    background-color: map.get($stateItem, "bg-color", "default");
+                    border-color: map.get($stateItem, "border-color", "default");
+
+                    &:hover {
+                        color: map.get($stateItem, "text-color", "hover");
+                        background-color: map.get($stateItem, "bg-color", "hover");
+                        border-color: map.get($stateItem, "border-color", "hover");
+                    }
+
+                    &:active {
+                        color: map.get($stateItem, "text-color", "active");
+                        background-color: map.get($stateItem, "bg-color", "active");
+                        border-color: map.get($stateItem, "border-color", "active");
+                    }
+
+                    &.is--disabled {
+                        // @include m(disabled) {
+                        color: map.get($stateItem, "text-color", "disabled");
+                        background-color: map.get($stateItem, "bg-color", "disabled");
+                        border-color: map.get($stateItem, "border-color", "disabled");
+                        // }
+                    }
+
+                    &.is--loading {
+                        // @include m(loading) {
+                        color: map.get($stateItem, "text-color", "loading");
+                        background-color: map.get($stateItem, "bg-color", "loading");
+                        border-color: map.get($stateItem, "border-color", "loading");
+                        // }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.m-icon-loading {
+    display: inline-block;
+    animation: q-ani-spin infinite 1s linear;
+}
+
+@keyframes q-ani-spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
