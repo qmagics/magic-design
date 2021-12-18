@@ -1,11 +1,11 @@
-# `icon`
+# `components`
 
 > TODO: description
 
 ## Usage
 
 ```
-const icon = require('icon');
+const components = require('components');
 
 // TODO: DEMONSTRATE API
 ```
