@@ -13,6 +13,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, '../packages/magic-design/index.ts'),
       },
       {
+        find: '@magic-design/theme-chalk/src/index.scss',
+        replacement: `${path.resolve(__dirname, `../packages`)}/theme-chalk/src/index.scss`,
+      },
+      {
         find: /^@magic-design\/(.+)/,
         replacement: `${path.resolve(__dirname, `../packages`)}/$1/index.ts`,
       },

@@ -1,6 +1,6 @@
 'use strict';
 
-const magicDesign = require('..');
+const qUi = require('..');
 
 describe('magic-design', () => {
     it('needs tests');

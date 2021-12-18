@@ -1,11 +1,11 @@
-# `magic-design`
+# `theme-chalk`
 
 > TODO: description
 
 ## Usage
 
 ```
-const qUi = require('magic-design');
+const themeChalk = require('theme-chalk');
 
 // TODO: DEMONSTRATE API
 ```

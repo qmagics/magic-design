@@ -1,0 +1,229 @@
+@import '../mixins/config.scss';
+// @use "sass:map";
+
+// root vars
+body {
+    // 调色板
+    --red-1: 255, 236, 232;
+    --red-2: 253, 205, 197;
+    --red-3: 251, 172, 163;
+    --red-4: 249, 137, 129;
+    --red-5: 247, 101, 96;
+    --red-6: 245, 63, 63;
+    --red-7: 203, 39, 45;
+    --red-8: 161, 21, 30;
+    --red-9: 119, 8, 19;
+    --red-10: 77, 0, 10;
+    --orange-1: 255, 247, 232;
+    --orange-2: 255, 228, 186;
+    --orange-3: 255, 207, 139;
+    --orange-4: 255, 182, 93;
+    --orange-5: 255, 154, 46;
+    --orange-6: 255, 125, 0;
+    --orange-7: 210, 95, 0;
+    --orange-8: 166, 69, 0;
+    --orange-9: 121, 46, 0;
+    --orange-10: 77, 27, 0;
+    --yellow-1: 254, 255, 232;
+    --yellow-2: 254, 254, 190;
+    --yellow-3: 253, 250, 148;
+    --yellow-4: 252, 242, 107;
+    --yellow-5: 251, 232, 66;
+    --yellow-6: 250, 220, 25;
+    --yellow-7: 207, 175, 15;
+    --yellow-8: 163, 132, 8;
+    --yellow-9: 120, 93, 3;
+    --yellow-10: 77, 56, 0;
+    --green-1: 232, 255, 234;
+    --green-2: 175, 240, 181;
+    --green-3: 123, 225, 136;
+    --green-4: 76, 210, 99;
+    --green-5: 35, 195, 67;
+    --green-6: 0, 180, 42;
+    --green-7: 0, 154, 41;
+    --green-8: 0, 128, 38;
+    --green-9: 0, 102, 34;
+    --green-10: 0, 77, 28;
+    --blue-1: 232, 245, 255;
+    --blue-2: 195, 225, 254;
+    --blue-3: 159, 212, 253;
+    --blue-4: 123, 192, 252;
+    --blue-5: 87, 169, 251;
+    --blue-6: 52, 145, 250;
+    --blue-7: 32, 108, 207;
+    --blue-8: 17, 75, 163;
+    --blue-9: 6, 48, 120;
+    --blue-10: 0, 26, 77;
+    --purple-1: 245, 232, 255;
+    --purple-2: 221, 190, 246;
+    --purple-3: 195, 150, 237;
+    --purple-4: 168, 113, 227;
+    --purple-5: 141, 78, 218;
+    --purple-6: 114, 46, 209;
+    --purple-7: 85, 29, 176;
+    --purple-8: 60, 16, 143;
+    --purple-9: 39, 6, 110;
+    --purple-10: 22, 0, 77;
+    --gray-1: 247, 248, 250;
+    --gray-2: 242, 243, 245;
+    --gray-3: 229, 230, 235;
+    --gray-4: 201, 205, 212;
+    --gray-5: 169, 174, 184;
+    --gray-6: 134, 144, 156;
+    --gray-7: 107, 119, 133;
+    --gray-8: 78, 89, 105;
+    --gray-9: 39, 46, 59;
+    --gray-10: 29, 33, 41;
+
+    // 基础色
+    --q-color-white: #ffffff;
+    --q-color-black: #000000;
+    --q-color-transparent: transparent;
+
+    // 文字颜色
+    --q-text-color-1: #1d2129;
+    --q-text-color-2: #4e5969;
+    --q-text-color-3: #86909c;
+    --q-text-color-4: #c9cdd4;
+
+    // 状态色
+    --q-color-secondary-1: rgb(var(--gray-1));
+    --q-color-secondary-2: rgb(var(--gray-2));
+    --q-color-secondary-3: rgb(var(--gray-3));
+    --q-color-secondary-4: rgb(var(--gray-4));
+    --q-color-secondary-5: rgb(var(--gray-5));
+    --q-color-secondary-6: rgb(var(--gray-6));
+    --q-color-secondary-7: rgb(var(--gray-7));
+    --q-color-secondary-8: rgb(var(--gray-8));
+    --q-color-secondary-9: rgb(var(--gray-9));
+    --q-color-secondary-10: rgb(var(--gray-10));
+
+    --q-color-primary-1: rgb(var(--blue-1));
+    --q-color-primary-2: rgb(var(--blue-2));
+    --q-color-primary-3: rgb(var(--blue-3));
+    --q-color-primary-4: rgb(var(--blue-4));
+    --q-color-primary-5: rgb(var(--blue-5));
+    --q-color-primary-6: rgb(var(--blue-6));
+    --q-color-primary-7: rgb(var(--blue-7));
+    --q-color-primary-8: rgb(var(--blue-8));
+    --q-color-primary-9: rgb(var(--blue-9));
+    --q-color-primary-10: rgb(var(--blue-10));
+
+    --q-color-success-1: rgb(var(--green-1));
+    --q-color-success-2: rgb(var(--green-2));
+    --q-color-success-3: rgb(var(--green-3));
+    --q-color-success-4: rgb(var(--green-4));
+    --q-color-success-5: rgb(var(--green-5));
+    --q-color-success-6: rgb(var(--green-6));
+    --q-color-success-7: rgb(var(--green-7));
+    --q-color-success-8: rgb(var(--green-8));
+    --q-color-success-9: rgb(var(--green-9));
+    --q-color-success-10: rgb(var(--green-10));
+
+    --q-color-warning-1: rgb(var(--orange-1));
+    --q-color-warning-2: rgb(var(--orange-2));
+    --q-color-warning-3: rgb(var(--orange-3));
+    --q-color-warning-4: rgb(var(--orange-4));
+    --q-color-warning-5: rgb(var(--orange-5));
+    --q-color-warning-6: rgb(var(--orange-6));
+    --q-color-warning-7: rgb(var(--orange-7));
+    --q-color-warning-8: rgb(var(--orange-8));
+    --q-color-warning-9: rgb(var(--orange-9));
+    --q-color-warning-10: rgb(var(--orange-10));
+
+    --q-color-danger-1: rgb(var(--red-1));
+    --q-color-danger-2: rgb(var(--red-2));
+    --q-color-danger-3: rgb(var(--red-3));
+    --q-color-danger-4: rgb(var(--red-4));
+    --q-color-danger-5: rgb(var(--red-5));
+    --q-color-danger-6: rgb(var(--red-6));
+    --q-color-danger-7: rgb(var(--red-7));
+    --q-color-danger-8: rgb(var(--red-8));
+    --q-color-danger-9: rgb(var(--red-9));
+    --q-color-danger-10: rgb(var(--red-10));
+}
+
+// root vars dark-theme
+body[fx-theme="dark"] {
+    --q-color-primary-1: rgb(var(--orange-1));
+    --q-color-primary-2: rgb(var(--orange-2));
+    --q-color-primary-3: rgb(var(--orange-3));
+    --q-color-primary-4: rgb(var(--orange-4));
+    --q-color-primary-5: rgb(var(--orange-5));
+    --q-color-primary-6: rgb(var(--orange-6));
+    --q-color-primary-7: rgb(var(--orange-7));
+    --q-color-primary-8: rgb(var(--orange-8));
+    --q-color-primary-9: rgb(var(--orange-9));
+    --q-color-primary-10: rgb(var(--orange-10));
+}
+
+/** basic color **/
+$color-white: var(--q-color-white);
+$color-black: var(--q-color-black);
+$color-transparent: var(--q-color-transparent);
+
+/** text color **/
+$color-text-1: var(--q-text-color-1);
+$color-text-2: var(--q-text-color-2);
+$color-text-3: var(--q-text-color-3);
+$color-text-4: var(--q-text-color-4);
+
+/** primary **/
+$color-primary-1: var(--q-color-primary-1);
+$color-primary-2: var(--q-color-primary-2);
+$color-primary-3: var(--q-color-primary-3);
+$color-primary-4: var(--q-color-primary-4);
+$color-primary-5: var(--q-color-primary-5);
+$color-primary-6: var(--q-color-primary-6);
+$color-primary-7: var(--q-color-primary-7);
+$color-primary-8: var(--q-color-primary-8);
+$color-primary-9: var(--q-color-primary-9);
+$color-primary-10: var(--q-color-primary-10);
+
+/** secondary **/
+$color-secondary-1: var(--q-color-secondary-1);
+$color-secondary-2: var(--q-color-secondary-2);
+$color-secondary-3: var(--q-color-secondary-3);
+$color-secondary-4: var(--q-color-secondary-4);
+$color-secondary-5: var(--q-color-secondary-5);
+$color-secondary-6: var(--q-color-secondary-6);
+$color-secondary-7: var(--q-color-secondary-7);
+$color-secondary-8: var(--q-color-secondary-8);
+$color-secondary-9: var(--q-color-secondary-9);
+$color-secondary-10: var(--q-color-secondary-10);
+
+/** success **/
+$color-success-1: var(--q-color-success-1);
+$color-success-2: var(--q-color-success-2);
+$color-success-3: var(--q-color-success-3);
+$color-success-4: var(--q-color-success-4);
+$color-success-5: var(--q-color-success-5);
+$color-success-6: var(--q-color-success-6);
+$color-success-7: var(--q-color-success-7);
+$color-success-8: var(--q-color-success-8);
+$color-success-9: var(--q-color-success-9);
+$color-success-10: var(--q-color-success-10);
+
+/** warning **/
+$color-warning-1: var(--q-color-warning-1);
+$color-warning-2: var(--q-color-warning-2);
+$color-warning-3: var(--q-color-warning-3);
+$color-warning-4: var(--q-color-warning-4);
+$color-warning-5: var(--q-color-warning-5);
+$color-warning-6: var(--q-color-warning-6);
+$color-warning-7: var(--q-color-warning-7);
+$color-warning-8: var(--q-color-warning-8);
+$color-warning-9: var(--q-color-warning-9);
+$color-warning-10: var(--q-color-warning-10);
+
+/** danger **/
+$color-danger-1: var(--q-color-danger-1);
+$color-danger-2: var(--q-color-danger-2);
+$color-danger-3: var(--q-color-danger-3);
+$color-danger-4: var(--q-color-danger-4);
+$color-danger-5: var(--q-color-danger-5);
+$color-danger-6: var(--q-color-danger-6);
+$color-danger-7: var(--q-color-danger-7);
+$color-danger-8: var(--q-color-danger-8);
+$color-danger-9: var(--q-color-danger-9);
+$color-danger-10: var(--q-color-danger-10);

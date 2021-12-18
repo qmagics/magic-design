@@ -6,8 +6,7 @@ import "normalize.css";
 import './styles/index.scss';
 
 import MagicDesign from 'magic-design';
-// import QUI from '../../lib/index.esm.js';
-import 'theme-chalk/src/index.scss';
+import '@magic-design/theme-chalk/src/index.scss';
 
 const app = createApp(App);
 app.use(router);
