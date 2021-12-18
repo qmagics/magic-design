@@ -6,6 +6,13 @@
   "homepage": "https://github.com/qmagics/magic-design#readme",
   "license": "ISC",
   "main": "lib/index.js",
+  "keywords": [
+    "magic-design",
+    "comonents",
+    "ui",
+    "vue",
+    "vue3"
+  ],
   "exports": {
     ".": {
       "require": "./lib/index.js",

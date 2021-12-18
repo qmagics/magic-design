@@ -1,8 +1,6 @@
-import { App } from 'vue';
+import { withInstall } from '../utils';
 import Input from './src/input.vue';
 
-Input.install = (app: App) => {
-    app.component(Input.name, Input);
-}
+const MInput = withInstall(Input);
 
-export default Input;
+export default MInput;

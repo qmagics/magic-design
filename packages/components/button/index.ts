@@ -1,8 +1,6 @@
-import { App } from 'vue';
+import { withInstall } from '../utils';
 import Button from './src/button.vue';
 
-Button.install = (app: App) => {
-    app.component(Button.name, Button);
-}
+const MButton = withInstall(Button);
 
-export default Button;
+export default MButton;
