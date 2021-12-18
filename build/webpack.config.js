@@ -1,12 +1,13 @@
 // 打包 umd 模块
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
+const { LibPath } = require("./paths");
 
 module.exports = {
     mode: "production",
     entry: path.resolve(__dirname, "../packages/magic-design/index.ts"),
     output: {
-        path: path.resolve(__dirname, "../lib"),
+        path: LibPath,
         filename: "index.js",
         libraryTarget: "umd",
         library: "QUI"

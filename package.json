@@ -8,10 +8,11 @@
   "scripts": {
     "dev:docs": "vite --config ./docs/vite.config.ts",
     "build:docs": "vite build --config ./docs/vite.config.ts",
-    "build:theme": "gulp build --gulpfile ./packages/theme-chalk/gulpfile.js",
-    "build": "webpack --config ./build/webpack.config.js",
+    "build:umd": "webpack --config ./build/webpack.config.js",
     "build:esm-bundle": "rollup -c ./build/rollup.config.bundle.js",
-    "build:esm": "rollup -c ./build/rollup.config.js"
+    "build:esm": "rollup -c ./build/rollup.config.js",
+    "build:theme": "gulp build --gulpfile ./packages/theme-chalk/gulpfile.js",
+    "build": "npm run build:umd && npm run build:esm-bundle && npm run build:esm && npm run build:theme"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

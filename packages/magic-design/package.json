@@ -5,7 +5,16 @@
   "author": "qmagics <949959378@qq.com>",
   "homepage": "https://github.com/qmagics/magic-design#readme",
   "license": "ISC",
-  "main": "lib/magic-design.js",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.esm.js"
+    },
+    "./es": "./lib/index.esm.js",
+    "./lib": "./lib/index.js",
+    "./*": "./*"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
