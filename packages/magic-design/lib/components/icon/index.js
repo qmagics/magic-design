@@ -1,5 +1,12 @@
 import { defineComponent, openBlock, createElementBlock, normalizeClass } from 'vue';
 
+const withInstall = (main) => {
+    main.install = (app) => {
+        app.component(main.name, main);
+    };
+    return main;
+};
+
 var script = defineComponent({
     name: "MIcon",
     props: {
@@ -17,8 +24,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 script.render = render;
 script.__file = "packages/components/icon/src/icon.vue";
 
-script.install = (app) => {
-    app.component(script.name, script);
-};
+const MIcon = withInstall(script);
 
-export { script as default };
+export { MIcon as default };

@@ -1,5 +1,12 @@
 import { defineComponent, openBlock, createElementBlock } from 'vue';
 
+const withInstall = (main) => {
+    main.install = (app) => {
+        app.component(main.name, main);
+    };
+    return main;
+};
+
 var script = defineComponent({
     name: "MInput",
     props: {},
@@ -15,8 +22,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 script.render = render;
 script.__file = "packages/components/input/src/input.vue";
 
-script.install = (app) => {
-    app.component(script.name, script);
-};
+const MInput = withInstall(script);
 
-export { script as default };
+export { MInput as default };

@@ -1,2 +1,2 @@
-import Icon from './src/icon.vue';
-export default Icon;
+declare const MIcon: any;
+export default MIcon;

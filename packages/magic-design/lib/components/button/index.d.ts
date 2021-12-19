@@ -1,2 +1,2 @@
-import Button from './src/button.vue';
-export default Button;
+declare const MButton: any;
+export default MButton;

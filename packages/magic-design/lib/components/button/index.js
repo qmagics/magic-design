@@ -1,5 +1,12 @@
 import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot } from 'vue';
 
+const withInstall = (main) => {
+    main.install = (app) => {
+        app.component(main.name, main);
+    };
+    return main;
+};
+
 var script = defineComponent({
     name: "MButton",
     props: {
@@ -90,8 +97,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 script.render = render;
 script.__file = "packages/components/button/src/button.vue";
 
-script.install = (app) => {
-    app.component(script.name, script);
-};
+const MButton = withInstall(script);
 
-export { script as default };
+export { MButton as default };

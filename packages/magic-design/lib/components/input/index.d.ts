@@ -1,2 +1,2 @@
-import Input from './src/input.vue';
-export default Input;
+declare const MInput: any;
+export default MInput;

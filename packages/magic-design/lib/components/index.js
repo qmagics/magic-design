@@ -1,5 +1,12 @@
 import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot } from 'vue';
 
+const withInstall = (main) => {
+    main.install = (app) => {
+        app.component(main.name, main);
+    };
+    return main;
+};
+
 var script$1 = defineComponent({
     name: "MButton",
     props: {
@@ -90,9 +97,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
 script$1.render = render$1;
 script$1.__file = "packages/components/button/src/button.vue";
 
-script$1.install = (app) => {
-    app.component(script$1.name, script$1);
-};
+const MButton = withInstall(script$1);
 
 var script = defineComponent({
     name: "MIcon",
@@ -111,13 +116,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 script.render = render;
 script.__file = "packages/components/icon/src/icon.vue";
 
-script.install = (app) => {
-    app.component(script.name, script);
-};
+const MIcon = withInstall(script);
 
 const components = [
-    script$1,
-    script,
+    MButton,
+    MIcon,
 ];
 
 export { components as default };
