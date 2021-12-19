@@ -1,7 +1,5 @@
 import { MenuItemRaw } from "../../types";
 
-
-
 const menus: MenuItemRaw[] = [
     {
         type: "group",

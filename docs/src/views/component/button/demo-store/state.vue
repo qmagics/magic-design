@@ -20,3 +20,16 @@
         <m-button type="text" state="danger">危险</m-button>
     </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+    // #doc-start
+    __meta__: {
+        sort: 2,
+        title: "按钮状态",
+    },
+    // #doc-end
+});
+</script>

@@ -3,8 +3,8 @@
         'is--source-visible': state.sourceVisible
     }]">
         <div class="app-demo-block__header">
-            <h2 class="app-demo-block__title" :id="id">{{ title }}</h2>
-            <p class="app-demo-block__subtitle">{{ subtitle }}</p>
+            <h2 class="app-demo-block__title" :id="item.id">{{ item.title }}</h2>
+            <p class="app-demo-block__subtitle">{{ item?.description }}</p>
         </div>
         <div class="app-demo-block__example">
             <slot></slot>
@@ -18,22 +18,29 @@
             </a>
         </div>
         <div class="app-demo-block__source" v-show="state.sourceVisible">
-            <pre>{{ source }}</pre>
+            <pre v-html="highlightSource"></pre>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { DemoItem } from "@/types";
+import { computed, defineComponent, PropType, reactive } from "vue";
+import highlight from 'highlight.js';
+import 'highlight.js/styles/github.css'
 
 export default defineComponent({
     props: {
-        id: String,
-        title: String,
-        subtitle: String,
-        source: String
+        // id: String,
+        // title: String,
+        // subtitle: String,
+        // source: String
+        item: {
+            type: Object as PropType<DemoItem>,
+            required: true
+        }
     },
-    setup() {
+    setup(props) {
         const state = reactive({
             sourceVisible: false
         });
@@ -46,10 +53,16 @@ export default defineComponent({
 
         }
 
+        const highlightSource = computed(() => {
+            const str = highlight.highlight(props.item.source as string, { language: "html" }).value;
+            return str;
+        });
+
         return {
             toggleSourceBlock,
             copySource,
-            state
+            state,
+            highlightSource
         }
     }
 })
@@ -78,7 +91,7 @@ export default defineComponent({
     &__example {
         padding: 30px 20px;
         border: 1px solid $colorBorderLight;
-        border-radius: $radius 0;
+        border-radius: $radius $radius 0 0;
         border-bottom-style: dashed;
     }
     &__toolbar {
@@ -88,7 +101,7 @@ export default defineComponent({
         justify-content: center;
         border: 1px solid $colorBorderLight;
         border-top: none;
-        border-radius: 0 $radius;
+        border-radius: 0 0 $radius $radius;
 
         .tool-btn {
             border-radius: 4px;
@@ -110,7 +123,7 @@ export default defineComponent({
     &__source {
         padding: 30px 20px;
         background-color: $colorBgLight;
-        border-radius: 0 $radius;
+        border-radius: 0 0 $radius $radius;
         border: 1px solid $colorBorderLight;
         border-top: none;
     }

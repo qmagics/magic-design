@@ -1,30 +1,63 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
+import fs from 'fs';
+
+const getCodeMap = (realFolderPath: string): Record<string, string> => {
+  const map = { realFolderPath };
+  const prefixKey = realFolderPath.substring(realFolderPath.lastIndexOf('/') + 1, realFolderPath.length);
+  const filenames = fs.readdirSync(realFolderPath);
+
+  filenames.forEach(filename => {
+    const content = fs.readFileSync(path.join(realFolderPath, filename), 'utf8');
+    map[`./${prefixKey}/${filename}`] = content;
+  })
+
+  return map;
+}
+
+/** 解析源代码插件 */
+const resolveSourceCodeMap = () => {
+  return {
+    name: 'resolve-source-code-map',
+    async resolveId(source, importer, options) {
+      if (source.endsWith('.$scm')) {
+        return path.join(path.dirname(importer), source);
+      }
+      return null;
+    },
+    load(id) {
+      if (id.endsWith('.$scm')) {
+        const realFolderPath = id.replace('.$scm', '');
+        return `export default ${JSON.stringify(getCodeMap(realFolderPath))}`;
+      }
+      return null;
+    }
+    // async resolveId(source, importer, options) {
+    //   if (source.includes('.$text')) {
+    //     return path.join(path.dirname(importer), source);
+    //   }
+    //   return null;
+    // },
+    // load(id) {
+    //   if (id.endsWith('.$text')) {
+    //     const realFilePath = id.replace('.$text', '');
+    //     const code = JSON.stringify(`${fs.readFileSync(realFilePath)}`);
+    //     return `export default ${code}`;
+    //   }
+    //   return null;
+    // }
+  }
+}
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), resolveSourceCodeMap()],
   root: path.resolve(__dirname, './'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss', 'sass', '.json'],
-    alias: [
-      {
-        find: /^magic-design$/,
-        replacement: path.resolve(__dirname, '../packages/magic-design/index.ts'),
-      },
-      {
-        find: '@magic-design/theme-chalk/src/index.scss',
-        replacement: `${path.resolve(__dirname, `../packages`)}/theme-chalk/src/index.scss`,
-      },
-      {
-        find: /^@magic-design\/(.+)/,
-        replacement: `${path.resolve(__dirname, `../packages`)}/$1/index.ts`,
-      },
-      {
-        find: /^@\/(.+)/,
-        replacement: path.resolve(__dirname, `./src`) + '/$1',
-      }
-    ]
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
   },
   css: {
     preprocessorOptions: {

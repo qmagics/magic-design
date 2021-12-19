@@ -3,7 +3,6 @@ import { MutationType } from "@/store/mutationType";
 import { some } from "@/utils";
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import throttle from 'lodash/throttle';
-import router from "@/routes";
 
 export default () => {
     let documentHeight = document.documentElement.clientHeight;
@@ -12,6 +11,8 @@ export default () => {
 
     const elementInView = (el: any): boolean => {
         const { top } = el.getBoundingClientRect();
+        // console.log('top', top);
+        // console.log('documentHeight', documentHeight);
         return top >= 0 && top <= (documentHeight / 2);
     };
 
@@ -37,6 +38,9 @@ export default () => {
     onMounted(() => {
         window.addEventListener("scroll", handleScroll);
         window.addEventListener("resize", handleResize);
+        setTimeout(() => {
+            handleScroll();
+        }, 200);
     });
 
     onBeforeUnmount(() => {

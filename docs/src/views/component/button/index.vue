@@ -1,13 +1,7 @@
 <template>
   <div class="demo-page--button">
     <div class="demo-page__main">
-      <app-demo-block
-        v-for="i in config.demos"
-        :source="i.source"
-        :id="i.id"
-        :title="i.title"
-        :subtitle="i.description"
-      >
+      <app-demo-block v-for="i in config.demos" :item="i">
         <component :is="i.component"></component>
       </app-demo-block>
     </div>
@@ -17,10 +11,11 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 import AppDemoBlock from '@/components/AppDemoBlock/index.vue';
 import AppAnchorMenu from '@/components/AppAnchorMenu.vue';
-import config from "./config";
+import usePageConfig from "@/hooks/usePageConfig";
+import sourceCodeMap from './demo-store.$scm';
 
 export default defineComponent({
   components: {
@@ -28,6 +23,11 @@ export default defineComponent({
     AppAnchorMenu
   },
   setup() {
+    const config = usePageConfig({
+      demePageGlob: import.meta.globEager('./demo-store/*.vue'),
+      sourceCodeMap,
+    });
+
     return {
       config
     }

@@ -13,5 +13,25 @@ export interface DemoItemRaw {
     description?: string;
     id: string;
     component: DefineComponent;
-    source?: string;
+    source?: Promise<any> | string;
+}
+export interface DemoItem extends DemoItemRaw {
+    source: string;
+}
+
+export interface PageConfig {
+    demos: DemoItemRaw[],
+    name?: string
+}
+
+export interface ResolvedPageConfig extends PageConfig {
+    demos: DemoItem[]
+}
+
+export interface UsePageConfigOptions {
+    name?: string,
+    demePageGlob: Record<string, {
+        [key: string]: any;
+    }>,
+    sourceCodeMap: Record<string, string>
 }

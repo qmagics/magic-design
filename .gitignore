@@ -8,6 +8,3 @@ lerna-debug.log*
 
 # 
 node_modules/
-
-# 
-packages/magic-design/lib

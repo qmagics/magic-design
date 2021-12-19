@@ -6,3 +6,8 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module '*.$scm' {
+  const scm: Record<string, string>;
+  export default scm;
+}
