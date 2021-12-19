@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -47,14 +47,14 @@ var script$1 = defineComponent({
     },
 });
 
-const _hoisted_1 = ["type", "autofocus"];
+const _hoisted_1$1 = ["type", "autofocus"];
 const _hoisted_2 = {
   key: 0,
   class: "m-button-icon"
 };
 const _hoisted_3 = { key: 1 };
 
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -91,15 +91,15 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
-  ], 10 /* CLASS, PROPS */, _hoisted_1))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$1))
 }
 
-script$1.render = render$1;
-script$1.__file = "packages/components/button/src/button.vue";
+script$2.render = render$2;
+script$2.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$1);
+const MButton = withInstall(script$2);
 
-var script = defineComponent({
+var script$1 = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -107,21 +107,38 @@ var script = defineComponent({
     setup() { },
 });
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script.render = render;
-script.__file = "packages/components/icon/src/icon.vue";
+script$1.render = render$1;
+script$1.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script);
+const MIcon = withInstall(script$1);
 
 const components = [
     MButton,
     MIcon,
 ];
+
+var script = defineComponent({
+    name: "MInput",
+    props: {},
+    setup() { },
+});
+
+const _hoisted_1 = { class: "m-input" };
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1))
+}
+
+script.render = render;
+script.__file = "packages/components/input/src/input.vue";
+
+withInstall(script);
 
 const install = (app) => {
     components.forEach(component => {
