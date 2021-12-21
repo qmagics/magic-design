@@ -27,7 +27,12 @@
 import { DemoItem } from "@/types";
 import { computed, defineComponent, PropType, reactive } from "vue";
 import highlight from 'highlight.js';
-import 'highlight.js/styles/github.css'
+// import 'highlight.js/styles/an-old-hope.css'
+// import 'highlight.js/styles/atom-one-dark-reasonable.css'
+import 'highlight.js/styles/color-brewer.css' //1
+// import 'highlight.js/styles/foundation.css'
+// import 'highlight.js/styles/lioshi.css'
+// import 'highlight.js/styles/vs2015.css'
 
 export default defineComponent({
     props: {
@@ -42,7 +47,7 @@ export default defineComponent({
     },
     setup(props) {
         const state = reactive({
-            sourceVisible: false
+            sourceVisible: true
         });
 
         const toggleSourceBlock = () => {
@@ -121,11 +126,16 @@ export default defineComponent({
         }
     }
     &__source {
-        padding: 30px 20px;
+        padding: 20px 20px;
         background-color: $colorBgLight;
         border-radius: 0 0 $radius $radius;
         border: 1px solid $colorBorderLight;
         border-top: none;
+        overflow: auto;
+
+        pre {
+            line-height: 26px;
+        }
     }
 }
 </style>

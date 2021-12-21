@@ -21,15 +21,10 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    // #doc-start
-    __meta__: {
-        sort: 2,
-        title: "按钮状态",
-    },
-    // #doc-end
-});
-</script>
+<demo-meta>
+{
+    "sort": 2,
+    "title": "按钮状态",
+    "description": "可以通过 state 属性给按钮设置状态，按钮状态可与按钮类型同时使用。可选项为 success / warning / danger ",
+}
+</demo-meta>

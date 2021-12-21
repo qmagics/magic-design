@@ -9,7 +9,7 @@ const getCodeMap = (realFolderPath: string): Record<string, string> => {
   const filenames = fs.readdirSync(realFolderPath);
 
   filenames.forEach(filename => {
-    const content = fs.readFileSync(path.join(realFolderPath, filename), 'utf8');
+    const content = fs.readFileSync(path.join(realFolderPath, filename), 'utf8').replace(/<demo-meta>([\w\W]*)<\/demo-meta>/g,'');
     map[`./${prefixKey}/${filename}`] = content;
   })
 
@@ -50,8 +50,26 @@ const resolveSourceCodeMap = () => {
   }
 }
 
+const demoMetaPlugin = {
+  name: 'demo-meta-plugin',
+  async resolveId(source, importer, options) {
+    if (!/vue&type=demo-meta/.test(source)) {
+      return null;
+    }
+    return source;
+  },
+  transform(code, id) {
+    if (!/vue&type=demo-meta/.test(id)) {
+      return
+    }
+    return `export default Comp => {
+      Comp.__meta__ = ${code}
+    }`
+  }
+}
+
 export default defineConfig({
-  plugins: [vue(), resolveSourceCodeMap()],
+  plugins: [[vue(), demoMetaPlugin], resolveSourceCodeMap()],
   root: path.resolve(__dirname, './'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss', 'sass', '.json'],

@@ -5,15 +5,10 @@
     <m-button type="primary" size="large">大型</m-button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    // #doc-start
-    __meta__: {
-        sort: 4,
-        title: "按钮尺寸"
-    },
-    // #doc-end
-});
-</script>
+<demo-meta>
+{
+    "sort": 4,
+    "title": "按钮尺寸",
+    "description": "可以通过 size 属性给按钮指定大小，可选项为 mini / small / medium(默认) / large",
+}
+</demo-meta>

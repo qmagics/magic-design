@@ -5,18 +5,10 @@
     <m-button type="text">文本</m-button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    // #doc-start
-    __meta__: {
-        sort: 1,
-        title: "基础用法",
-        description: "按钮类型"
-    },
-    // #doc-end
-
-
-});
-</script>
+<demo-meta>
+{
+    "sort": 1,
+    "title": "基础用法",
+    "description": "按钮分为 primary（主要） / secondary（次要） / outline（线性） / text（文本）",
+}
+</demo-meta>

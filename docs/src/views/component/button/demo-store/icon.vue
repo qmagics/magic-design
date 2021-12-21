@@ -4,15 +4,10 @@
     <m-button type="text" state="success" icon="m-icon-plus">新增</m-button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-    // #doc-start
-    __meta__: {
-        sort: 3,
-        title: "图标按钮"
-    },
-    // #doc-end
-});
-</script>
+<demo-meta>
+{
+    "sort": 3,
+    "title": "图标按钮",
+    "description": "可以通过 icon 属性给按钮添加图标",
+}
+</demo-meta>
