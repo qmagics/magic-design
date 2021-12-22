@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-page--button">
+  <div class="demo-page--input">
     <div class="demo-page__main">
       <app-demo-block v-for="i in config.demos" :item="i">
         <component :is="i.component"></component>
@@ -30,9 +30,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.demo-page--button {
-  .m-button {
-    margin: 0 8px 12px 0;
+.demo-page--input {
+  .m-input {
+    width: 220px;
   }
 }
 </style>

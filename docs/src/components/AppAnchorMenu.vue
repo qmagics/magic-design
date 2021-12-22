@@ -14,6 +14,7 @@ import { computed, defineComponent, onMounted, PropType, ref } from "vue";
 import { DemoItemRaw } from "../types";
 
 export default defineComponent({
+    name: "AppAnchorMenu",
     props: {
         menus: Array as PropType<DemoItemRaw[]>
     },

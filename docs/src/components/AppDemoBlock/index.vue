@@ -35,6 +35,7 @@ import 'highlight.js/styles/color-brewer.css' //1
 // import 'highlight.js/styles/vs2015.css'
 
 export default defineComponent({
+    name: "AppDemoBlock",
     props: {
         // id: String,
         // title: String,

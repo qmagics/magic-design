@@ -1,0 +1,62 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"input";
+$border-radius: 3px;
+$border-width: 1px;
+$padding-h: 14px;
+
+$sizes: ("mini": ("height": 26px,
+        "font-size":12px,
+        "padding-h": $padding-h,
+    ),
+    "small": ("height": 30px,
+        "font-size":12px,
+        "padding-h": $padding-h,
+    ),
+    "medium": ("height": 34px,
+        "font-size":14px,
+        "padding-h": $padding-h,
+    ),
+    "large": ("height": 40px,
+        "font-size":14px,
+        "padding-h": $padding-h,
+    ),
+);
+
+@include b(input) {
+    position: relative;
+    display: inline-flex;
+    box-sizing: border-box;
+    font-weight: 400;
+    transition:
+        color .1s cubic-bezier(0, 0, 1, 1),
+        border-color .1s cubic-bezier(0, 0, 1, 1),
+        background-color .1s cubic-bezier(0, 0, 1, 1);
+    -webkit-appearance: none;
+    width: 100%;
+
+    @each $size,
+    $item in $sizes {
+        @include m('size-'+$size) {
+            height: map.get($item, "height");
+            line-height: map.get($item, "height");
+            font-size: map.get($item, "font-size");
+        }
+    }
+
+    @include e(inner) {
+        border: none;
+        background-color: $color-fill-1;
+        outline: none;
+        padding: 0 12px;
+        border-radius: $border-radius;
+        width: 100%;
+        color: $color-text-2;
+
+        &:focus {
+            background-color: $color-fill-2;
+        }
+    }
+}
