@@ -150,17 +150,29 @@ body {
 }
 
 // root vars dark-theme
-body[fx-theme="dark"] {
-    --m-color-primary-1: rgb(var(--orange-1));
-    --m-color-primary-2: rgb(var(--orange-2));
-    --m-color-primary-3: rgb(var(--orange-3));
-    --m-color-primary-4: rgb(var(--orange-4));
-    --m-color-primary-5: rgb(var(--orange-5));
-    --m-color-primary-6: rgb(var(--orange-6));
-    --m-color-primary-7: rgb(var(--orange-7));
-    --m-color-primary-8: rgb(var(--orange-8));
-    --m-color-primary-9: rgb(var(--orange-9));
-    --m-color-primary-10: rgb(var(--orange-10));
+body[m-theme="dark"] {
+    // --m-color-primary-1: rgb(var(--orange-1));
+    // --m-color-primary-2: rgb(var(--orange-2));
+    // --m-color-primary-3: rgb(var(--orange-3));
+    // --m-color-primary-4: rgb(var(--orange-4));
+    // --m-color-primary-5: rgb(var(--orange-5));
+    // --m-color-primary-6: rgb(var(--orange-6));
+    // --m-color-primary-7: rgb(var(--orange-7));
+    // --m-color-primary-8: rgb(var(--orange-8));
+    // --m-color-primary-9: rgb(var(--orange-9));
+    // --m-color-primary-10: rgb(var(--orange-10));
+
+    // 文本颜色
+    --m-text-color-1: rgba(255, 255, 255, .9);
+    --m-text-color-2: rgba(255, 255, 255, .7);
+    --m-text-color-3: rgba(255, 255, 255, .5);
+    --m-text-color-4: rgba(255, 255, 255, .3);
+
+    // 填充颜色
+    --m-fill-color-1: rgba(255, 255, 255, .04);
+    --m-fill-color-2: rgba(255, 255, 255, .08);
+    --m-fill-color-3: rgba(255, 255, 255, .12);
+    --m-fill-color-4: rgba(255, 255, 255, .16);
 }
 
 /** basic color **/

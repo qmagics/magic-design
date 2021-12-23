@@ -29,7 +29,7 @@ export default defineComponent({
     const currentTheme = ref("light");
     const toggleTheme = () => {
       currentTheme.value = currentTheme.value === "light" ? "dark" : "light";
-      document.body.setAttribute("theme", currentTheme.value);
+      document.body.setAttribute("m-theme", currentTheme.value);
     };
 
     return {

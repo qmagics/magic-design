@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, createElementVNode } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -118,6 +118,8 @@ script$1.__file = "packages/components/icon/src/icon.vue";
 
 const MIcon = withInstall(script$1);
 
+const UPDATE_MODEL_EVENT = 'update:modelValue';
+
 var script = defineComponent({
     name: "MInput",
     props: {
@@ -139,14 +141,69 @@ var script = defineComponent({
         },
         clearable: {
             type: Boolean,
-            default: true
+            default: false
         },
         placeholder: {
             type: String,
             default: ""
+        },
+        type: {
+            type: String,
+            default: "text"
         }
     },
-    setup() { },
+    emits: [UPDATE_MODEL_EVENT, 'clear', 'change', 'focus', 'blur'],
+    setup(props, { emit, slots }) {
+        const UIState = reactive({
+            focused: false,
+        });
+        const handleFocus = () => {
+            UIState.focused = true;
+            emit("focus");
+        };
+        const handleBlur = () => {
+            UIState.focused = false;
+            emit("blur");
+        };
+        const handleInput = (e) => {
+            const inputEl = e.target;
+            const value = inputEl.value;
+            emit(UPDATE_MODEL_EVENT, value);
+        };
+        const handleChange = (e) => {
+            const inputEl = e.target;
+            const value = inputEl.value;
+            emit('change', value);
+        };
+        const handleClear = () => {
+            emit(UPDATE_MODEL_EVENT, '');
+            emit('clear');
+        };
+        const showClearBtn = computed(() => {
+            return props.clearable && props.modelValue;
+        });
+        const hasSuffix = computed(() => {
+            return slots.suffix || showClearBtn.value;
+        });
+        const hasPrefix = computed(() => {
+            return slots.prefix;
+        });
+        const hasPrepend = computed(() => slots.prepend);
+        const hasAppend = computed(() => slots.append);
+        return {
+            handleInput,
+            handleChange,
+            handleClear,
+            handleFocus,
+            handleBlur,
+            showClearBtn,
+            hasPrepend,
+            hasAppend,
+            hasSuffix,
+            hasPrefix,
+            UIState
+        };
+    },
 });
 
 const _hoisted_1 = {
@@ -157,7 +214,7 @@ const _hoisted_2 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3 = ["placeholder"];
+const _hoisted_3 = ["placeholder", "disabled", "value", "type"];
 const _hoisted_4 = {
   key: 2,
   class: "m-input__suffix"
@@ -168,6 +225,8 @@ const _hoisted_5 = {
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_m_icon = resolveComponent("m-icon");
+
   return (openBlock(), createElementBlock("div", {
     class: normalizeClass([
             'm-input',
@@ -175,11 +234,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             {
                 'is--disabled': _ctx.disabled,
                 'is--readonly': _ctx.readonly,
-                'is--clearable': _ctx.clearable
+                'is--clearable': _ctx.clearable,
+                'is--focused': _ctx.UIState.focused,
+                'is--has-suffix': _ctx.hasSuffix,
+                'is--has-prefix': _ctx.hasPrefix,
+                'is--has-prepend': _ctx.hasPrepend,
+                'is--has-append': _ctx.hasAppend
             }
         ])
   }, [
-    (_ctx.$slots.prepend)
+    (_ctx.hasPrepend)
       ? (openBlock(), createElementBlock("span", _hoisted_1, [
           renderSlot(_ctx.$slots, "prepend")
         ]))
@@ -191,14 +255,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       : createCommentVNode("v-if", true),
     createElementVNode("input", {
       class: "m-input__inner",
-      placeholder: _ctx.placeholder
-    }, null, 8 /* PROPS */, _hoisted_3),
-    (_ctx.$slots.suffix)
+      placeholder: _ctx.placeholder,
+      disabled: _ctx.disabled,
+      value: _ctx.modelValue,
+      type: _ctx.type,
+      onInput: _cache[0] || (_cache[0] = (...args) => (_ctx.handleInput && _ctx.handleInput(...args))),
+      onChange: _cache[1] || (_cache[1] = (...args) => (_ctx.handleChange && _ctx.handleChange(...args))),
+      onFocus: _cache[2] || (_cache[2] = (...args) => (_ctx.handleFocus && _ctx.handleFocus(...args))),
+      onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.handleBlur && _ctx.handleBlur(...args)))
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3),
+    (_ctx.hasSuffix)
       ? (openBlock(), createElementBlock("span", _hoisted_4, [
-          renderSlot(_ctx.$slots, "suffix")
+          renderSlot(_ctx.$slots, "suffix"),
+          (_ctx.showClearBtn)
+            ? (openBlock(), createBlock(_component_m_icon, {
+                key: 0,
+                class: "m-input__clear-btn",
+                onClick: _ctx.handleClear,
+                name: "m-icon-close"
+              }, null, 8 /* PROPS */, ["onClick"]))
+            : createCommentVNode("v-if", true)
         ]))
       : createCommentVNode("v-if", true),
-    (_ctx.$slots.append)
+    (_ctx.hasAppend)
       ? (openBlock(), createElementBlock("span", _hoisted_5, [
           renderSlot(_ctx.$slots, "append")
         ]))

@@ -32,7 +32,7 @@ export default defineComponent({
 <style lang="scss">
 .demo-page--input {
   .m-input {
-    width: 220px;
+    width: 260px;
   }
 }
 </style>

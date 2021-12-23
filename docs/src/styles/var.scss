@@ -1,6 +1,6 @@
 $headerHeight:60px;
 $leftAsideWidth:260px;
-$rightAsideWidth:180px;
+$rightAsideWidth:200px;
 $gutter:10px;
 $padding:20px;
 $radius:3px;
@@ -16,7 +16,7 @@ body {
     --color-primary-light: #4dacff;
 }
 
-body[theme=dark] {
+body[m-theme=dark] {
     --color-font-base: #fff;
     --color-border-light: #333335;
     --color-bg-light: #232324;
