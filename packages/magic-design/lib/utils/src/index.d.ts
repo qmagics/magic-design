@@ -1,2 +1,3 @@
-declare const _default: 1;
-export default _default;
+import { isArray, isString } from '@vue/shared';
+export declare const isFragment: (node: any) => boolean;
+export { isArray, isString };

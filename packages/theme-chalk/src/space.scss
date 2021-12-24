@@ -1,0 +1,35 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"space";
+
+@include b(space) {
+    display: inline-flex;
+
+    @include m(direction-vertical) {
+        flex-direction: column;
+    }
+
+    @include m(align-start) {
+        align-items: start;
+    }
+
+    @include m(align-end) {
+        align-items: end;
+    }
+
+    @include m(align-center) {
+        align-items: center;
+    }
+
+    @include m(align-baseline) {
+        align-items: baseline;
+    }
+
+    @include when(wrap) {
+        flex-wrap: wrap;
+    }
+
+    @include e(item) {}
+}

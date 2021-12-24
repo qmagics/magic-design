@@ -28,6 +28,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "input",
                 component: () => import("@/views/component/input/index.vue")
+            },
+            {
+                path: "space",
+                component: () => import("@/views/component/space/index.vue")
             }
         ]
     },

@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, Fragment, ref, watchEffect } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -94,12 +94,12 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   ], 10 /* CLASS, PROPS */, _hoisted_1$1))
 }
 
-script$2.render = render$2;
-script$2.__file = "packages/components/button/src/button.vue";
+script$3.render = render$2;
+script$3.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$2);
+const MButton = withInstall(script$3);
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -113,14 +113,14 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 2 /* CLASS */))
 }
 
-script$1.render = render$1;
-script$1.__file = "packages/components/icon/src/icon.vue";
+script$2.render = render$1;
+script$2.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$1);
+const MIcon = withInstall(script$2);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
 
-var script = defineComponent({
+var script$1 = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -214,7 +214,7 @@ const _hoisted_2 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3 = ["placeholder", "disabled", "value", "type"];
+const _hoisted_3 = ["placeholder", "disabled", "readonly", "value", "type"];
 const _hoisted_4 = {
   key: 2,
   class: "m-input__suffix"
@@ -257,6 +257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       class: "m-input__inner",
       placeholder: _ctx.placeholder,
       disabled: _ctx.disabled,
+      readonly: _ctx.readonly,
       value: _ctx.modelValue,
       type: _ctx.type,
       onInput: _cache[0] || (_cache[0] = (...args) => (_ctx.handleInput && _ctx.handleInput(...args))),
@@ -285,15 +286,143 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script.render = render;
-script.__file = "packages/components/input/src/input.vue";
+script$1.render = render;
+script$1.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script);
+const MInput = withInstall(script$1);
+
+/**
+ * Make a map and return a function for checking if a key
+ * is in that map.
+ * IMPORTANT: all calls of this function must be prefixed with
+ * \/\*#\_\_PURE\_\_\*\/
+ * So that rollup can tree-shake them if necessary.
+ */
+
+(process.env.NODE_ENV !== 'production')
+    ? Object.freeze({})
+    : {};
+(process.env.NODE_ENV !== 'production') ? Object.freeze([]) : [];
+const isArray = Array.isArray;
+const isString = (val) => typeof val === 'string';
+
+const isFragment = (node) => node?.type === Fragment;
+
+const GUTTER_MAP = {
+    mini: 5,
+    small: 8,
+    medium: 10,
+    large: 12
+};
+var script = defineComponent({
+    name: "MSpace",
+    props: {
+        direction: {
+            type: String,
+            default: 'horizontal'
+        },
+        align: {
+            type: String,
+            default: ''
+        },
+        size: {
+            type: [String, Number, Array],
+            default: 'medium'
+        },
+        wrap: {
+            type: Boolean,
+            default: false
+        }
+    },
+    setup(props, { emit, slots }) {
+        const spaceClass = computed(() => {
+            return [
+                'm-space',
+                `m-space--align-${props.align}`,
+                `m-space--direction-${props.direction}`,
+                `m-space--size-${props.size}`,
+                {
+                    'is--wrap': props.wrap
+                }
+            ];
+        });
+        const spaceItemClass = computed(() => {
+            return [
+                'm-space__item'
+            ];
+        });
+        const gutterH = ref(0);
+        const gutterV = ref(0);
+        const spaceItemStyle = computed(() => {
+            return {
+                marginRight: gutterH.value ? `${gutterH.value}px` : undefined,
+                marginBottom: gutterV.value ? `${gutterV.value}px` : undefined,
+            };
+        });
+        watchEffect(() => {
+            const { size, direction, wrap } = props;
+            if (isString(size)) {
+                gutterH.value = gutterV.value = GUTTER_MAP[size];
+            }
+            else if (isArray(props.size)) {
+                gutterH.value = props.size[0];
+                gutterV.value = props.size[1];
+            }
+            else if (typeof size === 'number') {
+                gutterH.value = gutterV.value = size;
+            }
+            if (wrap === false) {
+                if (direction === "horizontal") {
+                    gutterV.value = 0;
+                }
+                else {
+                    gutterH.value = 0;
+                }
+            }
+        });
+        return () => {
+            const vnode = renderSlot(slots, 'default', { key: 0 }, () => []);
+            const children = vnode.children;
+            if (isArray(children)) {
+                const wrapedItems = [];
+                children.forEach((child, index) => {
+                    if (isFragment(child) && isArray(child.children)) {
+                        child.children.forEach((i, index2) => {
+                            wrapedItems.push(createVNode('div', {
+                                key: `MSpaceItem_${index2}`,
+                                class: spaceItemClass.value,
+                                style: spaceItemStyle.value
+                            }, [i], 8 /* PROPS */ | 4 /* STYLE */));
+                        });
+                    }
+                    else {
+                        wrapedItems.push(createVNode("div", {
+                            key: `MSpaceItem_${index}`,
+                            class: spaceItemClass.value,
+                            style: spaceItemStyle.value
+                        }, [child], 8 /* PROPS */ | 4 /* STYLE */));
+                    }
+                });
+                return createVNode('div', {
+                    class: spaceClass.value,
+                }, wrapedItems, 4 /* STYLE */ | 2 /* CLASS */);
+            }
+            else {
+                return children;
+            }
+        };
+    },
+});
+
+script.__file = "packages/components/space/src/space.vue";
+
+const MSpace = withInstall(script);
 
 const components = [
     MButton,
     MIcon,
     MInput,
+    MSpace,
 ];
 
 const install = (app) => {

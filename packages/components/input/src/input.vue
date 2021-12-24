@@ -25,6 +25,7 @@
             class="m-input__inner"
             :placeholder="placeholder"
             :disabled="disabled"
+            :readonly="readonly"
             :value="modelValue"
             :type="type"
             @input="handleInput"
@@ -133,7 +134,7 @@ export default defineComponent({
         });
 
         const hasPrepend = computed(() => slots.prepend);
-        const hasAppend= computed(() => slots.append);
+        const hasAppend = computed(() => slots.append);
 
         return {
             handleInput,

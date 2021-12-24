@@ -133,4 +133,10 @@ $sizes: ("mini": ("height": 26px,
             padding-right: $gutter;
         }
     }
+
+    @include when(disabled) {
+        .#{$cname+$element-separator+'inner'} {
+            cursor: not-allowed;
+        }
+    }
 }
