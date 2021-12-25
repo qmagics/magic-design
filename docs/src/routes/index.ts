@@ -32,6 +32,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "space",
                 component: () => import("@/views/component/space/index.vue")
+            },
+            {
+                path: "radio",
+                component: () => import("@/views/component/radio/index.vue")
             }
         ]
     },

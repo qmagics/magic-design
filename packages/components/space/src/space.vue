@@ -1,5 +1,5 @@
 <script lang="ts">
-import { isFragment, isArray, isString } from "@magic-design/utils/src";
+import { isFragment, isArray, isString, isValidElementNode } from "@magic-design/utils/src";
 import { PatchFlags } from "@vue/shared";
 import { computed, defineComponent, PropType, reactive, renderSlot, createVNode, watchEffect, ref } from "vue";
 
@@ -108,7 +108,8 @@ export default defineComponent({
                             ))
                         });
                     }
-                    else {
+                    // 不是注释节点，不是片段，才解析
+                    else if (isValidElementNode(child)) {
                         wrapedItems.push(createVNode(
                             "div",
                             {
@@ -117,7 +118,7 @@ export default defineComponent({
                                 style: spaceItemStyle.value
                             },
                             [child],
-                            PatchFlags.PROPS | PatchFlags.STYLE,
+                            // PatchFlags.PROPS | PatchFlags.STYLE,
                         ))
                     }
                 });
