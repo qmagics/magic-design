@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts">
-import { UPDATE_MODEL_EVENT } from "@magic-design/utils/src/const";
-import { computed, defineComponent, reactive } from "vue";
+import { RADIO_GROUP_KEY, UPDATE_MODEL_EVENT } from "@magic-design/utils/src/const";
+import { computed, defineComponent, inject, reactive } from "vue";
 
 export default defineComponent({
     name: "MRadio",
@@ -47,14 +47,24 @@ export default defineComponent({
     },
     emits: [UPDATE_MODEL_EVENT, 'change'],
     setup(props, { emit }) {
+        const radioGroup = inject(RADIO_GROUP_KEY, undefined);
+
+        const isInGroup = computed(() => !!radioGroup);
+
         const isChecked = computed(() => {
-            return props.modelValue === props.value;
+            let v = isInGroup.value ? radioGroup.modelValue : props.modelValue;
+            return v === props.value;
         });
 
         const onChange = (e: Event) => {
             const checked = (e.target as HTMLInputElement).checked!;
-            if (checked) {
-                emit(UPDATE_MODEL_EVENT, props.value);
+
+            if (isInGroup.value) {
+                radioGroup.emitChange(props.value);
+            } else {
+                if (checked) {
+                    emit(UPDATE_MODEL_EVENT, props.value);
+                }
             }
         }
 

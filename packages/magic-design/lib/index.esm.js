@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, Fragment, isVNode, Comment, ref, watchEffect } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$4 = defineComponent({
+var script$5 = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -47,14 +47,14 @@ var script$4 = defineComponent({
     },
 });
 
-const _hoisted_1$2 = ["type", "autofocus"];
+const _hoisted_1$3 = ["type", "autofocus"];
 const _hoisted_2$2 = {
   key: 0,
   class: "m-button-icon"
 };
 const _hoisted_3$2 = { key: 1 };
 
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -91,15 +91,15 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
-  ], 10 /* CLASS, PROPS */, _hoisted_1$2))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$3))
 }
 
-script$4.render = render$3;
-script$4.__file = "packages/components/button/src/button.vue";
+script$5.render = render$4;
+script$5.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$4);
+const MButton = withInstall(script$5);
 
-var script$3 = defineComponent({
+var script$4 = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -107,20 +107,21 @@ var script$3 = defineComponent({
     setup() { },
 });
 
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script$3.render = render$2;
-script$3.__file = "packages/components/icon/src/icon.vue";
+script$4.render = render$3;
+script$4.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$3);
+const MIcon = withInstall(script$4);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
+const RADIO_GROUP_KEY = Symbol("radioGroup");
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -206,7 +207,7 @@ var script$2 = defineComponent({
     },
 });
 
-const _hoisted_1$1 = {
+const _hoisted_1$2 = {
   key: 0,
   class: "m-input__prepend"
 };
@@ -224,7 +225,7 @@ const _hoisted_5 = {
   class: "m-input__append"
 };
 
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("div", {
@@ -244,7 +245,7 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         ])
   }, [
     (_ctx.hasPrepend)
-      ? (openBlock(), createElementBlock("span", _hoisted_1$1, [
+      ? (openBlock(), createElementBlock("span", _hoisted_1$2, [
           renderSlot(_ctx.$slots, "prepend")
         ]))
       : createCommentVNode("v-if", true),
@@ -286,10 +287,10 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$2.render = render$1;
-script$2.__file = "packages/components/input/src/input.vue";
+script$3.render = render$2;
+script$3.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script$2);
+const MInput = withInstall(script$3);
 
 /**
  * Make a map and return a function for checking if a key
@@ -316,7 +317,7 @@ const GUTTER_MAP = {
     medium: 10,
     large: 12
 };
-var script$1 = defineComponent({
+var script$2 = defineComponent({
     name: "MSpace",
     props: {
         direction: {
@@ -417,11 +418,11 @@ var script$1 = defineComponent({
     },
 });
 
-script$1.__file = "packages/components/space/src/space.vue";
+script$2.__file = "packages/components/space/src/space.vue";
 
-const MSpace = withInstall(script$1);
+const MSpace = withInstall(script$2);
 
-var script = defineComponent({
+var script$1 = defineComponent({
     name: "MRadio",
     props: {
         modelValue: {
@@ -439,13 +440,21 @@ var script = defineComponent({
     },
     emits: [UPDATE_MODEL_EVENT, 'change'],
     setup(props, { emit }) {
+        const radioGroup = inject(RADIO_GROUP_KEY, undefined);
+        const isInGroup = computed(() => !!radioGroup);
         const isChecked = computed(() => {
-            return props.modelValue === props.value;
+            let v = isInGroup.value ? radioGroup.modelValue : props.modelValue;
+            return v === props.value;
         });
         const onChange = (e) => {
             const checked = e.target.checked;
-            if (checked) {
-                emit(UPDATE_MODEL_EVENT, props.value);
+            if (isInGroup.value) {
+                radioGroup.emitChange(props.value);
+            }
+            else {
+                if (checked) {
+                    emit(UPDATE_MODEL_EVENT, props.value);
+                }
             }
         };
         return {
@@ -455,13 +464,13 @@ var script = defineComponent({
     },
 });
 
-const _hoisted_1 = ["disabled", "value", "name", "checked"];
+const _hoisted_1$1 = ["disabled", "value", "name", "checked"];
 const _hoisted_2 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, [
   /*#__PURE__*/createCommentVNode(" <span lass=\"m-radio__icon\"></span> ")
 ], -1 /* HOISTED */);
 const _hoisted_3 = { class: "m-radio__label" };
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-radio',
@@ -478,7 +487,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: _ctx.name,
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1),
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$1),
     _hoisted_2,
     createElementVNode("span", _hoisted_3, [
       renderSlot(_ctx.$slots, "default")
@@ -486,17 +495,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script.render = render;
-script.__file = "packages/components/radio/src/radio.vue";
+script$1.render = render$1;
+script$1.__file = "packages/components/radio/src/radio.vue";
 
-const MRadio = withInstall(script);
+const MRadio = withInstall(script$1);
+
+var script = defineComponent({
+    name: "MRadioGroup",
+    props: {
+        modelValue: {
+            type: [String, Number, Boolean]
+        }
+    },
+    emits: [UPDATE_MODEL_EVENT, 'change'],
+    setup(props, { emit }) {
+        const emitChange = (val) => {
+            emit(UPDATE_MODEL_EVENT, val);
+        };
+        provide(RADIO_GROUP_KEY, reactive({
+            emitChange,
+            modelValue: toRef(props, "modelValue")
+        }));
+    }
+});
+
+const _hoisted_1 = { class: "m-radio-group" };
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1, [
+    renderSlot(_ctx.$slots, "default")
+  ]))
+}
+
+script.render = render;
+script.__file = "packages/components/radio/src/radio-group.vue";
+
+const MRadioGroup = withInstall(script);
 
 const components = [
     MButton,
     MIcon,
     MInput,
     MSpace,
-    MRadio
+    MRadio,
+    MRadioGroup
 ];
 
 const install = (app) => {

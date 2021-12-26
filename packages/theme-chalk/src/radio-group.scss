@@ -1,0 +1,17 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"radio-group";
+$childGutter:20px;
+
+@include b(radio-group) {
+    display: inline-flex;
+
+    &> {
+        @include b(radio) {
+            margin-right: $childGutter;
+        }
+    }
+
+}

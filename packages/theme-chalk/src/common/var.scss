@@ -92,6 +92,13 @@ body {
     --m-fill-color-3: rgb(var(--gray-3));
     --m-fill-color-4: rgb(var(--gray-4));
 
+
+    // 阴影颜色
+    --m-shadow-color-primary-1:rgb(var(--blue-1));
+    --m-shadow-color-primary-2:rgb(var(--blue-2));
+    --m-shadow-color-primary-3:rgb(var(--blue-3));
+    --m-shadow-color-primary-4:rgb(var(--blue-4));
+
     // 状态色
     --m-color-secondary-1: rgb(var(--gray-1));
     --m-color-secondary-2: rgb(var(--gray-2));
@@ -173,6 +180,12 @@ body[m-theme="dark"] {
     --m-fill-color-2: rgba(255, 255, 255, .08);
     --m-fill-color-3: rgba(255, 255, 255, .12);
     --m-fill-color-4: rgba(255, 255, 255, .16);
+
+    // 阴影颜色
+    --m-shadow-color-primary-1:rgba(255, 255, 255, .1);
+    --m-shadow-color-primary-2:rgba(255, 255, 255, .2);
+    --m-shadow-color-primary-3:rgba(255, 255, 255, .3);
+    --m-shadow-color-primary-4:rgba(255, 255, 255, .4);
 }
 
 /** basic color **/
@@ -191,6 +204,12 @@ $color-fill-1: var(--m-fill-color-1);
 $color-fill-2: var(--m-fill-color-2);
 $color-fill-3: var(--m-fill-color-3);
 $color-fill-4: var(--m-fill-color-4);
+
+/** shadow color primary **/
+$color-shadow-primary-1:var(--m-shadow-color-primary-1);
+$color-shadow-primary-2:var(--m-shadow-color-primary-2);
+$color-shadow-primary-3:var(--m-shadow-color-primary-3);
+$color-shadow-primary-4:var(--m-shadow-color-primary-4);
 
 /** primary **/
 $color-primary-1: var(--m-color-primary-1);
