@@ -1,6 +1,6 @@
 declare const _default: import("vue").DefineComponent<{
     modelValue: {
-        type: (StringConstructor | NumberConstructor | BooleanConstructor)[];
+        type: (StringConstructor | NumberConstructor | BooleanConstructor | ArrayConstructor)[];
     };
     value: {
         type: (StringConstructor | NumberConstructor | BooleanConstructor)[];
@@ -12,8 +12,8 @@ declare const _default: import("vue").DefineComponent<{
     };
     name: StringConstructor;
 }, {
-    isChecked: import("vue").ComputedRef<boolean>;
-    isDisabled: import("vue").ComputedRef<any>;
+    isChecked: import("vue").ComputedRef<any>;
+    isDisabled: import("vue").ComputedRef<boolean>;
     onChange: (e: Event) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     modelValue?: unknown;
@@ -25,7 +25,7 @@ declare const _default: import("vue").DefineComponent<{
     disabled: boolean;
 } & {
     name?: string;
-    modelValue?: string | number | boolean;
+    modelValue?: string | number | boolean | unknown[];
 }> & {
     "onUpdate:modelValue"?: (...args: any[]) => any;
     onChange?: (...args: any[]) => any;

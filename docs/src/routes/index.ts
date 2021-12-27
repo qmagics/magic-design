@@ -36,6 +36,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "radio",
                 component: () => import("@/views/component/radio/index.vue")
+            },
+            {
+                path: "checkbox",
+                component: () => import("@/views/component/checkbox/index.vue")
             }
         ]
     },

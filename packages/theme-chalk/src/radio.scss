@@ -45,6 +45,7 @@ $iconSize:16px;
         top: 0;
         bottom: 0;
         right: 0;
+        opacity: 0;
         z-index: -1;
     }
 
@@ -72,5 +73,27 @@ $iconSize:16px;
 
     @include e(label) {
         padding-left: 6px;
+    }
+
+    @include when(disabled) {
+        cursor: not-allowed;
+
+        .#{$cname+$element-separator+'icon'} {
+            border-color: $color-secondary-3 !important;
+            background-color: $color-secondary-2;
+            box-shadow: none !important;
+        }
+
+        .#{$cname+$element-separator+'label'} {
+            color: $color-secondary-4;
+        }
+
+        &.is--checked {
+            .#{$cname+$element-separator+'icon'} {
+                &:after {
+                    background-color: $color-secondary-4;
+                }
+            }
+        }
     }
 }

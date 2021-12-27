@@ -3,22 +3,21 @@
         :class="[
             'm-radio',
             {
-                'is--checked': isChecked
+                'is--checked': isChecked,
+                'is--disabled': isDisabled
             }
         ]"
     >
         <input
             class="m-radio__input"
             type="radio"
-            :disabled="disabled"
+            :disabled="isDisabled"
             :value="value"
             :name="name"
             :checked="isChecked"
             @change="onChange"
         />
-        <span class="m-radio__icon">
-            <!-- <span lass="m-radio__icon"></span> -->
-        </span>
+        <span class="m-radio__icon"></span>
         <span class="m-radio__label">
             <slot></slot>
         </span>
@@ -56,8 +55,12 @@ export default defineComponent({
             return v === props.value;
         });
 
+        const isDisabled = computed(() => {
+            return isInGroup.value ? radioGroup.disabled : props.disabled;
+        });
+
         const onChange = (e: Event) => {
-            const checked = (e.target as HTMLInputElement).checked!;
+            const checked = (e.target as HTMLInputElement).checked;
 
             if (isInGroup.value) {
                 radioGroup.emitChange(props.value);
@@ -70,6 +73,7 @@ export default defineComponent({
 
         return {
             isChecked,
+            isDisabled,
             onChange
         }
     },

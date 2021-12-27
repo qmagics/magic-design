@@ -13,7 +13,8 @@ export default defineComponent({
     props: {
         modelValue: {
             type: [String, Number, Boolean]
-        }
+        },
+        disabled: Boolean
     },
     emits: [UPDATE_MODEL_EVENT, 'change'],
     setup(props, { emit }) {
@@ -23,6 +24,7 @@ export default defineComponent({
 
         provide(RADIO_GROUP_KEY, reactive({
             emitChange,
+            disabled: toRef(props, "disabled"),
             modelValue: toRef(props, "modelValue")
         }))
     }
