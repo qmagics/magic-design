@@ -13,7 +13,7 @@ declare const _default: import("vue").DefineComponent<{
     name: StringConstructor;
 }, {
     isChecked: import("vue").ComputedRef<any>;
-    isDisabled: import("vue").ComputedRef<boolean>;
+    isDisabled: import("vue").ComputedRef<any>;
     onChange: (e: Event) => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:modelValue" | "change")[], "update:modelValue" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     modelValue?: unknown;

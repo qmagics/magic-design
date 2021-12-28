@@ -16,8 +16,8 @@ const cities = ref(['beijing', 'hangzhou'])
 
 <demo-meta>
 {
-    "sort": 1,
-    "title": "基础用法",
-    "description": "Checkbox组件用于在少数选项中选择一个或多个值",
+    "sort": 2,
+    "title": "复选框组",
+    "description": "CheckboxGroup组件用于将一组复选框组合起来使用",
 }
 </demo-meta>

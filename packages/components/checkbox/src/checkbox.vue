@@ -11,7 +11,7 @@
         <input
             class="m-checkbox__input"
             type="checkbox"
-            :disabled="disabled"
+            :disabled="isDisabled"
             :value="value"
             :name="name"
             :checked="isChecked"
@@ -68,7 +68,7 @@ export default defineComponent({
         });
 
         const isDisabled = computed(() => {
-            return false;
+            return isInGroup.value ? checkboxGroup.disabled : props.disabled;
         });
 
         const isArrayValue = computed(() => {

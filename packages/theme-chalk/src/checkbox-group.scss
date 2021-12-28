@@ -1,0 +1,15 @@
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"checkbox-group";
+$childGutter:20px;
+
+@include b(checkbox-group) {
+    display: inline-flex;
+
+    &> {
+        @include b(checkbox) {
+            margin-right: $childGutter;
+        }
+    }
+}

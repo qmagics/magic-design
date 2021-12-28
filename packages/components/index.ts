@@ -5,6 +5,7 @@ import Space from './space';
 import Radio from './radio';
 import RadioGroup from './radio-group';
 import Checkbox from './checkbox';
+import CheckboxGroup from './checkbox-group';
 
 const components = [
     Button,
@@ -13,7 +14,8 @@ const components = [
     Space,
     Radio,
     RadioGroup,
-    Checkbox
+    Checkbox,
+    CheckboxGroup
 ];
 
 export default components;
