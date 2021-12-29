@@ -129,6 +129,11 @@ const menus: MenuItemRaw[] = [
                 type: "menu",
                 label: "Popconfirm 气泡确认框",
                 path: "popconfirm"
+            },
+            {
+                type: "menu",
+                label: "Trigger 触发器",
+                path: "trigger"
             }
         ]
     }

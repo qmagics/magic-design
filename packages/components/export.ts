@@ -6,3 +6,4 @@ export * from './radio';
 export * from './radio-group';
 export * from './checkbox';
 export * from './checkbox-group';
+export * from './trigger';

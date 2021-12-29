@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, onMounted, h, cloneVNode, Teleport } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$7 = defineComponent({
+var script$8 = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -94,12 +94,12 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   ], 10 /* CLASS, PROPS */, _hoisted_1$5))
 }
 
-script$7.render = render$6;
-script$7.__file = "packages/components/button/src/button.vue";
+script$8.render = render$6;
+script$8.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$7);
+const MButton = withInstall(script$8);
 
-var script$6 = defineComponent({
+var script$7 = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -113,16 +113,16 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 2 /* CLASS */))
 }
 
-script$6.render = render$5;
-script$6.__file = "packages/components/icon/src/icon.vue";
+script$7.render = render$5;
+script$7.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$6);
+const MIcon = withInstall(script$7);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
 const RADIO_GROUP_KEY = Symbol("radioGroup");
 const CHECKBOX_GROUP_KEY = Symbol("checkboxGroup");
 
-var script$5 = defineComponent({
+var script$6 = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -288,10 +288,10 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$5.render = render$4;
-script$5.__file = "packages/components/input/src/input.vue";
+script$6.render = render$4;
+script$6.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script$5);
+const MInput = withInstall(script$6);
 
 /**
  * Make a map and return a function for checking if a key
@@ -318,7 +318,7 @@ const GUTTER_MAP = {
     medium: 10,
     large: 12
 };
-var script$4 = defineComponent({
+var script$5 = defineComponent({
     name: "MSpace",
     props: {
         direction: {
@@ -419,11 +419,11 @@ var script$4 = defineComponent({
     },
 });
 
-script$4.__file = "packages/components/space/src/space.vue";
+script$5.__file = "packages/components/space/src/space.vue";
 
-const MSpace = withInstall(script$4);
+const MSpace = withInstall(script$5);
 
-var script$3 = defineComponent({
+var script$4 = defineComponent({
     name: "MRadio",
     props: {
         modelValue: {
@@ -499,12 +499,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$3.render = render$3;
-script$3.__file = "packages/components/radio/src/radio.vue";
+script$4.render = render$3;
+script$4.__file = "packages/components/radio/src/radio.vue";
 
-const MRadio = withInstall(script$3);
+const MRadio = withInstall(script$4);
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
     name: "MRadioGroup",
     props: {
         modelValue: {
@@ -533,12 +533,12 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-script$2.render = render$2;
-script$2.__file = "packages/components/radio/src/radio-group.vue";
+script$3.render = render$2;
+script$3.__file = "packages/components/radio/src/radio-group.vue";
 
-const MRadioGroup = withInstall(script$2);
+const MRadioGroup = withInstall(script$3);
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
     name: "MCheckbox",
     props: {
         modelValue: {
@@ -640,12 +640,12 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$1.render = render$1;
-script$1.__file = "packages/components/checkbox/src/checkbox.vue";
+script$2.render = render$1;
+script$2.__file = "packages/components/checkbox/src/checkbox.vue";
 
-const MCheckbox = withInstall(script$1);
+const MCheckbox = withInstall(script$2);
 
-var script = defineComponent({
+var script$1 = defineComponent({
     name: "MCheckboxGroup",
     props: {
         modelValue: {
@@ -683,10 +683,43 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-script.render = render;
-script.__file = "packages/components/checkbox/src/checkbox-group.vue";
+script$1.render = render;
+script$1.__file = "packages/components/checkbox/src/checkbox-group.vue";
 
-const MCheckboxGroup = withInstall(script);
+const MCheckboxGroup = withInstall(script$1);
+
+var script = defineComponent({
+    name: "MTrigger",
+    props: {},
+    setup(props, { emit, slots }) {
+        const triggerRef = ref();
+        const contentStyle = reactive({
+            left: '',
+            top: ''
+        });
+        const contentVisible = ref(false);
+        const handleClick = () => {
+            contentVisible.value = !contentVisible.value;
+        };
+        onMounted(() => {
+            const rect = triggerRef.value.$el.getBoundingClientRect();
+            contentStyle.left = rect.left + 'px';
+            contentStyle.top = rect.top + 'px';
+        });
+        return () => {
+            const trigger = slots?.default?.();
+            const content = h('div', { class: 'm-trigger__content', style: contentStyle }, [renderSlot(slots, 'content')]);
+            return h(Fragment, [
+                cloneVNode(trigger[0], { ref: triggerRef, onClick: () => { handleClick(); } }),
+                h(Teleport, { to: 'body' }, contentVisible.value ? [content] : null)
+            ]);
+        };
+    }
+});
+
+script.__file = "packages/components/trigger/src/trigger.vue";
+
+const MTrigger = withInstall(script);
 
 const components = [
     MButton,
@@ -696,7 +729,8 @@ const components = [
     MRadio,
     MRadioGroup,
     MCheckbox,
-    MCheckboxGroup
+    MCheckboxGroup,
+    MTrigger
 ];
 
 const install = (app) => {

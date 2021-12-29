@@ -186,6 +186,18 @@ body[m-theme="dark"] {
     --m-shadow-color-primary-2:rgba(255, 255, 255, .2);
     --m-shadow-color-primary-3:rgba(255, 255, 255, .3);
     --m-shadow-color-primary-4:rgba(255, 255, 255, .4);
+
+    // secondary
+    --m-color-secondary-1: rgb(var(--gray-1),.06);
+    --m-color-secondary-2: rgb(var(--gray-2),.08);
+    --m-color-secondary-3: rgb(var(--gray-3),.12);
+    --m-color-secondary-4: rgb(var(--gray-4),.18);
+    --m-color-secondary-5: rgb(var(--gray-5),.24);
+    --m-color-secondary-6: rgb(var(--gray-6),.3);
+    --m-color-secondary-7: rgb(var(--gray-7),.36);
+    --m-color-secondary-8: rgb(var(--gray-8),.42);
+    --m-color-secondary-9: rgb(var(--gray-9),.48);
+    --m-color-secondary-10: rgb(var(--gray-10),.54);
 }
 
 /** basic color **/

@@ -1,0 +1,16 @@
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"trigger";
+
+@include b(trigger) {
+
+
+    @include e(content) {
+        position: absolute;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 4px 4px 6px 2px rgba(0,0,0,.1);
+    }
+
+}
