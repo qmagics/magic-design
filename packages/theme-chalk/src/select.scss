@@ -1,0 +1,16 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"select";
+
+@include b(select) {
+
+    .#{$namespace}-input__inner {
+        cursor: pointer;
+    }
+
+    .#{$namespace}-input__suffix {
+        cursor: pointer;
+    }
+}

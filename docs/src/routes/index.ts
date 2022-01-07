@@ -44,6 +44,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "trigger",
                 component: () => import("@/views/component/trigger/index.vue")
+            },
+            {
+                path: "select",
+                component: () => import("@/views/component/select/index.vue")
             }
         ]
     },

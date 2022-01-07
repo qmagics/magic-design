@@ -7,6 +7,7 @@ import RadioGroup from './radio-group';
 import Checkbox from './checkbox';
 import CheckboxGroup from './checkbox-group';
 import Trigger from './trigger';
+import Select from './select';
 
 const components = [
     Button,
@@ -17,7 +18,8 @@ const components = [
     RadioGroup,
     Checkbox,
     CheckboxGroup,
-    Trigger
+    Trigger,
+    Select
 ];
 
 export default components;

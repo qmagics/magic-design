@@ -1,39 +1,49 @@
-<script lang="tsx">
-import { defineComponent, Teleport, Fragment, h, renderSlot, cloneVNode, ref, onMounted, reactive } from "vue";
-
-
+<script lang="ts">
+import { cloneVNode, defineComponent, Fragment, h, ref, onMounted, reactive } from "vue";
+import MTeleport from "./teleport.vue";
 export default defineComponent({
     name: "MTrigger",
-    props: {
+    setup(props, { slots }) {
 
-    },
-    setup(props, { emit, slots }) {
-        const triggerRef = ref();
+
+
+        const UIState = reactive({
+            contentVisible: false,
+        });
+
+        const onClick = () => {
+            UIState.contentVisible = !UIState.contentVisible;
+        }
+
         const contentStyle = reactive({
             left: '',
-            top: ''
+            top: '',
+            width: ''
         });
-        const contentVisible = ref(false);
-        const handleClick = () => {
-            contentVisible.value = !contentVisible.value;
-        };
+
+        const triggerRef = ref();
 
         onMounted(() => {
-            const rect = triggerRef.value.$el.getBoundingClientRect();
-            contentStyle.left = rect.left + 'px';
-            contentStyle.top = rect.top + 'px';
+            const { width, height, top, left } = triggerRef.value?.$el?.getBoundingClientRect();
+            contentStyle.width = width + 'px';
+            contentStyle.left = left + 'px';
+            contentStyle.top = top + height + 'px';
         });
-
         return () => {
-            const trigger = slots?.default?.();
+            const trigger = slots.default?.();
+            const wrappedTrigger = cloneVNode(trigger[0], {
+                onClick,
+                ref: triggerRef
+            });
 
-            const content = h('div', { class: 'm-trigger__content', style: contentStyle }, [renderSlot(slots, 'content')]);
+            const content = slots.content?.();
+            const wrappedContent = h(MTeleport, h('div', { class: 'm-trigger__content', style: contentStyle }, content));
 
             return h(Fragment, [
-                cloneVNode(trigger[0], { ref: triggerRef, onClick: () => { handleClick() } }),
-                h(Teleport, { to: 'body' }, contentVisible.value ? [content] : null)
+                wrappedTrigger,
+                UIState.contentVisible ? wrappedContent : null
             ])
         }
     }
-});
+})
 </script>
