@@ -31,6 +31,8 @@ export default defineComponent({
 
 <style lang="scss">
 .demo-page--select {
-  
+    .m-select{
+      width:320px;
+    }
 }
 </style>

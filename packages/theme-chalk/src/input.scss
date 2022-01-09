@@ -36,13 +36,14 @@ $sizes: ("mini": ("height": 26px,
     padding: 0 $gutter;
     background-color: $color-fill-1;
     color: $color-text-1;
+    border-radius: 3px;
     transition:
         color .1s cubic-bezier(0, 0, 1, 1),
         border-color .1s cubic-bezier(0, 0, 1, 1),
         background-color .1s cubic-bezier(0, 0, 1, 1);
 
     &:hover {
-        background-color: $color-fill-2;
+        background-color: $color-fill-3;
 
         .#{$cname+$element-separator+'clear-btn'} {
             opacity: 1;

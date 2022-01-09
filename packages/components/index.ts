@@ -8,6 +8,7 @@ import Checkbox from './checkbox';
 import CheckboxGroup from './checkbox-group';
 import Trigger from './trigger';
 import Select from './select';
+import Option from './option';
 
 const components = [
     Button,
@@ -19,7 +20,8 @@ const components = [
     Checkbox,
     CheckboxGroup,
     Trigger,
-    Select
+    Select,
+    Option
 ];
 
 export default components;

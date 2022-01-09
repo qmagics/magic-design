@@ -3,7 +3,7 @@ declare type InputSize = 'mini' | 'small' | 'medium' | 'large';
 declare type InputNativeType = 'text' | 'password';
 declare const _default: import("vue").DefineComponent<{
     modelValue: {
-        type: StringConstructor;
+        type: (StringConstructor | NumberConstructor | BooleanConstructor)[];
         default: string;
     };
     size: {
@@ -36,10 +36,10 @@ declare const _default: import("vue").DefineComponent<{
     handleClear: () => void;
     handleFocus: () => void;
     handleBlur: () => void;
-    showClearBtn: import("vue").ComputedRef<string>;
+    showClearBtn: import("vue").ComputedRef<string | number | boolean>;
     hasPrepend: import("vue").ComputedRef<import("vue").Slot>;
     hasAppend: import("vue").ComputedRef<import("vue").Slot>;
-    hasSuffix: import("vue").ComputedRef<string | import("vue").Slot>;
+    hasSuffix: import("vue").ComputedRef<string | number | boolean | import("vue").Slot>;
     hasPrefix: import("vue").ComputedRef<import("vue").Slot>;
     UIState: {
         focused: boolean;
@@ -53,7 +53,7 @@ declare const _default: import("vue").DefineComponent<{
     placeholder?: unknown;
     type?: unknown;
 } & {
-    modelValue: string;
+    modelValue: string | number | boolean;
     size: InputSize;
     disabled: boolean;
     readonly: boolean;
@@ -67,7 +67,7 @@ declare const _default: import("vue").DefineComponent<{
     onFocus?: (...args: any[]) => any;
     onBlur?: (...args: any[]) => any;
 }, {
-    modelValue: string;
+    modelValue: string | number | boolean;
     size: InputSize;
     disabled: boolean;
     readonly: boolean;

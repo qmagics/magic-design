@@ -1,0 +1,17 @@
+@use "sass:map";
+@import "./var.scss";
+
+// zoom-in-top
+.#{$namespace}-zoom-in-top {
+
+    &-enter-active,&-leave-active {
+        transition: all .15s ease;
+        transform-origin: center top;
+    }
+
+    &-enter-from,
+    &-leave-to {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}

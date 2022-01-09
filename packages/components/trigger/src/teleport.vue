@@ -1,8 +1,6 @@
 <template>
     <teleport to="body">
-        <div class="m-teleport">
-            <slot></slot>
-        </div>
+        <slot></slot>
     </teleport>
 </template>
 

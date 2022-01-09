@@ -37,7 +37,7 @@
             <slot name="suffix"></slot>
             <m-icon
                 class="m-input__clear-btn"
-                @click="handleClear"
+                @click.stop="handleClear"
                 v-if="showClearBtn"
                 name="m-icon-close"
             ></m-icon>
@@ -59,7 +59,7 @@ export default defineComponent({
     name: "MInput",
     props: {
         modelValue: {
-            type: String,
+            type: [String, Number, Boolean],
             default: ""
         },
         size: {
