@@ -1,0 +1,97 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"tag";
+
+$sizeMap:(
+    "mini":(
+        "height":18px,
+        "font-size":12px
+    ),
+    "small":(
+        "height":22px,
+        "font-size":12px
+    ),
+    "medium":(
+        "height":24px,
+        "font-size":12px
+    ),
+    "large":(
+        "height":30px,
+        "font-size":14px
+    )
+);
+
+$stateMap:(
+    "secondary":(
+        "background-color":$color-secondary-1,
+        "color":$color-text-2,
+        "checked--background-color":$color-secondary-6,
+        "checked--color":$color-white,
+    ),
+    "primary":(
+        "background-color":$color-primary-1,
+        "color":$color-primary-6,
+        "checked--background-color":$color-primary-6,
+        "checked--color":$color-white,
+    ),
+    "success":(
+        "background-color":$color-success-1,
+        "color":$color-success-6,
+        "checked--background-color":$color-success-6,
+        "checked--color":$color-white,
+    ),
+    "warning":(
+        "background-color":$color-warning-1,
+        "color":$color-warning-6,
+        "checked--background-color":$color-warning-6,
+        "checked--color":$color-white,
+    ),
+    "danger":(
+        "background-color":$color-danger-1,
+        "color":$color-danger-6,
+        "checked--background-color":$color-danger-6,
+        "checked--color":$color-white,
+    )
+);
+
+@include b(tag){
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    vertical-align: middle;
+    border-radius: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @include when(checkable){
+        cursor: pointer;
+        transition: background-color .1s ease;
+    }
+
+    @each $size,
+    $item in $sizeMap {
+        @include m('size-'+$size) {
+            height: map.get($item, "height");
+            line-height: map.get($item, "height");
+            font-size: map.get($item, "font-size");
+        }
+    }
+
+    @each $state,
+    $item in $stateMap {
+        @include m('state-'+$state) {
+            color: map.get($item, "color");
+            background-color: map.get($item, "background-color");
+
+            &.#{$state-prefix}checked{
+                color: map.get($item, "checked--color");
+                background-color: map.get($item, "checked--background-color");
+            }
+        }
+    }
+
+    
+}

@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$b = defineComponent({
+var script$c = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -54,7 +54,7 @@ const _hoisted_2$3 = {
 };
 const _hoisted_3$3 = { key: 1 };
 
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -94,12 +94,12 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   ], 10 /* CLASS, PROPS */, _hoisted_1$6))
 }
 
-script$b.render = render$9;
-script$b.__file = "packages/components/button/src/button.vue";
+script$c.render = render$a;
+script$c.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$b);
+const MButton = withInstall(script$c);
 
-var script$a = defineComponent({
+var script$b = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -107,23 +107,23 @@ var script$a = defineComponent({
     setup() { },
 });
 
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script$a.render = render$8;
-script$a.__file = "packages/components/icon/src/icon.vue";
+script$b.render = render$9;
+script$b.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$a);
+const MIcon = withInstall(script$b);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
 const RADIO_GROUP_KEY = Symbol("radioGroup");
 const CHECKBOX_GROUP_KEY = Symbol("checkboxGroup");
 const SELECT_KEY = Symbol("select");
 
-var script$9 = defineComponent({
+var script$a = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -227,7 +227,7 @@ const _hoisted_5 = {
   class: "m-input__append"
 };
 
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("div", {
@@ -289,10 +289,10 @@ function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$9.render = render$7;
-script$9.__file = "packages/components/input/src/input.vue";
+script$a.render = render$8;
+script$a.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script$9);
+const MInput = withInstall(script$a);
 
 /**
  * Make a map and return a function for checking if a key
@@ -319,7 +319,7 @@ const GUTTER_MAP = {
     medium: 10,
     large: 12
 };
-var script$8 = defineComponent({
+var script$9 = defineComponent({
     name: "MSpace",
     props: {
         direction: {
@@ -420,11 +420,11 @@ var script$8 = defineComponent({
     },
 });
 
-script$8.__file = "packages/components/space/src/space.vue";
+script$9.__file = "packages/components/space/src/space.vue";
 
-const MSpace = withInstall(script$8);
+const MSpace = withInstall(script$9);
 
-var script$7 = defineComponent({
+var script$8 = defineComponent({
     name: "MRadio",
     props: {
         modelValue: {
@@ -474,7 +474,7 @@ const _hoisted_1$4 = ["disabled", "value", "name", "checked"];
 const _hoisted_2$1 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
 const _hoisted_3$1 = { class: "m-radio__label" };
 
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-radio',
@@ -500,12 +500,12 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$7.render = render$6;
-script$7.__file = "packages/components/radio/src/radio.vue";
+script$8.render = render$7;
+script$8.__file = "packages/components/radio/src/radio.vue";
 
-const MRadio = withInstall(script$7);
+const MRadio = withInstall(script$8);
 
-var script$6 = defineComponent({
+var script$7 = defineComponent({
     name: "MRadioGroup",
     props: {
         modelValue: {
@@ -528,18 +528,18 @@ var script$6 = defineComponent({
 
 const _hoisted_1$3 = { class: "m-radio-group" };
 
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$3, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$6.render = render$5;
-script$6.__file = "packages/components/radio/src/radio-group.vue";
+script$7.render = render$6;
+script$7.__file = "packages/components/radio/src/radio-group.vue";
 
-const MRadioGroup = withInstall(script$6);
+const MRadioGroup = withInstall(script$7);
 
-var script$5 = defineComponent({
+var script$6 = defineComponent({
     name: "MCheckbox",
     props: {
         modelValue: {
@@ -615,7 +615,7 @@ const _hoisted_1$2 = ["disabled", "value", "name", "checked"];
 const _hoisted_2 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
 const _hoisted_3 = { class: "m-checkbox__label" };
 
-function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-checkbox',
@@ -641,12 +641,12 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$5.render = render$4;
-script$5.__file = "packages/components/checkbox/src/checkbox.vue";
+script$6.render = render$5;
+script$6.__file = "packages/components/checkbox/src/checkbox.vue";
 
-const MCheckbox = withInstall(script$5);
+const MCheckbox = withInstall(script$6);
 
-var script$4 = defineComponent({
+var script$5 = defineComponent({
     name: "MCheckboxGroup",
     props: {
         modelValue: {
@@ -678,32 +678,32 @@ var script$4 = defineComponent({
 
 const _hoisted_1$1 = { class: "m-checkbox-group" };
 
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$1, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$4.render = render$3;
-script$4.__file = "packages/components/checkbox/src/checkbox-group.vue";
+script$5.render = render$4;
+script$5.__file = "packages/components/checkbox/src/checkbox-group.vue";
 
-const MCheckboxGroup = withInstall(script$4);
+const MCheckboxGroup = withInstall(script$5);
 
-var script$3 = defineComponent({
+var script$4 = defineComponent({
     name: "MTeleport",
     props: {}
 });
 
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Teleport, { to: "body" }, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$3.render = render$2;
-script$3.__file = "packages/components/trigger/src/teleport.vue";
+script$4.render = render$3;
+script$4.__file = "packages/components/trigger/src/teleport.vue";
 
-var script$2 = defineComponent({
+var script$3 = defineComponent({
     name: "MTrigger",
     props: {
         popperOffset: {
@@ -751,7 +751,7 @@ var script$2 = defineComponent({
                 ref: triggerRef
             });
             const content = slots.content?.();
-            const wrappedContent = h(script$3, h(Transition, {
+            const wrappedContent = h(script$4, h(Transition, {
                 name: "m-zoom-in-top"
             }, withDirectives(h('div', {
                 class: 'm-trigger__content',
@@ -765,11 +765,11 @@ var script$2 = defineComponent({
     }
 });
 
-script$2.__file = "packages/components/trigger/src/trigger.vue";
+script$3.__file = "packages/components/trigger/src/trigger.vue";
 
-const MTrigger = withInstall(script$2);
+const MTrigger = withInstall(script$3);
 
-var script$1 = defineComponent({
+var script$2 = defineComponent({
     components: {
         MTrigger,
         MInput,
@@ -900,7 +900,7 @@ var script$1 = defineComponent({
 
 const _hoisted_1 = { class: "m-select__dropdown" };
 
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
   const _component_m_input = resolveComponent("m-input");
   const _component_m_trigger = resolveComponent("m-trigger");
@@ -953,12 +953,12 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   ], 34 /* CLASS, HYDRATE_EVENTS */))
 }
 
-script$1.render = render$1;
-script$1.__file = "packages/components/select/src/select.vue";
+script$2.render = render$2;
+script$2.__file = "packages/components/select/src/select.vue";
 
-const MSelect = withInstall(script$1);
+const MSelect = withInstall(script$2);
 
-var script = defineComponent({
+var script$1 = defineComponent({
     name: "MOption",
     props: {
         value: {
@@ -992,7 +992,7 @@ var script = defineComponent({
     }
 });
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("li", {
     class: normalizeClass([
             'm-option',
@@ -1008,10 +1008,62 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script.render = render;
-script.__file = "packages/components/select/src/option.vue";
+script$1.render = render$1;
+script$1.__file = "packages/components/select/src/option.vue";
 
-const MOption = withInstall(script);
+const MOption = withInstall(script$1);
+
+var script = defineComponent({
+    name: "MTag",
+    props: {
+        size: {
+            type: String,
+            default: "medium"
+        },
+        state: {
+            type: String,
+            default: "secondary"
+        },
+        checked: {
+            type: Boolean,
+            default: false
+        },
+        checkable: Boolean
+    },
+    emits: ['update:checked', 'checked'],
+    setup(props, { emit }) {
+        const onClick = () => {
+            if (!props.checkable)
+                return;
+            emit("update:checked", !props.checked);
+        };
+        return {
+            onClick
+        };
+    }
+});
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("span", {
+    class: normalizeClass([
+            'm-tag',
+            `m-tag--state-${_ctx.state}`,
+            `m-tag--size-${_ctx.size}`,
+            {
+                'is--checked': _ctx.checked,
+                'is--checkable': _ctx.checkable
+            }
+        ]),
+    onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.onClick && _ctx.onClick(...args)))
+  }, [
+    renderSlot(_ctx.$slots, "default")
+  ], 2 /* CLASS */))
+}
+
+script.render = render;
+script.__file = "packages/components/tag/src/tag.vue";
+
+const MTag = withInstall(script);
 
 const components = [
     MButton,
@@ -1024,7 +1076,8 @@ const components = [
     MCheckboxGroup,
     MTrigger,
     MSelect,
-    MOption
+    MOption,
+    MTag
 ];
 
 const install = (app) => {

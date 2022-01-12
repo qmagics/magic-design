@@ -30,7 +30,7 @@ const city = ref("");
 
 <demo-meta>
 {
-    "sort": 0,
+    "sort": 2,
     "title": "下拉框尺寸",
     "description": "可以通过size属性给下拉框设置不同尺寸",
 }
