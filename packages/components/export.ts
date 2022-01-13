@@ -10,3 +10,4 @@ export * from './trigger';
 export * from './select';
 export * from './option';
 export * from './tag';
+export * from './link';

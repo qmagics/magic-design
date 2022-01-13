@@ -1,0 +1,79 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$stateMap:(
+    'secondary':(
+        color:$color-secondary-6,
+        'disabled--color':$color-secondary-2
+    ),
+    'primary':(
+        color:$color-primary-6,
+        'disabled--color':$color-primary-2
+    ),
+    'success':(
+        color:$color-success-6,
+        'disabled--color':$color-success-2
+    ),
+    'warning':(
+        color:$color-warning-6,
+        'disabled--color':$color-warning-2
+    ),
+    'danger':(
+        color:$color-danger-6,
+        'disabled--color':$color-danger-2
+    )
+);
+
+@include b(link){
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+
+    &::after{
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 0;
+        bottom: 0;
+    }
+    
+    @each $state, $item in $stateMap{
+        @include m('state-'+$state){
+            color:map-get($item,'color');
+
+            &:after{
+                border-bottom: 1px solid map-get($item,'color');
+            }
+
+            &.m-link--underline{
+                &:after{
+                    content: "";
+                }
+            }
+
+            &.m-link--underline-hover:hover{
+                &:after{
+                    content: "";
+                }
+            }
+        }
+    }
+
+    @include when(disabled){
+        cursor: not-allowed;
+        opacity: .5;
+        &::after{
+            content: none !important;
+        }
+    }
+
+}
+

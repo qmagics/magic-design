@@ -10,6 +10,7 @@ import Trigger from './trigger';
 import Select from './select';
 import Option from './option';
 import Tag from './tag';
+import Link from './link';
 
 const components = [
     Button,
@@ -23,7 +24,8 @@ const components = [
     Trigger,
     Select,
     Option,
-    Tag
+    Tag,
+    Link
 ];
 
 export default components;

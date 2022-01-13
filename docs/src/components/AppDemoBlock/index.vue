@@ -6,20 +6,25 @@
             <h2 class="app-demo-block__title" :id="item.id">{{ item.title }}</h2>
             <p class="app-demo-block__subtitle">{{ item?.description }}</p>
         </div>
-        <div class="app-demo-block__example">
+        <template v-if="item.source">
+            <div class="app-demo-block__example">
+                <slot></slot>
+            </div>
+            <div class="app-demo-block__toolbar">
+                <a class="tool-btn" @click="copySource">
+                    <i class="qd-icon-copy"></i>
+                </a>
+                <a class="tool-btn" @click="toggleSourceBlock">
+                    <i class="qd-icon-code"></i>
+                </a>
+            </div>
+            <div class="app-demo-block__source" v-show="state.sourceVisible">
+                <pre v-html="highlightSource"></pre>
+            </div>
+        </template>
+        <template v-else>
             <slot></slot>
-        </div>
-        <div class="app-demo-block__toolbar">
-            <a class="tool-btn" @click="copySource">
-                <i class="qd-icon-copy"></i>
-            </a>
-            <a class="tool-btn" @click="toggleSourceBlock">
-                <i class="qd-icon-code"></i>
-            </a>
-        </div>
-        <div class="app-demo-block__source" v-show="state.sourceVisible">
-            <pre v-html="highlightSource"></pre>
-        </div>
+        </template>
     </div>
 </template>
 

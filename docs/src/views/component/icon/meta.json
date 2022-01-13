@@ -1,0 +1,79 @@
+{
+  "id": "2999375",
+  "name": "magci-design",
+  "font_family": "m-icon",
+  "css_prefix_text": "m-icon-",
+  "description": "magci-design组件库字体",
+  "glyphs": [
+    {
+      "icon_id": "4320457",
+      "name": "loading",
+      "font_class": "jiazaizhong",
+      "unicode": "e708",
+      "unicode_decimal": 59144
+    },
+    {
+      "icon_id": "540355",
+      "name": "ic_close",
+      "font_class": "close",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "564445",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "4766293",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e7ae",
+      "unicode_decimal": 59310
+    },
+    {
+      "icon_id": "1646234",
+      "name": "搜索",
+      "font_class": "search",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "2077551",
+      "name": "新增",
+      "font_class": "plus",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "12771541",
+      "name": "删除",
+      "font_class": "delete",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "27066938",
+      "name": "arrow-down",
+      "font_class": "arrow-up",
+      "unicode": "e7af",
+      "unicode_decimal": 59311
+    },
+    {
+      "icon_id": "1174194",
+      "name": "arrow-down",
+      "font_class": "arrow-down",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "7712687",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e730",
+      "unicode_decimal": 59184
+    }
+  ]
+}
