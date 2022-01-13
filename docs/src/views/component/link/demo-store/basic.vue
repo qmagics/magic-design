@@ -4,7 +4,7 @@
         <m-link state="primary" href="https://www.baidu.com" target="_blank">百度一下</m-link>
         <m-link state="success" href="/">MagicDesign</m-link>
         <m-link state="warning" href="https://www.google.com" target="_blank">谷歌一下</m-link>
-        <m-link state="danger" href="https://qmagics.com">我的博客</m-link>
+        <m-link state="danger" href="https://qmagics.com" target="_blank">我的博客</m-link>
     </m-space>
 </template>
 
