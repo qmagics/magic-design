@@ -1,0 +1,7 @@
+@use "sass:map";
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+@include b(table) {
+    color: red;
+}

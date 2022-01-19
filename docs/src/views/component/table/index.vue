@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-page--tag">
+  <div class="demo-page--table">
     <div class="demo-page__main">
       <app-demo-block v-for="i in config.demos" :item="i">
         <component :is="i.component"></component>
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.demo-page--tag {
+.demo-page--table {
    
 }
 </style>

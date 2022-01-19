@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$d = defineComponent({
+var script$f = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -47,14 +47,14 @@ var script$d = defineComponent({
     },
 });
 
-const _hoisted_1$7 = ["type", "autofocus"];
-const _hoisted_2$4 = {
+const _hoisted_1$8 = ["type", "autofocus"];
+const _hoisted_2$5 = {
   key: 0,
   class: "m-button-icon"
 };
-const _hoisted_3$3 = { key: 1 };
+const _hoisted_3$4 = { key: 1 };
 
-function render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -74,7 +74,7 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.handleClick && _ctx.handleClick(...args)))
   }, [
     (_ctx.loading || _ctx.icon)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$4, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$5, [
           createCommentVNode(" <m-icon-loading v-if=\"loading\" name=\"m-icon-loading\"></m-icon-loading> "),
           createCommentVNode(" <component v-else :is=\"icon\"></component> "),
           (_ctx.loading)
@@ -87,19 +87,19 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.default)
-      ? (openBlock(), createElementBlock("span", _hoisted_3$3, [
+      ? (openBlock(), createElementBlock("span", _hoisted_3$4, [
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
-  ], 10 /* CLASS, PROPS */, _hoisted_1$7))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$8))
 }
 
-script$d.render = render$b;
-script$d.__file = "packages/components/button/src/button.vue";
+script$f.render = render$c;
+script$f.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$d);
+const MButton = withInstall(script$f);
 
-var script$c = defineComponent({
+var script$e = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -107,23 +107,23 @@ var script$c = defineComponent({
     setup() { },
 });
 
-function render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script$c.render = render$a;
-script$c.__file = "packages/components/icon/src/icon.vue";
+script$e.render = render$b;
+script$e.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$c);
+const MIcon = withInstall(script$e);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
 const RADIO_GROUP_KEY = Symbol("radioGroup");
 const CHECKBOX_GROUP_KEY = Symbol("checkboxGroup");
 const SELECT_KEY = Symbol("select");
 
-var script$b = defineComponent({
+var script$d = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -209,16 +209,16 @@ var script$b = defineComponent({
     },
 });
 
-const _hoisted_1$6 = {
+const _hoisted_1$7 = {
   key: 0,
   class: "m-input__prepend"
 };
-const _hoisted_2$3 = {
+const _hoisted_2$4 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3$2 = ["placeholder", "disabled", "readonly", "value", "type"];
-const _hoisted_4 = {
+const _hoisted_3$3 = ["placeholder", "disabled", "readonly", "value", "type"];
+const _hoisted_4$1 = {
   key: 2,
   class: "m-input__suffix"
 };
@@ -227,7 +227,7 @@ const _hoisted_5 = {
   class: "m-input__append"
 };
 
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("div", {
@@ -247,12 +247,12 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
         ])
   }, [
     (_ctx.hasPrepend)
-      ? (openBlock(), createElementBlock("span", _hoisted_1$6, [
+      ? (openBlock(), createElementBlock("span", _hoisted_1$7, [
           renderSlot(_ctx.$slots, "prepend")
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.prefix)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$3, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$4, [
           renderSlot(_ctx.$slots, "prefix")
         ]))
       : createCommentVNode("v-if", true),
@@ -267,9 +267,9 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[1] || (_cache[1] = (...args) => (_ctx.handleChange && _ctx.handleChange(...args))),
       onFocus: _cache[2] || (_cache[2] = (...args) => (_ctx.handleFocus && _ctx.handleFocus(...args))),
       onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.handleBlur && _ctx.handleBlur(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$2),
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$3),
     (_ctx.hasSuffix)
-      ? (openBlock(), createElementBlock("span", _hoisted_4, [
+      ? (openBlock(), createElementBlock("span", _hoisted_4$1, [
           renderSlot(_ctx.$slots, "suffix"),
           (_ctx.showClearBtn)
             ? (openBlock(), createBlock(_component_m_icon, {
@@ -289,10 +289,10 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$b.render = render$9;
-script$b.__file = "packages/components/input/src/input.vue";
+script$d.render = render$a;
+script$d.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script$b);
+const MInput = withInstall(script$d);
 
 /**
  * Make a map and return a function for checking if a key
@@ -319,7 +319,7 @@ const GUTTER_MAP = {
     medium: 10,
     large: 12
 };
-var script$a = defineComponent({
+var script$c = defineComponent({
     name: "MSpace",
     props: {
         direction: {
@@ -420,11 +420,11 @@ var script$a = defineComponent({
     },
 });
 
-script$a.__file = "packages/components/space/src/space.vue";
+script$c.__file = "packages/components/space/src/space.vue";
 
-const MSpace = withInstall(script$a);
+const MSpace = withInstall(script$c);
 
-var script$9 = defineComponent({
+var script$b = defineComponent({
     name: "MRadio",
     props: {
         modelValue: {
@@ -470,11 +470,11 @@ var script$9 = defineComponent({
     },
 });
 
-const _hoisted_1$5 = ["disabled", "value", "name", "checked"];
-const _hoisted_2$2 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$1 = { class: "m-radio__label" };
+const _hoisted_1$6 = ["disabled", "value", "name", "checked"];
+const _hoisted_2$3 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$2 = { class: "m-radio__label" };
 
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-radio',
@@ -492,20 +492,20 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
       name: _ctx.name,
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$5),
-    _hoisted_2$2,
-    createElementVNode("span", _hoisted_3$1, [
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$6),
+    _hoisted_2$3,
+    createElementVNode("span", _hoisted_3$2, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
 }
 
-script$9.render = render$8;
-script$9.__file = "packages/components/radio/src/radio.vue";
+script$b.render = render$9;
+script$b.__file = "packages/components/radio/src/radio.vue";
 
-const MRadio = withInstall(script$9);
+const MRadio = withInstall(script$b);
 
-var script$8 = defineComponent({
+var script$a = defineComponent({
     name: "MRadioGroup",
     props: {
         modelValue: {
@@ -526,20 +526,20 @@ var script$8 = defineComponent({
     }
 });
 
-const _hoisted_1$4 = { class: "m-radio-group" };
+const _hoisted_1$5 = { class: "m-radio-group" };
 
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1$4, [
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1$5, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$8.render = render$7;
-script$8.__file = "packages/components/radio/src/radio-group.vue";
+script$a.render = render$8;
+script$a.__file = "packages/components/radio/src/radio-group.vue";
 
-const MRadioGroup = withInstall(script$8);
+const MRadioGroup = withInstall(script$a);
 
-var script$7 = defineComponent({
+var script$9 = defineComponent({
     name: "MCheckbox",
     props: {
         modelValue: {
@@ -611,11 +611,11 @@ var script$7 = defineComponent({
     },
 });
 
-const _hoisted_1$3 = ["disabled", "value", "name", "checked"];
-const _hoisted_2$1 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3 = { class: "m-checkbox__label" };
+const _hoisted_1$4 = ["disabled", "value", "name", "checked"];
+const _hoisted_2$2 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$1 = { class: "m-checkbox__label" };
 
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-checkbox',
@@ -633,20 +633,20 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
       name: _ctx.name,
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$3),
-    _hoisted_2$1,
-    createElementVNode("span", _hoisted_3, [
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$4),
+    _hoisted_2$2,
+    createElementVNode("span", _hoisted_3$1, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
 }
 
-script$7.render = render$6;
-script$7.__file = "packages/components/checkbox/src/checkbox.vue";
+script$9.render = render$7;
+script$9.__file = "packages/components/checkbox/src/checkbox.vue";
 
-const MCheckbox = withInstall(script$7);
+const MCheckbox = withInstall(script$9);
 
-var script$6 = defineComponent({
+var script$8 = defineComponent({
     name: "MCheckboxGroup",
     props: {
         modelValue: {
@@ -676,34 +676,34 @@ var script$6 = defineComponent({
     }
 });
 
-const _hoisted_1$2 = { class: "m-checkbox-group" };
+const _hoisted_1$3 = { class: "m-checkbox-group" };
 
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1$2, [
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1$3, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$6.render = render$5;
-script$6.__file = "packages/components/checkbox/src/checkbox-group.vue";
+script$8.render = render$6;
+script$8.__file = "packages/components/checkbox/src/checkbox-group.vue";
 
-const MCheckboxGroup = withInstall(script$6);
+const MCheckboxGroup = withInstall(script$8);
 
-var script$5 = defineComponent({
+var script$7 = defineComponent({
     name: "MTeleport",
     props: {}
 });
 
-function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Teleport, { to: "body" }, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$5.render = render$4;
-script$5.__file = "packages/components/trigger/src/teleport.vue";
+script$7.render = render$5;
+script$7.__file = "packages/components/trigger/src/teleport.vue";
 
-var script$4 = defineComponent({
+var script$6 = defineComponent({
     name: "MTrigger",
     props: {
         popperOffset: {
@@ -751,7 +751,7 @@ var script$4 = defineComponent({
                 ref: triggerRef
             });
             const content = slots.content?.();
-            const wrappedContent = h(script$5, h(Transition, {
+            const wrappedContent = h(script$7, h(Transition, {
                 name: "m-zoom-in-top"
             }, withDirectives(h('div', {
                 class: 'm-trigger__content',
@@ -765,11 +765,11 @@ var script$4 = defineComponent({
     }
 });
 
-script$4.__file = "packages/components/trigger/src/trigger.vue";
+script$6.__file = "packages/components/trigger/src/trigger.vue";
 
-const MTrigger = withInstall(script$4);
+const MTrigger = withInstall(script$6);
 
-var script$3 = defineComponent({
+var script$5 = defineComponent({
     components: {
         MTrigger,
         MInput,
@@ -898,9 +898,9 @@ var script$3 = defineComponent({
     }
 });
 
-const _hoisted_1$1 = { class: "m-select__dropdown" };
+const _hoisted_1$2 = { class: "m-select__dropdown" };
 
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
   const _component_m_input = resolveComponent("m-input");
   const _component_m_trigger = resolveComponent("m-trigger");
@@ -923,7 +923,7 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
       "popper-offset": [0, 5]
     }, {
       content: withCtx(() => [
-        createElementVNode("ul", _hoisted_1$1, [
+        createElementVNode("ul", _hoisted_1$2, [
           renderSlot(_ctx.$slots, "default")
         ])
       ]),
@@ -953,12 +953,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   ], 34 /* CLASS, HYDRATE_EVENTS */))
 }
 
-script$3.render = render$3;
-script$3.__file = "packages/components/select/src/select.vue";
+script$5.render = render$4;
+script$5.__file = "packages/components/select/src/select.vue";
 
-const MSelect = withInstall(script$3);
+const MSelect = withInstall(script$5);
 
-var script$2 = defineComponent({
+var script$4 = defineComponent({
     name: "MOption",
     props: {
         value: {
@@ -992,7 +992,7 @@ var script$2 = defineComponent({
     }
 });
 
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("li", {
     class: normalizeClass([
             'm-option',
@@ -1008,12 +1008,12 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$2.render = render$2;
-script$2.__file = "packages/components/select/src/option.vue";
+script$4.render = render$3;
+script$4.__file = "packages/components/select/src/option.vue";
 
-const MOption = withInstall(script$2);
+const MOption = withInstall(script$4);
 
-var script$1 = defineComponent({
+var script$3 = defineComponent({
     name: "MTag",
     props: {
         size: {
@@ -1043,7 +1043,7 @@ var script$1 = defineComponent({
     }
 });
 
-function render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("span", {
     class: normalizeClass([
             'm-tag',
@@ -1060,12 +1060,12 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$1.render = render$1;
-script$1.__file = "packages/components/tag/src/tag.vue";
+script$3.render = render$2;
+script$3.__file = "packages/components/tag/src/tag.vue";
 
-const MTag = withInstall(script$1);
+const MTag = withInstall(script$3);
 
-var script = defineComponent({
+var script$2 = defineComponent({
     name: "MLink",
     props: {
         underline: {
@@ -1082,10 +1082,10 @@ var script = defineComponent({
     }
 });
 
-const _hoisted_1 = ["href", "target"];
-const _hoisted_2 = { class: "m-link__inner" };
+const _hoisted_1$1 = ["href", "target"];
+const _hoisted_2$1 = { class: "m-link__inner" };
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("a", {
     class: normalizeClass([
             'm-link',
@@ -1098,16 +1098,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.href,
     target: _ctx.target
   }, [
-    createElementVNode("span", _hoisted_2, [
+    createElementVNode("span", _hoisted_2$1, [
       renderSlot(_ctx.$slots, "default")
     ])
-  ], 10 /* CLASS, PROPS */, _hoisted_1))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$1))
 }
 
-script.render = render;
-script.__file = "packages/components/link/src/link.vue";
+script$2.render = render$1;
+script$2.__file = "packages/components/link/src/link.vue";
 
-const MLink = withInstall(script);
+const MLink = withInstall(script$2);
+
+var script$1 = defineComponent({
+    name: "MTable",
+    props: {},
+    emits: [],
+    setup(props, { emit }) {
+    }
+});
+
+const _hoisted_1 = { class: "m-table" };
+const _hoisted_2 = /*#__PURE__*/createTextVNode(" ... ");
+const _hoisted_3 = /*#__PURE__*/createElementVNode("div", { class: "m-table__header-wrapper" }, null, -1 /* HOISTED */);
+const _hoisted_4 = [
+  _hoisted_2,
+  _hoisted_3
+];
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1, _hoisted_4))
+}
+
+script$1.render = render;
+script$1.__file = "packages/components/table/src/table.vue";
+
+const MTable = withInstall(script$1);
+
+const script = {};
+
+
+
+
+script.__file = "packages/components/table/src/column.vue";
+
+const MTableColumn = withInstall(script);
 
 const components = [
     MButton,
@@ -1122,7 +1156,9 @@ const components = [
     MSelect,
     MOption,
     MTag,
-    MLink
+    MLink,
+    MTable,
+    MTableColumn
 ];
 
 const install = (app) => {

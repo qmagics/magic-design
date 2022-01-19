@@ -11,6 +11,8 @@ import Select from './select';
 import Option from './option';
 import Tag from './tag';
 import Link from './link';
+import Table from './table';
+import TableColumn from './table-column';
 
 const components = [
     Button,
@@ -25,7 +27,9 @@ const components = [
     Select,
     Option,
     Tag,
-    Link
+    Link,
+    Table,
+    TableColumn
 ];
 
 export default components;
