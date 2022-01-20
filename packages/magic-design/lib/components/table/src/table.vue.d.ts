@@ -1,12 +1,27 @@
-declare const _default: import("vue").DefineComponent<Readonly<import("vue").ComponentPropsOptions<{
-    [x: string]: unknown;
-}>>, void, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, any[], any, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<readonly string[] | ({
-    [x: string]: unknown;
-} & {} & {
-    [x: string]: unknown;
-})> & {
+import { PropType } from "vue";
+import { TableColumnRaw } from "./interface";
+declare const _default: import("vue").DefineComponent<{
+    data: {
+        type: PropType<any[]>;
+        default: () => any[];
+    };
+    columns: PropType<TableColumnRaw[]>;
+}, {
+    dataColumns: import("vue").Ref<{
+        label: string;
+        prop: string | number;
+        width: string | number;
+    }[]>;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, any[], any, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
+    data?: unknown;
+    columns?: unknown;
+} & {
+    data: any[];
+} & {
+    columns?: TableColumnRaw[];
+}> & {
     [x: string & `on${any}`]: (...args: any[]) => any;
 }, {
-    [x: number]: string;
-} | {}>;
+    data: any[];
+}>;
 export default _default;

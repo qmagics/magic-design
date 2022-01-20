@@ -1,8 +1,8 @@
 <template>
     <m-table :data="tableData">
-        <m-table-column label="姓名" prop="Name"></m-table-column>
-        <m-table-column label="年龄" prop="Age"></m-table-column>
-        <m-table-column label="性别" prop="Sex"></m-table-column>
+        <m-table-column label="姓名" prop="Name" width="500"></m-table-column>
+        <m-table-column label="年龄" prop="Age" width="100"></m-table-column>
+        <m-table-column label="性别" prop="Sex" width="100"></m-table-column>
     </m-table>
 </template>
 
