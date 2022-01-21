@@ -14,12 +14,6 @@ export default defineComponent({
 
         const proxy = getCurrentInstance().proxy;
 
-        // const column = {
-        //     label:proxy
-        // }
-
-        console.log(55)
-
         onMounted(() => {
             table.addColumn(proxy as any);
         });

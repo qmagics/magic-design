@@ -3,4 +3,89 @@
 @import "./mixins/mixin.scss";
 
 @include b(table) {
+    --m-table--border-color: #{$color-secondary-2};
+    --m-table--header-bg-color: #{$color-secondary-2};
+    --m-table--cell-padding: 12px;
+    --m-table--font-size: 14px;
+    --m-table--text-color: #{$color-text-1};
+
+    @include m(size-large) {
+        --m-table--cell-padding: 16px;
+        --m-table--font-size: 16px;
+    }
+
+    @include m(size-small) {
+        --m-table--cell-padding: 8px;
+    }
+
+    @include m(size-mini) {
+        --m-table--cell-padding: 6px;
+        --m-table--font-size: 12px;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        text-align: left;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: var(--m-table--font-size);
+        color: var(--m-table--text-color);
+    }
+
+    .m-table__header,
+    .m-table__body,
+    .m-table__footer {
+        tr {
+
+            td,
+            th {
+                padding: var(--m-table--cell-padding);
+            }
+        }
+    }
+
+    @include e(container) {
+        border-left: 1px solid var(--m-table--border-color);
+        border-right: 1px solid var(--m-table--border-color);
+        border-top: 1px solid var(--m-table--border-color);
+        border-radius: $radius-2;
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+
+    @include e(header) {
+        thead {
+            &>tr {
+                &>th {
+                    text-align: left;
+                    position: relative;
+                    font-weight: 500;
+                    text-align: left;
+                    background: var(--m-table--header-bg-color);
+                    border-bottom: 1px solid var(--m-table--border-color);
+                    transition: background .3s ease;
+                }
+            }
+        }
+    }
+
+    @include e(body-wrapper){
+        overflow: auto;
+    }
+
+    @include e(body) {
+        tbody {
+            &>tr {
+                &>td {
+                    text-align: left;
+                    position: relative;
+                    text-align: left;
+                    border-bottom: 1px solid var(--m-table--border-color);
+                    transition: background .3s ease;
+                }
+            }
+        }
+    }
 }

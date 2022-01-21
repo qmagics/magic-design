@@ -12,3 +12,4 @@ export interface TableProvideContext {
     addColumn(column: TableColumn): void;
     removeColumn(column: TableColumn): void;
 }
+export declare type TableSize = 'mini' | 'small' | 'medium' | 'large';

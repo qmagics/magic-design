@@ -156,6 +156,13 @@ body {
     --m-color-danger-8: rgb(var(--red-8));
     --m-color-danger-9: rgb(var(--red-9));
     --m-color-danger-10: rgb(var(--red-10));
+
+    /** radius **/
+    --m-radius-1:2px;
+    --m-radius-2:3px;
+    --m-radius-3:4px;
+    --m-radius-4:6px;
+    --m-radius-5:8px;
 }
 
 // root vars dark-theme
@@ -290,3 +297,10 @@ $color-danger-7: var(--m-color-danger-7);
 $color-danger-8: var(--m-color-danger-8);
 $color-danger-9: var(--m-color-danger-9);
 $color-danger-10: var(--m-color-danger-10);
+
+/* radius */
+$radius-1:var(--m-radius-1);
+$radius-2:var(--m-radius-2);
+$radius-3:var(--m-radius-3);
+$radius-4:var(--m-radius-4);
+$radius-5:var(--m-radius-5);

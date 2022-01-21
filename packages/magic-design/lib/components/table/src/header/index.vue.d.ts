@@ -6,7 +6,7 @@ declare const _default: import("vue").DefineComponent<{
         default: () => any[];
     };
     columns: PropType<TableColumnRaw[]>;
-}, void, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
+}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     data?: unknown;
     columns?: unknown;
 } & {

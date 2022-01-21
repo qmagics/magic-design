@@ -1,17 +1,19 @@
 <template>
-    <table class="m-table__header">
+    <table class="m-table__body">
         <colgroup>
             <col v-for="column in columns" :key="column.prop" :width="column.width" />
         </colgroup>
-        <tr v-for="i in data">
-            <td v-for="column in columns" :key="column.prop">
-                <span>{{ i[column.prop] }}</span>
-            </td>
-        </tr>
+        <tbody>
+            <tr v-for="i in data">
+                <td v-for="column in columns" :key="column.prop">
+                    <span>{{ i[column.prop] }}</span>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </template>
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType, reactive } from "vue";
 import { TableColumnRaw } from "../interface";
 
 export default defineComponent({
@@ -21,6 +23,9 @@ export default defineComponent({
             default: () => []
         },
         columns: Array as PropType<TableColumnRaw[]>
+    },
+    setup(props) {
+        
     }
 });
 </script>
