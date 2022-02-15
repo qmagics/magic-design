@@ -45,15 +45,29 @@
         }
     }
 
+    .m-table__body {
+        .m-tr {
+            &:last-of-type {
+                .m-td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
     @include e(container) {
         border-left: 1px solid var(--m-table--border-color);
         border-right: 1px solid var(--m-table--border-color);
         border-top: 1px solid var(--m-table--border-color);
         border-radius: $radius-2;
-        overflow-y: hidden;
-        overflow-x: auto;
+        // overflow-y: hidden;
+        // overflow-x: auto;
+        overflow: hidden;
     }
 
+    @include e(header-wrapper) {
+        overflow: hidden;
+    }
 
     @include e(header) {
         thead {
@@ -71,8 +85,9 @@
         }
     }
 
-    @include e(body-wrapper){
+    @include e(body-wrapper) {
         overflow: auto;
+        border-bottom: 1px solid var(--m-table--border-color);
     }
 
     @include e(body) {

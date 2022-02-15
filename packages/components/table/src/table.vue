@@ -4,10 +4,14 @@
         `m-table--size-${size}`
     ]" :style="style">
         <div class="m-table__container">
-            <div class="m-table__header-wrapper" :style="headerWrapperStyle">
+            <div class="m-table__header-wrapper" :style="headerWrapperStyle" ref="headerWrapperRef">
                 <table-header :columns="dataColumns" :data="data"></table-header>
             </div>
-            <div class="m-table__body-wrapper" :style="bodyWrapperStyle">
+            <div
+                class="m-table__body-wrapper"
+                :style="bodyWrapperStyle"
+                @scroll="onBodyWrapperScroll"
+            >
                 <slot></slot>
                 <table-body :columns="dataColumns" :data="data"></table-body>
             </div>
@@ -74,6 +78,7 @@ export default defineComponent({
     emits: [],
 
     setup(props, { emit }) {
+        const headerWrapperRef = ref();
         const dataColumns = ref<TableColumn[]>([]);
 
         const addColumn = (column: TableColumn) => {
@@ -87,9 +92,16 @@ export default defineComponent({
             removeColumn
         });
 
+        const onBodyWrapperScroll = (e) => {
+            const scrollLeft = e.target.scrollLeft;
+            (headerWrapperRef.value as HTMLElement).scrollLeft = scrollLeft;
+        }
+
         const { style, headerWrapperStyle, bodyWrapperStyle } = useStyle(props);
 
         return {
+            headerWrapperRef,
+            onBodyWrapperScroll,
             style,
             headerWrapperStyle,
             bodyWrapperStyle,

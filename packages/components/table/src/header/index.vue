@@ -4,8 +4,8 @@
             <col v-for="column in columns" :key="column.prop" :width="column.width" />
         </colgroup>
         <thead>
-            <tr>
-                <th v-for="column in columns" :key="column.prop">
+            <tr class="m-tr">
+                <th class="m-th" v-for="column in columns" :key="column.prop">
                     <span>{{ column.label }}</span>
                 </th>
             </tr>

@@ -9,6 +9,7 @@
     "dev": "npm run build:esm-bundle -- --watch",
     "dev:docs": "vite --config ./docs/vite.config.ts",
     "build:docs": "vite build --config ./docs/vite.config.ts",
+    "depoly:docs": "",
     "build:umd": "webpack --config ./build/webpack.config.js",
     "build:esm-bundle": "rollup -c ./build/rollup.config.bundle.js",
     "build:esm": "rollup -c ./build/rollup.config.js",

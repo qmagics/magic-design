@@ -52,7 +52,7 @@ const _hoisted_2$6 = {
   key: 0,
   class: "m-button-icon"
 };
-const _hoisted_3$3 = { key: 1 };
+const _hoisted_3$5 = { key: 1 };
 
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
@@ -87,7 +87,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.default)
-      ? (openBlock(), createElementBlock("span", _hoisted_3$3, [
+      ? (openBlock(), createElementBlock("span", _hoisted_3$5, [
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
@@ -218,8 +218,8 @@ const _hoisted_2$5 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3$2 = ["placeholder", "disabled", "readonly", "value", "type"];
-const _hoisted_4 = {
+const _hoisted_3$4 = ["placeholder", "disabled", "readonly", "value", "type"];
+const _hoisted_4$1 = {
   key: 2,
   class: "m-input__suffix"
 };
@@ -268,9 +268,9 @@ function render$c(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[1] || (_cache[1] = (...args) => (_ctx.handleChange && _ctx.handleChange(...args))),
       onFocus: _cache[2] || (_cache[2] = (...args) => (_ctx.handleFocus && _ctx.handleFocus(...args))),
       onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.handleBlur && _ctx.handleBlur(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$2),
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$4),
     (_ctx.hasSuffix)
-      ? (openBlock(), createElementBlock("span", _hoisted_4, [
+      ? (openBlock(), createElementBlock("span", _hoisted_4$1, [
           renderSlot(_ctx.$slots, "suffix"),
           (_ctx.showClearBtn)
             ? (openBlock(), createBlock(_component_m_icon, {
@@ -473,7 +473,7 @@ var script$d = defineComponent({
 
 const _hoisted_1$8 = ["disabled", "value", "name", "checked"];
 const _hoisted_2$4 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$1 = { class: "m-radio__label" };
+const _hoisted_3$3 = { class: "m-radio__label" };
 
 function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
@@ -495,7 +495,7 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
     }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$8),
     _hoisted_2$4,
-    createElementVNode("span", _hoisted_3$1, [
+    createElementVNode("span", _hoisted_3$3, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
@@ -614,7 +614,7 @@ var script$b = defineComponent({
 
 const _hoisted_1$6 = ["disabled", "value", "name", "checked"];
 const _hoisted_2$3 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3 = { class: "m-checkbox__label" };
+const _hoisted_3$2 = { class: "m-checkbox__label" };
 
 function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
@@ -636,7 +636,7 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
     }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$6),
     _hoisted_2$3,
-    createElementVNode("span", _hoisted_3, [
+    createElementVNode("span", _hoisted_3$2, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
@@ -1122,6 +1122,7 @@ var script$3 = defineComponent({
 
 const _hoisted_1$2 = { class: "m-table__header" };
 const _hoisted_2$1 = ["width"];
+const _hoisted_3$1 = { class: "m-tr" };
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("table", _hoisted_1$2, [
@@ -1134,9 +1135,10 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
       }), 128 /* KEYED_FRAGMENT */))
     ]),
     createElementVNode("thead", null, [
-      createElementVNode("tr", null, [
+      createElementVNode("tr", _hoisted_3$1, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
           return (openBlock(), createElementBlock("th", {
+            class: "m-th",
             key: column.prop
           }, [
             createElementVNode("span", null, toDisplayString(column.label), 1 /* TEXT */)
@@ -1164,6 +1166,8 @@ var script$2 = defineComponent({
 
 const _hoisted_1$1 = { class: "m-table__body" };
 const _hoisted_2 = ["width"];
+const _hoisted_3 = { class: "m-tr" };
+const _hoisted_4 = { class: "m-cell" };
 
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("table", _hoisted_1$1, [
@@ -1177,12 +1181,13 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     createElementVNode("tbody", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.data, (i) => {
-        return (openBlock(), createElementBlock("tr", null, [
+        return (openBlock(), createElementBlock("tr", _hoisted_3, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
             return (openBlock(), createElementBlock("td", {
+              class: "m-td",
               key: column.prop
             }, [
-              createElementVNode("span", null, toDisplayString(i[column.prop]), 1 /* TEXT */)
+              createElementVNode("span", _hoisted_4, toDisplayString(i[column.prop]), 1 /* TEXT */)
             ]))
           }), 128 /* KEYED_FRAGMENT */))
         ]))
@@ -1236,6 +1241,7 @@ var script$1 = defineComponent({
     },
     emits: [],
     setup(props, { emit }) {
+        const headerWrapperRef = ref();
         const dataColumns = ref([]);
         const addColumn = (column) => {
             dataColumns.value.push(column);
@@ -1247,8 +1253,14 @@ var script$1 = defineComponent({
             addColumn,
             removeColumn
         });
+        const onBodyWrapperScroll = (e) => {
+            const scrollLeft = e.target.scrollLeft;
+            headerWrapperRef.value.scrollLeft = scrollLeft;
+        };
         const { style, headerWrapperStyle, bodyWrapperStyle } = useStyle(props);
         return {
+            headerWrapperRef,
+            onBodyWrapperScroll,
             style,
             headerWrapperStyle,
             bodyWrapperStyle,
@@ -1273,7 +1285,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     createElementVNode("div", _hoisted_1, [
       createElementVNode("div", {
         class: "m-table__header-wrapper",
-        style: normalizeStyle(_ctx.headerWrapperStyle)
+        style: normalizeStyle(_ctx.headerWrapperStyle),
+        ref: "headerWrapperRef"
       }, [
         createVNode(_component_table_header, {
           columns: _ctx.dataColumns,
@@ -1282,14 +1295,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       ], 4 /* STYLE */),
       createElementVNode("div", {
         class: "m-table__body-wrapper",
-        style: normalizeStyle(_ctx.bodyWrapperStyle)
+        style: normalizeStyle(_ctx.bodyWrapperStyle),
+        onScroll: _cache[0] || (_cache[0] = (...args) => (_ctx.onBodyWrapperScroll && _ctx.onBodyWrapperScroll(...args)))
       }, [
         renderSlot(_ctx.$slots, "default"),
         createVNode(_component_table_body, {
           columns: _ctx.dataColumns,
           data: _ctx.data
         }, null, 8 /* PROPS */, ["columns", "data"])
-      ], 4 /* STYLE */)
+      ], 36 /* STYLE, HYDRATE_EVENTS */)
     ])
   ], 6 /* CLASS, STYLE */))
 }

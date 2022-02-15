@@ -14,6 +14,8 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
     };
 }, {
+    headerWrapperRef: import("vue").Ref<any>;
+    onBodyWrapperScroll: (e: any) => void;
     style: {
         height: string;
     };

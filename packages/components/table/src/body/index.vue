@@ -4,9 +4,9 @@
             <col v-for="column in columns" :key="column.prop" :width="column.width" />
         </colgroup>
         <tbody>
-            <tr v-for="i in data">
-                <td v-for="column in columns" :key="column.prop">
-                    <span>{{ i[column.prop] }}</span>
+            <tr class="m-tr" v-for="i in data">
+                <td class="m-td" v-for="column in columns" :key="column.prop">
+                    <span class="m-cell">{{ i[column.prop] }}</span>
                 </td>
             </tr>
         </tbody>
