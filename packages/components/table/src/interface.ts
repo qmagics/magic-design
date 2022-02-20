@@ -1,13 +1,16 @@
+import { VNode } from "vue";
+
+export type TableColumnRenderFn = (context?: any) => VNode;
+
 export interface TableColumnRaw {
     label: string;
     prop: string | number;
     width: string | number;
+    render?: TableColumnRenderFn
 }
 
 export interface TableColumn extends TableColumnRaw {
-    label: string;
-    prop: string | number;
-    width: string | number;
+
 }
 
 export interface TableProvideContext {

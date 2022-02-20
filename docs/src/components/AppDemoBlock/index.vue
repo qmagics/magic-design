@@ -53,7 +53,7 @@ export default defineComponent({
     },
     setup(props) {
         const state = reactive({
-            sourceVisible: true
+            sourceVisible: false
         });
 
         const toggleSourceBlock = () => {

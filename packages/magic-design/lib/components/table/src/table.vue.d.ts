@@ -29,6 +29,7 @@ declare const _default: import("vue").DefineComponent<{
         label: string;
         prop: string | number;
         width: string | number;
+        render?: import("./interface").TableColumnRenderFn;
     }[]>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, any[], any, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     data?: unknown;

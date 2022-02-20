@@ -4,9 +4,12 @@
             <col v-for="column in columns" :key="column.prop" :width="column.width" />
         </colgroup>
         <tbody>
-            <tr class="m-tr" v-for="i in data">
-                <td class="m-td" v-for="column in columns" :key="column.prop">
-                    <span class="m-cell">{{ i[column.prop] }}</span>
+            <tr class="m-tr" v-for="(i, rowIndex) in data">
+                <td class="m-td" v-for="(column, columnIndex) in columns" :key="column.prop">
+                    <table-cell
+                        :render="column.render"
+                        :render-context="{ row: i, value: i[column.prop], column, rowIndex, columnIndex }"
+                    >{{ i[column.prop] }}</table-cell>
                 </td>
             </tr>
         </tbody>
@@ -15,8 +18,12 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, reactive } from "vue";
 import { TableColumnRaw } from "../interface";
+import TableCell from '../cell';
 
 export default defineComponent({
+    components: {
+        TableCell
+    },
     props: {
         data: {
             type: Array as PropType<any[]>,
@@ -25,7 +32,7 @@ export default defineComponent({
         columns: Array as PropType<TableColumnRaw[]>
     },
     setup(props) {
-        
+
     }
 });
 </script>

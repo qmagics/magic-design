@@ -58,7 +58,7 @@ export default defineComponent({
     name: "MTable",
     components: {
         TableHeader,
-        TableBody
+        TableBody,
     },
     props: {
         data: {
@@ -79,7 +79,7 @@ export default defineComponent({
 
     setup(props, { emit }) {
         const headerWrapperRef = ref();
-        const dataColumns = ref<TableColumn[]>([]);
+        const dataColumns = ref<TableColumn[]>(props.columns || []);
 
         const addColumn = (column: TableColumn) => {
             dataColumns.value.push(column);
