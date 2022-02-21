@@ -1,5 +1,5 @@
 import { createVNode, defineComponent, PropType, h, renderSlot, VNode } from "vue";
-import { TableColumnRenderFn } from "./interface";
+import { ColumnRenderContext, TableColumnRenderFn } from "./interface";
 
 export default defineComponent({
     props: {
@@ -7,16 +7,15 @@ export default defineComponent({
             type: Function as PropType<TableColumnRenderFn>,
         },
         renderContext: {
-            type: Object as any
+            type: Object as PropType<ColumnRenderContext>
         }
     },
     setup(props, { slots }) {
         if (props.render) {
             return (proxy) => {
                 const vnode = props.render(props.renderContext);
-                return vnode;
 
-                // return h('div', null, vnode.children);
+                return vnode;
             }
         }
         else if (slots.default) {

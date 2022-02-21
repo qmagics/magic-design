@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, provide, reactive, ref } from "vue";
+import { computed, defineComponent, PropType, provide, reactive, ref, watch } from "vue";
 import { TableColumnRaw, TableColumn, TableSize } from "./interface";
 import TableHeader from './header/index.vue';
 import TableBody from './body/index.vue';
@@ -54,6 +54,49 @@ const useStyle = (props) => {
     };
 }
 
+const useColumns = (props) => {
+    const isUseColumnSlots = computed(() => !props.columns?.length);
+    const dataColumns = ref<TableColumn[]>(props.columns || []);
+
+    watch(isUseColumnSlots, (value, oldValue) => {
+        if (value === false) {
+            dataColumns.value = props.columns;
+        }
+    })
+
+    const addColumn = (column: TableColumn) => {
+        if (isUseColumnSlots.value === false) return;
+        dataColumns.value.push(column);
+    }
+    const removeColumn = (column: TableColumn) => {
+        if (isUseColumnSlots.value === false) return;
+        dataColumns.value.splice(dataColumns.value.indexOf(column), 1);
+    }
+
+    provide(TABLE_KEY, {
+        addColumn,
+        removeColumn
+    });
+
+    return {
+        dataColumns
+    }
+}
+
+const useScroll = () => {
+    const headerWrapperRef = ref();
+
+    const onBodyWrapperScroll = (e) => {
+        const scrollLeft = e.target.scrollLeft;
+        (headerWrapperRef.value as HTMLElement).scrollLeft = scrollLeft;
+    }
+
+    return {
+        headerWrapperRef,
+        onBodyWrapperScroll
+    }
+}
+
 export default defineComponent({
     name: "MTable",
     components: {
@@ -77,27 +120,13 @@ export default defineComponent({
 
     emits: [],
 
-    setup(props, { emit }) {
-        const headerWrapperRef = ref();
-        const dataColumns = ref<TableColumn[]>(props.columns || []);
+    setup(props) {
 
-        const addColumn = (column: TableColumn) => {
-            dataColumns.value.push(column);
-        }
-        const removeColumn = (column: TableColumn) => {
-            dataColumns.value.splice(dataColumns.value.indexOf(column), 1);
-        }
-        provide(TABLE_KEY, {
-            addColumn,
-            removeColumn
-        });
-
-        const onBodyWrapperScroll = (e) => {
-            const scrollLeft = e.target.scrollLeft;
-            (headerWrapperRef.value as HTMLElement).scrollLeft = scrollLeft;
-        }
+        const { dataColumns } = useColumns(props);
 
         const { style, headerWrapperStyle, bodyWrapperStyle } = useStyle(props);
+
+        const { headerWrapperRef, onBodyWrapperScroll } = useScroll();
 
         return {
             headerWrapperRef,

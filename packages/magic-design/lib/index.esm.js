@@ -1166,7 +1166,6 @@ var TableCell = defineComponent({
             return (proxy) => {
                 const vnode = props.render(props.renderContext);
                 return vnode;
-                // return h('div', null, vnode.children);
             };
         }
         else if (slots.default) {
@@ -1254,6 +1253,43 @@ const useStyle = (props) => {
         bodyWrapperStyle
     };
 };
+const useColumns = (props) => {
+    const isUseColumnSlots = computed(() => !props.columns?.length);
+    const dataColumns = ref(props.columns || []);
+    watch(isUseColumnSlots, (value, oldValue) => {
+        if (value === false) {
+            dataColumns.value = props.columns;
+        }
+    });
+    const addColumn = (column) => {
+        if (isUseColumnSlots.value === false)
+            return;
+        dataColumns.value.push(column);
+    };
+    const removeColumn = (column) => {
+        if (isUseColumnSlots.value === false)
+            return;
+        dataColumns.value.splice(dataColumns.value.indexOf(column), 1);
+    };
+    provide(TABLE_KEY, {
+        addColumn,
+        removeColumn
+    });
+    return {
+        dataColumns
+    };
+};
+const useScroll = () => {
+    const headerWrapperRef = ref();
+    const onBodyWrapperScroll = (e) => {
+        const scrollLeft = e.target.scrollLeft;
+        headerWrapperRef.value.scrollLeft = scrollLeft;
+    };
+    return {
+        headerWrapperRef,
+        onBodyWrapperScroll
+    };
+};
 var script$1 = defineComponent({
     name: "MTable",
     components: {
@@ -1275,24 +1311,10 @@ var script$1 = defineComponent({
         }
     },
     emits: [],
-    setup(props, { emit }) {
-        const headerWrapperRef = ref();
-        const dataColumns = ref(props.columns || []);
-        const addColumn = (column) => {
-            dataColumns.value.push(column);
-        };
-        const removeColumn = (column) => {
-            dataColumns.value.splice(dataColumns.value.indexOf(column), 1);
-        };
-        provide(TABLE_KEY, {
-            addColumn,
-            removeColumn
-        });
-        const onBodyWrapperScroll = (e) => {
-            const scrollLeft = e.target.scrollLeft;
-            headerWrapperRef.value.scrollLeft = scrollLeft;
-        };
+    setup(props) {
+        const { dataColumns } = useColumns(props);
         const { style, headerWrapperStyle, bodyWrapperStyle } = useStyle(props);
+        const { headerWrapperRef, onBodyWrapperScroll } = useScroll();
         return {
             headerWrapperRef,
             onBodyWrapperScroll,
@@ -1359,7 +1381,6 @@ var script = defineComponent({
         const table = inject(TABLE_KEY);
         const proxy = getCurrentInstance().proxy;
         const render = slots.default ? (context) => {
-            // console.log('context',context)
             return slots.default(context);
         } : undefined;
         onMounted(() => {
@@ -1371,9 +1392,6 @@ var script = defineComponent({
         return {
             render
         };
-        // return (proxy) => {
-        //     return h('span')
-        // }
     }
 });
 

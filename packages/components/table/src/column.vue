@@ -5,6 +5,7 @@
 <script lang="ts">
 import { TABLE_KEY } from "@magic-design/utils/src/const";
 import { defineComponent, getCurrentInstance, h, inject, onBeforeUnmount, onMounted } from "vue";
+import { ColumnRenderContext } from "./interface";
 
 export default defineComponent({
     name: "MTableColumn",
@@ -18,8 +19,7 @@ export default defineComponent({
 
         const proxy = getCurrentInstance().proxy;
 
-        const render = slots.default ? (context: any) => {
-            // console.log('context',context)
+        const render = slots.default ? (context: ColumnRenderContext) => {
             return slots.default(context);
         } : undefined;
 
@@ -34,10 +34,6 @@ export default defineComponent({
         return {
             render
         }
-
-        // return (proxy) => {
-        //     return h('span')
-        // }
     }
 })
 </script>
