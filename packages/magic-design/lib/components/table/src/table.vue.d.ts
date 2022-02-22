@@ -30,6 +30,7 @@ declare const _default: import("vue").DefineComponent<{
         prop: string | number;
         width: string | number;
         render?: import("./interface").TableColumnRenderFn;
+        align?: "left" | "right" | "center";
     }[]>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, any[], any, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     data?: unknown;

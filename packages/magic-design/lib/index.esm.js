@@ -1122,7 +1122,7 @@ var script$3 = defineComponent({
 
 const _hoisted_1$2 = { class: "m-table__header" };
 const _hoisted_2$1 = ["width"];
-const _hoisted_3$1 = { class: "m-tr" };
+const _hoisted_3$1 = { class: "m-table-tr" };
 
 function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("table", _hoisted_1$2, [
@@ -1138,11 +1138,14 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
       createElementVNode("tr", _hoisted_3$1, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
           return (openBlock(), createElementBlock("th", {
-            class: "m-th",
+            class: normalizeClass([
+                        'm-table-th',
+                        `m-table-th--align-${column.align || 'left'}`
+                    ]),
             key: column.prop
           }, [
             createElementVNode("span", null, toDisplayString(column.label), 1 /* TEXT */)
-          ]))
+          ], 2 /* CLASS */))
         }), 128 /* KEYED_FRAGMENT */))
       ])
     ])
@@ -1191,7 +1194,7 @@ var script$2 = defineComponent({
 
 const _hoisted_1$1 = { class: "m-table__body" };
 const _hoisted_2 = ["width"];
-const _hoisted_3 = { class: "m-tr" };
+const _hoisted_3 = { class: "m-table-tr" };
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_cell = resolveComponent("table-cell");
@@ -1210,7 +1213,10 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
         return (openBlock(), createElementBlock("tr", _hoisted_3, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column, columnIndex) => {
             return (openBlock(), createElementBlock("td", {
-              class: "m-td",
+              class: normalizeClass([
+                        'm-table-td',
+                        `m-table-td--align-${column.align || 'left'}`
+                    ]),
               key: column.prop
             }, [
               createVNode(_component_table_cell, {
@@ -1222,7 +1228,7 @@ function render$2(_ctx, _cache, $props, $setup, $data, $options) {
                 ]),
                 _: 2 /* DYNAMIC */
               }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["render", "render-context"])
-            ]))
+            ], 2 /* CLASS */))
           }), 128 /* KEYED_FRAGMENT */))
         ]))
       }), 256 /* UNKEYED_FRAGMENT */))

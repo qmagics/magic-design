@@ -14,7 +14,8 @@ export interface TableColumnRaw {
     label: string;
     prop: string | number;
     width: string | number;
-    render?: TableColumnRenderFn
+    render?: TableColumnRenderFn;
+    align?: 'left' | 'right' | 'center';
 }
 
 export interface TableColumn extends TableColumnRaw {

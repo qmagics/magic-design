@@ -23,6 +23,7 @@
         --m-table--font-size: 12px;
     }
 
+    // reset
     table {
         width: 100%;
         table-layout: fixed;
@@ -46,9 +47,9 @@
     }
 
     .m-table__body {
-        .m-tr {
+        .m-table-tr {
             &:last-of-type {
-                .m-td {
+                .m-table-td {
                     border-bottom: none;
                 }
             }
@@ -102,5 +103,20 @@
                 }
             }
         }
+    }
+
+    .m-table-td--align-left,
+    .m-table-th--align-left {
+        text-align: left;
+    }
+
+    .m-table-td--align-center,
+    .m-table-th--align-center {
+        text-align: center;
+    }
+
+    .m-table-td--align-right,
+    .m-table-th--align-right {
+        text-align: right;
     }
 }

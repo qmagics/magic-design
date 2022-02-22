@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import vuejsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
 import fs from 'fs';
 
@@ -9,7 +10,7 @@ const getCodeMap = (realFolderPath: string): Record<string, string> => {
   const filenames = fs.readdirSync(realFolderPath);
 
   filenames.forEach(filename => {
-    const content = fs.readFileSync(path.join(realFolderPath, filename), 'utf8').replace(/<demo-meta>([\w\W]*)<\/demo-meta>/g,'');
+    const content = fs.readFileSync(path.join(realFolderPath, filename), 'utf8').replace(/<demo-meta>([\w\W]*)<\/demo-meta>/g, '');
     map[`./${prefixKey}/${filename}`] = content;
   })
 
@@ -69,7 +70,7 @@ const demoMetaPlugin = {
 }
 
 export default defineConfig({
-  plugins: [[vue(), demoMetaPlugin], resolveSourceCodeMap()],
+  plugins: [[vue(), demoMetaPlugin], resolveSourceCodeMap(), vuejsx()],
   root: path.resolve(__dirname, './'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss', 'sass', '.json'],
