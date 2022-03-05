@@ -1,0 +1,15 @@
+@import "./common/var.scss";
+@import "./mixins/mixin.scss";
+
+$cname: $namespace+'-'+"uploader";
+
+@include b(uploader) {
+
+    @include e(trigger) {}
+
+    @include e(list) {}
+
+    .#{$cname}-input {
+        display: none;
+    }
+}

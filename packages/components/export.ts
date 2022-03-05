@@ -13,3 +13,4 @@ export * from './tag';
 export * from './link';
 export * from './table';
 export * from './table-column';
+export * from './uploader';

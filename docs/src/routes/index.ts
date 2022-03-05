@@ -60,6 +60,10 @@ const routes: RouteRecordRaw[] = [
             {
                 path: "table",
                 component: () => import("@/views/component/table/index.vue")
+            },
+            {
+                path: "uploader",
+                component: () => import("@/views/component/uploader/index.vue")
             }
         ]
     },

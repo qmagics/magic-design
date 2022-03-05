@@ -13,6 +13,7 @@ import Tag from './tag';
 import Link from './link';
 import Table from './table';
 import TableColumn from './table-column';
+import Uploader from './uploader';
 
 const components = [
     Button,
@@ -29,7 +30,8 @@ const components = [
     Tag,
     Link,
     Table,
-    TableColumn
+    TableColumn,
+    Uploader
 ];
 
 export default components;
