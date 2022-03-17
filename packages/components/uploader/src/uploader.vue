@@ -15,11 +15,17 @@
         @change="handleInputChange"
       />
     </div>
-    <div class="m-uploader__list">...</div>
+    <div class="m-uploader__list">
+      <ul>
+        <li v-for="file in fileList">{{ file.name }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, PropType, ref } from "vue";
+import { FileItem } from "./interface";
+import ajax from './ajax';
 
 export default defineComponent({
   name: "MUploader",
@@ -27,6 +33,10 @@ export default defineComponent({
     action: {
       required: true,
       type: String
+    },
+    fileList: {
+      type: Array as PropType<FileItem[]>,
+      default: () => []
     },
     disabled: {
       type: Boolean,
@@ -39,6 +49,14 @@ export default defineComponent({
     accept: {
       type: String,
       default: "*"
+    },
+    autoUpload: {
+      type: Boolean,
+      default: true
+    },
+    request: {
+      type: Function as PropType<() => Promise<any>>,
+      default: ajax
     }
   },
   setup(props, { emit }) {
@@ -46,7 +64,13 @@ export default defineComponent({
     const inputRef = ref(null as HTMLInputElement);
 
     const handleInputFiles = (files: FileList) => {
-      
+      if (props.autoUpload) {
+        uploadFiles(files);
+      }
+    }
+
+    const uploadFiles = (files: FileList) => {
+      // props.request()
     }
 
     const handleTriggerClick = () => {
