@@ -1,15 +1,19 @@
-import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router';
+import { createRouter, RouteRecordRaw, createWebHistory } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
     {
         path: "/",
-        redirect: "/start",
+        redirect: "/guide",
     },
     {
-        path: "/start",
-        component: () => import("@/views/start/index.vue"),
+        path: "/guide",
+        component: () => import("@/views/guide/index.vue"),
+        redirect: "/guide/start",
         children: [
-
+            {
+                path: "start",
+                component: () => import("@/views/guide/start.vue"),
+            }
         ]
     },
     {
@@ -71,7 +75,7 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
     routes,
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
             return {

@@ -6,7 +6,7 @@
     <div class="app-header__right">
       <ul class="app-menu">
         <li class="app-menu__item">
-          <router-link to="/start">指南</router-link>
+          <router-link to="/guide">指南</router-link>
         </li>
         <li class="app-menu__item">
           <router-link to="/component">组件</router-link>

@@ -1410,12 +1410,29 @@ script$1.__file = "packages/components/table/src/column.vue";
 
 const MTableColumn = withInstall(script$1);
 
+var ajax = () => {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            resolve(xhr.responseText);
+        };
+        xhr.onerror = function () {
+            reject("请求失败");
+        };
+        // xhr.open()
+    });
+};
+
 var script = defineComponent({
     name: "MUploader",
     props: {
         action: {
             required: true,
             type: String
+        },
+        fileList: {
+            type: Array,
+            default: () => []
         },
         disabled: {
             type: Boolean,
@@ -1428,10 +1445,21 @@ var script = defineComponent({
         accept: {
             type: String,
             default: "*"
+        },
+        autoUpload: {
+            type: Boolean,
+            default: true
+        },
+        request: {
+            type: Function,
+            default: ajax
         }
     },
     setup(props, { emit }) {
         const inputRef = ref(null);
+        const handleInputFiles = (files) => {
+            if (props.autoUpload) ;
+        };
         const handleTriggerClick = () => {
             if (!props.disabled) {
                 inputRef.value.value = null;
@@ -1440,6 +1468,7 @@ var script = defineComponent({
         };
         const handleInputChange = (e) => {
             e.target.files;
+            handleInputFiles();
         };
         return {
             inputRef,
@@ -1456,7 +1485,7 @@ const _hoisted_1 = {
 };
 const _hoisted_2 = /*#__PURE__*/createTextVNode("点击上传");
 const _hoisted_3 = ["multiple", "accept"];
-const _hoisted_4 = /*#__PURE__*/createElementVNode("div", { class: "m-uploader__list" }, "...", -1 /* HOISTED */);
+const _hoisted_4 = { class: "m-uploader__list" };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_button = resolveComponent("m-button");
@@ -1483,7 +1512,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.handleInputChange && _ctx.handleInputChange(...args)))
       }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3)
     ]),
-    _hoisted_4
+    createElementVNode("div", _hoisted_4, [
+      createElementVNode("ul", null, [
+        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.fileList, (file) => {
+          return (openBlock(), createElementBlock("li", null, toDisplayString(file.name), 1 /* TEXT */))
+        }), 256 /* UNKEYED_FRAGMENT */))
+      ])
+    ])
   ]))
 }
 

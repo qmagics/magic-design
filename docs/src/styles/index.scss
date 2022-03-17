@@ -52,6 +52,10 @@ body {
             padding: $padding;
             border-radius: $radius;
             margin-right: #{$rightAsideWidth+$gutter};
+
+            &.is--full {
+                margin-right: 0;
+            }
         }
 
         .demo-page__aside {
