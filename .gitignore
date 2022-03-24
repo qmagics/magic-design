@@ -11,3 +11,6 @@ node_modules/
 
 # 
 dist
+
+#
+deploy.config.js
