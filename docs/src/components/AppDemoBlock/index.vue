@@ -11,7 +11,7 @@
                 <slot></slot>
             </div>
             <div class="app-demo-block__toolbar">
-                <a class="tool-btn" @click="copySource">
+                <a class="tool-btn" v-clipboard="item.source">
                     <i class="qd-icon-copy"></i>
                 </a>
                 <a class="tool-btn" @click="toggleSourceBlock">
@@ -60,10 +60,6 @@ export default defineComponent({
             state.sourceVisible = !state.sourceVisible;
         };
 
-        const copySource = () => {
-
-        }
-
         const highlightSource = computed(() => {
             const str = highlight.highlight(props.item.source as string, { language: "html" }).value;
             return str;
@@ -71,7 +67,6 @@ export default defineComponent({
 
         return {
             toggleSourceBlock,
-            copySource,
             state,
             highlightSource
         }

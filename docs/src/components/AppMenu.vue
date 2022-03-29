@@ -47,12 +47,17 @@ export default defineComponent({
       color: $colorPrimary;
     }
   }
+  .app-menu-group-title {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 4px;
+  }
   .app-submenu {
   }
 
   &.is--group {
     font-weight: normal;
-    & > .app-menu-content {
+    & > .app-menu-group-title {
       color: rgb(135, 159, 179);
       padding-bottom: 5px;
       margin-bottom: 10px;

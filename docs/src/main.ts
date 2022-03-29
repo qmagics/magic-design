@@ -12,6 +12,7 @@ import AppDemoBlock from '@/components/AppDemoBlock/index.vue';
 import AppAnchorMenu from '@/components/AppAnchorMenu.vue';
 import AppHighlight from '@/components/AppHighlight.vue';
 
+import clipboard from './directives/clipboard';
 
 const app = createApp(App);
 app.use(router);
@@ -22,5 +23,8 @@ app.use(MagicDesign);
 app.component(AppDemoBlock.name, AppDemoBlock);
 app.component(AppAnchorMenu.name, AppAnchorMenu);
 app.component(AppHighlight.name, AppHighlight);
+
+// 全局指令
+app.directive('clipboard', clipboard);
 
 app.mount('#app');
