@@ -1410,16 +1410,21 @@ script$1.__file = "packages/components/table/src/column.vue";
 
 const MTableColumn = withInstall(script$1);
 
-var ajax = () => {
+const ajax = (options) => {
     return new Promise((resolve, reject) => {
+        const { fileItem, method, url, name } = options;
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
-            resolve(xhr.responseText);
+            resolve(JSON.parse(xhr.responseText));
         };
         xhr.onerror = function () {
             reject("请求失败");
         };
-        // xhr.open()
+        xhr.open(method, url, true);
+        const data = new FormData();
+        const key = typeof name === 'string' ? name : name(fileItem);
+        data.append(key, fileItem.file, fileItem.name);
+        xhr.send();
     });
 };
 
@@ -1458,7 +1463,24 @@ var script = defineComponent({
     setup(props, { emit }) {
         const inputRef = ref(null);
         const handleInputFiles = (files) => {
-            if (props.autoUpload) ;
+            if (props.autoUpload) {
+                uploadFiles(files);
+            }
+        };
+        const uploadFiles = (files) => {
+            Array.from(files).map(i => ({ file: i, name: i.name })).forEach((file) => {
+                props.request({
+                    method: 'post',
+                    url: props.action,
+                    fileItem: file,
+                    name: "file"
+                }).then(res => {
+                    console.log(res);
+                });
+            });
+            // blobToDataUrl(files[0]).then(data=>{
+            //   console.log(data);
+            // })
         };
         const handleTriggerClick = () => {
             if (!props.disabled) {
@@ -1467,8 +1489,8 @@ var script = defineComponent({
             }
         };
         const handleInputChange = (e) => {
-            e.target.files;
-            handleInputFiles();
+            const files = e.target.files;
+            handleInputFiles(files);
         };
         return {
             inputRef,

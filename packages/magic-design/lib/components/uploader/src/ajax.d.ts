@@ -1,2 +1,3 @@
-declare const _default: () => Promise<any>;
-export default _default;
+import { UploadRequest } from "./interface";
+declare const ajax: UploadRequest;
+export default ajax;

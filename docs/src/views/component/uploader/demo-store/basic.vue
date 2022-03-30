@@ -1,6 +1,16 @@
 <template>
-    <m-uploader></m-uploader>
+    <m-uploader v-model="fileList" action="http://localhost:4000/api/upload"></m-uploader>
+
+    <pre>{{fileList}}</pre>
+
+    <!-- <el-button @click="getAjax">请求</el-button> -->
 </template>
+
+<script lang="ts" setup>
+import { reactive } from 'vue';
+const fileList = reactive([]);
+
+</script>
 
 <demo-meta>
 {

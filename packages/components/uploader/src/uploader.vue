@@ -24,8 +24,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
-import { FileItem } from "./interface";
+import { FileItem, UploadRequest } from "./interface";
 import ajax from './ajax';
+import { blobToDataUrl } from "@magic-design/utils/src";
 
 export default defineComponent({
   name: "MUploader",
@@ -55,7 +56,7 @@ export default defineComponent({
       default: true
     },
     request: {
-      type: Function as PropType<() => Promise<any>>,
+      type: Function as PropType<UploadRequest>,
       default: ajax
     }
   },
@@ -70,7 +71,22 @@ export default defineComponent({
     }
 
     const uploadFiles = (files: FileList) => {
-      // props.request()
+      Array.from(files).map(i => ({ file: i, name: i.name })).forEach((file) => {
+        props.request({
+          method: 'post',
+          url: props.action,
+          fileItem: file,
+          name: "file"
+        }).then(res => {
+          console.log(res)
+        })
+      })
+
+
+
+      // blobToDataUrl(files[0]).then(data=>{
+      //   console.log(data);
+      // })
     }
 
     const handleTriggerClick = () => {

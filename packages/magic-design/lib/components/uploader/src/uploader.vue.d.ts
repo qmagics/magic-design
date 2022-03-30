@@ -1,5 +1,5 @@
 import { PropType } from "vue";
-import { FileItem } from "./interface";
+import { FileItem, UploadRequest } from "./interface";
 declare const _default: import("vue").DefineComponent<{
     action: {
         required: true;
@@ -26,8 +26,8 @@ declare const _default: import("vue").DefineComponent<{
         default: boolean;
     };
     request: {
-        type: PropType<() => Promise<any>>;
-        default: () => Promise<any>;
+        type: PropType<UploadRequest>;
+        default: UploadRequest;
     };
 }, {
     inputRef: import("vue").Ref<HTMLInputElement>;
@@ -48,13 +48,13 @@ declare const _default: import("vue").DefineComponent<{
     multiple: boolean;
     accept: string;
     autoUpload: boolean;
-    request: () => Promise<any>;
+    request: UploadRequest;
 } & {}>, {
     fileList: FileItem[];
     disabled: boolean;
     multiple: boolean;
     accept: string;
     autoUpload: boolean;
-    request: () => Promise<any>;
+    request: UploadRequest;
 }>;
 export default _default;

@@ -6,3 +6,12 @@ export interface FileItem {
 export interface RequestOption {
     action: string;
 }
+
+export interface UploadRequestOptions {
+    method: string;
+    url: string;
+    fileItem: FileItem;
+    name: string | ((fileItem: FileItem) => string)
+}
+
+export type UploadRequest = (options: UploadRequestOptions) => Promise<any>

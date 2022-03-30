@@ -70,15 +70,15 @@ const routes: RouteRecordRaw[] = [
                 component: () => import("@/views/component/uploader/index.vue")
             },
             {
-                path: ":pathMatch(.*)*",
+                path: ":pathMatch(.*)",
                 component: () => import("@/views/common/todo.vue")
             },
         ]
     },
-    // {
-    //     path: "/404",
-    //     component: () => import("@/views/common/404.vue")
-    // },
+    {
+        path: "/404",
+        component: () => import("@/views/common/404.vue")
+    },
     {
         path: "/:pathMatch(.*)*",
         component: () => import("@/views/common/404.vue")
