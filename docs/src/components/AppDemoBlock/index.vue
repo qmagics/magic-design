@@ -12,10 +12,10 @@
             </div>
             <div class="app-demo-block__toolbar">
                 <a class="tool-btn" v-clipboard="item.source">
-                    <i class="qd-icon-copy"></i>
+                    <i class="md-icon-copy"></i>
                 </a>
                 <a class="tool-btn" @click="toggleSourceBlock">
-                    <i class="qd-icon-code"></i>
+                    <i class="md-icon-code"></i>
                 </a>
             </div>
             <div class="app-demo-block__source" v-show="state.sourceVisible">
@@ -117,7 +117,7 @@ export default defineComponent({
             align-items: center;
             transition: all 0.2s ease;
 
-            [class^="qd-icon"] {
+            [class^="md-icon"] {
                 font-size: 20px;
             }
 

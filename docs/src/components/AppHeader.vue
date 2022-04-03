@@ -1,7 +1,7 @@
 <template>
   <div class="app-header">
     <div class="app-header__left">
-      <div class="app-logo">magic-design</div>
+      <AppLogo></AppLogo>
     </div>
     <div class="app-header__right">
       <ul class="app-menu">
@@ -11,10 +11,15 @@
         <li class="app-menu__item">
           <router-link to="/component">组件</router-link>
         </li>
+        <li class="app-menu__item">
+          <a href="https://github.com/qmagics/magic-design" target="_blank">
+            <i class="md-icon-github"></i>
+          </a>
+        </li>
       </ul>
       <div class="app-toolbar">
         <div class="theme-mode" @click="toggleTheme">
-          <i :class="`qd-icon-${currentTheme}`"></i>
+          <i :class="`md-icon-${currentTheme}`"></i>
         </div>
       </div>
     </div>
@@ -23,8 +28,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import AppLogo from '@/components/AppLogo.vue';
 
 export default defineComponent({
+  components: {
+    AppLogo
+  },
   setup() {
     const currentTheme = ref("light");
     const toggleTheme = () => {
@@ -56,11 +65,7 @@ export default defineComponent({
   // box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.1);
 
   &__left {
-    width: 200px;
-    .app-logo {
-      font-weight: bold;
-      color: $colorPrimary;
-    }
+    // width: 200px;
   }
   &__right {
     flex: 1;
@@ -99,7 +104,7 @@ export default defineComponent({
         &:hover {
           background: $colorBgLight;
         }
-        .qd-icon {
+        .md-icon {
         }
       }
     }
