@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, watch, onMounted, onUpdated, cloneVNode, h, Transition, withDirectives, vShow, withCtx, getCurrentInstance, createTextVNode, toDisplayString, renderList, normalizeStyle, onBeforeUnmount } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, getCurrentInstance, watch, onMounted, onUpdated, resolveDirective, withCtx, withDirectives, normalizeStyle, vShow, createTextVNode, toDisplayString, renderList, onBeforeUnmount } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -54,7 +54,7 @@ const _hoisted_2$7 = {
 };
 const _hoisted_3$6 = { key: 1 };
 
-function render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -94,7 +94,7 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   ], 10 /* CLASS, PROPS */, _hoisted_1$b))
 }
 
-script$i.render = render$g;
+script$i.render = render$h;
 script$i.__file = "packages/components/button/src/button.vue";
 
 const MButton = withInstall(script$i);
@@ -107,13 +107,13 @@ var script$h = defineComponent({
     setup() { },
 });
 
-function render$f(_ctx, _cache, $props, $setup, $data, $options) {
+function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script$h.render = render$f;
+script$h.render = render$g;
 script$h.__file = "packages/components/icon/src/icon.vue";
 
 const MIcon = withInstall(script$h);
@@ -228,7 +228,7 @@ const _hoisted_5 = {
   class: "m-input__append"
 };
 
-function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("div", {
@@ -290,7 +290,7 @@ function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$g.render = render$e;
+script$g.render = render$f;
 script$g.__file = "packages/components/input/src/input.vue";
 
 const MInput = withInstall(script$g);
@@ -475,7 +475,7 @@ const _hoisted_1$9 = ["disabled", "value", "name", "checked"];
 const _hoisted_2$5 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
 const _hoisted_3$4 = { class: "m-radio__label" };
 
-function render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-radio',
@@ -501,7 +501,7 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$e.render = render$d;
+script$e.render = render$e;
 script$e.__file = "packages/components/radio/src/radio.vue";
 
 const MRadio = withInstall(script$e);
@@ -529,13 +529,13 @@ var script$d = defineComponent({
 
 const _hoisted_1$8 = { class: "m-radio-group" };
 
-function render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$8, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$d.render = render$c;
+script$d.render = render$d;
 script$d.__file = "packages/components/radio/src/radio-group.vue";
 
 const MRadioGroup = withInstall(script$d);
@@ -616,7 +616,7 @@ const _hoisted_1$7 = ["disabled", "value", "name", "checked"];
 const _hoisted_2$4 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
 const _hoisted_3$3 = { class: "m-checkbox__label" };
 
-function render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function render$c(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-checkbox',
@@ -642,7 +642,7 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$c.render = render$b;
+script$c.render = render$c;
 script$c.__file = "packages/components/checkbox/src/checkbox.vue";
 
 const MCheckbox = withInstall(script$c);
@@ -679,33 +679,168 @@ var script$b = defineComponent({
 
 const _hoisted_1$6 = { class: "m-checkbox-group" };
 
-function render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$6, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$b.render = render$a;
+script$b.render = render$b;
 script$b.__file = "packages/components/checkbox/src/checkbox-group.vue";
 
 const MCheckboxGroup = withInstall(script$b);
 
 var script$a = defineComponent({
     name: "MTeleport",
-    props: {}
 });
 
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Teleport, { to: "body" }, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$a.render = render$9;
+script$a.render = render$a;
 script$a.__file = "packages/components/trigger/src/teleport.vue";
 
+/* istanbul ignore next */
+const on = function (element, event, handler, useCapture = false) {
+    if (element && event && handler) {
+        element?.addEventListener(event, handler, useCapture);
+    }
+};
+
+const nodeList = new Map();
+let startClick;
+on(document, 'mousedown', (e) => (startClick = e));
+on(document, 'mouseup', (e) => {
+    for (const handlers of nodeList.values()) {
+        for (const { documentHandler } of handlers) {
+            documentHandler(e, startClick);
+        }
+    }
+});
+function createDocumentHandler(el, binding) {
+    let excludes = [];
+    if (Array.isArray(binding.arg)) {
+        excludes = binding.arg;
+    }
+    else if (binding.arg instanceof HTMLElement) {
+        // due to current implementation on binding type is wrong the type casting is necessary here
+        excludes.push(binding.arg);
+    }
+    return function (mouseup, mousedown) {
+        const popperRef = binding.instance.popperRef;
+        const mouseUpTarget = mouseup.target;
+        const mouseDownTarget = mousedown?.target;
+        const isBound = !binding || !binding.instance;
+        const isTargetExists = !mouseUpTarget || !mouseDownTarget;
+        const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget);
+        const isSelf = el === mouseUpTarget;
+        const isTargetExcluded = (excludes.length &&
+            excludes.some((item) => item?.contains(mouseUpTarget))) ||
+            (excludes.length && excludes.includes(mouseDownTarget));
+        const isContainedByPopper = popperRef &&
+            (popperRef.contains(mouseUpTarget) || popperRef.contains(mouseDownTarget));
+        if (isBound ||
+            isTargetExists ||
+            isContainedByEl ||
+            isSelf ||
+            isTargetExcluded ||
+            isContainedByPopper) {
+            return;
+        }
+        binding.value(mouseup, mousedown);
+    };
+}
+const ClickOutside = {
+    beforeMount(el, binding) {
+        // there could be multiple handlers on the element
+        if (!nodeList.has(el)) {
+            nodeList.set(el, []);
+        }
+        nodeList.get(el).push({
+            documentHandler: createDocumentHandler(el, binding),
+            bindingFn: binding.value,
+        });
+    },
+    updated(el, binding) {
+        if (!nodeList.has(el)) {
+            nodeList.set(el, []);
+        }
+        const handlers = nodeList.get(el);
+        const oldHandlerIndex = handlers.findIndex((item) => item.bindingFn === binding.oldValue);
+        const newHandler = {
+            documentHandler: createDocumentHandler(el, binding),
+            bindingFn: binding.value,
+        };
+        if (oldHandlerIndex >= 0) {
+            // replace the old handler to the new handler
+            handlers.splice(oldHandlerIndex, 1, newHandler);
+        }
+        else {
+            handlers.push(newHandler);
+        }
+    },
+    unmounted(el) {
+        // remove all listeners when a component unmounted
+        nodeList.delete(el);
+    },
+};
+
+const useContentLayout = (props, triggerRef) => {
+    const instance = getCurrentInstance();
+    const contentVisible = ref(props.visible);
+    const contentStyle = reactive({
+        left: '',
+        top: '',
+        width: ''
+    });
+    const refreshContentPosition = () => {
+        const containerEl = triggerRef.value;
+        const { width, height } = containerEl?.getBoundingClientRect();
+        const top = containerEl.offsetTop;
+        const left = containerEl.offsetLeft;
+        const [offsetX, offsetY] = props.popperOffset;
+        contentStyle.width = width + 'px';
+        contentStyle.left = left + (offsetX || 0) + 'px';
+        contentStyle.top = top + (offsetY || 0) + height + 'px';
+    };
+    const clickoutsideOptions = {
+        args: computed(() => {
+            return [triggerRef.value];
+        }),
+        handler: () => {
+            contentVisible.value = false;
+            instance.emit("update:visible", false);
+        }
+    };
+    watch(() => props.visible, (val) => {
+        contentVisible.value = val;
+        refreshContentPosition();
+    });
+    onMounted(() => {
+        refreshContentPosition();
+    });
+    onUpdated(() => {
+        if (contentVisible.value) {
+            refreshContentPosition();
+        }
+    });
+    return {
+        contentVisible,
+        contentStyle,
+        clickoutsideOptions
+    };
+};
 var script$9 = defineComponent({
     name: "MTrigger",
+    components: {
+        MTeleport: script$a
+    },
+    directives: {
+        clickoutside: ClickOutside
+    },
     props: {
         popperOffset: {
             type: Array,
@@ -714,58 +849,53 @@ var script$9 = defineComponent({
         visible: Boolean
     },
     emits: ['update:visible'],
-    setup(props, { slots, emit }) {
-        const onClick = () => {
-            emit("update:visible", !props.visible);
-        };
-        const contentStyle = reactive({
-            left: '',
-            top: '',
-            width: ''
-        });
+    setup(props, { emit }) {
         const triggerRef = ref();
-        const refreshContentPosition = () => {
-            const containerEl = triggerRef.value?.$el;
-            const { width, height } = containerEl?.getBoundingClientRect();
-            const top = containerEl.offsetTop;
-            const left = containerEl.offsetLeft;
-            const [offsetX, offsetY] = props.popperOffset;
-            contentStyle.width = width + 'px';
-            contentStyle.left = left + (offsetX || 0) + 'px';
-            contentStyle.top = top + (offsetY || 0) + height + 'px';
+        const { contentVisible, contentStyle, clickoutsideOptions } = useContentLayout(props, triggerRef);
+        const onTriggerClick = () => {
+            contentVisible.value = !contentVisible.value;
+            emit("update:visible", contentVisible.value);
         };
-        watch(() => props.visible, () => {
-            refreshContentPosition();
-        });
-        onMounted(() => {
-            refreshContentPosition();
-        });
-        onUpdated(() => {
-            if (props.visible) {
-                refreshContentPosition();
-            }
-        });
-        return () => {
-            const trigger = slots.default?.();
-            const wrappedTrigger = cloneVNode(trigger[0], {
-                onClick,
-                ref: triggerRef
-            });
-            const content = slots.content?.();
-            const wrappedContent = h(script$a, h(Transition, {
-                name: "m-zoom-in-top"
-            }, withDirectives(h('div', {
-                class: 'm-trigger__content',
-                style: contentStyle
-            }, content), [[vShow, props.visible]])));
-            return h(Fragment, [
-                wrappedTrigger,
-                wrappedContent
-            ]);
+        return {
+            contentVisible,
+            triggerRef,
+            onTriggerClick,
+            contentStyle,
+            clickoutsideOptions
         };
     }
 });
 
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_MTeleport = resolveComponent("MTeleport");
+  const _directive_clickoutside = resolveDirective("clickoutside");
+
+  return (openBlock(), createElementBlock(Fragment, null, [
+    createElementVNode("div", {
+      ref: "triggerRef",
+      class: "m-trigger__trigger",
+      onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.onTriggerClick && _ctx.onTriggerClick(...args)))
+    }, [
+      renderSlot(_ctx.$slots, "default")
+    ], 512 /* NEED_PATCH */),
+    createVNode(_component_MTeleport, null, {
+      default: withCtx(() => [
+        withDirectives(createElementVNode("div", {
+          class: "m-trigger__content",
+          style: normalizeStyle(_ctx.contentStyle)
+        }, [
+          renderSlot(_ctx.$slots, "content")
+        ], 4 /* STYLE */), [
+          [vShow, _ctx.contentVisible],
+          [_directive_clickoutside, _ctx.clickoutsideOptions.handler, _ctx.clickoutsideOptions.args.value]
+        ])
+      ]),
+      _: 3 /* FORWARDED */
+    })
+  ], 64 /* STABLE_FRAGMENT */))
+}
+
+script$9.render = render$9;
 script$9.__file = "packages/components/trigger/src/trigger.vue";
 
 const MTrigger = withInstall(script$9);
@@ -775,6 +905,9 @@ var script$8 = defineComponent({
         MTrigger,
         MInput,
         MIcon
+    },
+    directives: {
+        clickoutside: ClickOutside
     },
     name: "MSelect",
     props: {
@@ -933,7 +1066,6 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
           "model-value": _ctx.displayLabel,
           readonly: "",
           placeholder: _ctx.placeholder,
-          onClick: _ctx.toggleDropdownVisible,
           clearable: _ctx.showClearBtn,
           onClear: _ctx.onClear,
           size: _ctx.size
@@ -947,7 +1079,7 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
             ])
           ]),
           _: 1 /* STABLE */
-        }, 8 /* PROPS */, ["model-value", "placeholder", "onClick", "clearable", "onClear", "size"])
+        }, 8 /* PROPS */, ["model-value", "placeholder", "clearable", "onClear", "size"])
       ]),
       _: 3 /* FORWARDED */
     }, 8 /* PROPS */, ["visible"])

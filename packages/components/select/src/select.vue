@@ -12,11 +12,11 @@
         @mouseleave="() => State.hovered = false"
     >
         <m-trigger v-model:visible="State.dropdownVisible" :popper-offset="[0, 5]">
+                <!-- @click="toggleDropdownVisible" -->
             <m-input
                 :model-value="displayLabel"
                 readonly
                 :placeholder="placeholder"
-                @click="toggleDropdownVisible"
                 :clearable="showClearBtn"
                 @clear="onClear"
                 :size="size"
@@ -43,6 +43,7 @@ import MIcon from "@magic-design/components/icon";
 import { SELECT_KEY, UPDATE_MODEL_EVENT } from "@magic-design/utils/src/const";
 import { SelectModelValue, SelectProvideContext } from "./interface";
 import { OptionProxy } from "./interface";
+import { clickoutside } from '@magic-design/directives';
 
 type SelectSize = 'mini' | 'small' | 'medium' | 'large';
 
@@ -51,6 +52,10 @@ export default defineComponent({
         MTrigger,
         MInput,
         MIcon
+    },
+
+    directives: {
+        clickoutside
     },
 
     name: "MSelect",
