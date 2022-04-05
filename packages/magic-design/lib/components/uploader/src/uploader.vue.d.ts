@@ -1,4 +1,4 @@
-import { PropType } from "vue";
+import { PropType, Ref } from "vue";
 import { FileItem, UploadRequest } from "./interface";
 declare const _default: import("vue").DefineComponent<{
     action: {
@@ -30,10 +30,11 @@ declare const _default: import("vue").DefineComponent<{
         default: UploadRequest;
     };
 }, {
-    inputRef: import("vue").Ref<HTMLInputElement>;
+    inputRef: Ref<HTMLInputElement>;
+    fileItems: FileItem[];
     handleTriggerClick: () => void;
     handleInputChange: (e: DragEvent) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:file-list"[], "update:file-list", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     action?: unknown;
     fileList?: unknown;
     disabled?: unknown;
@@ -49,7 +50,9 @@ declare const _default: import("vue").DefineComponent<{
     accept: string;
     autoUpload: boolean;
     request: UploadRequest;
-} & {}>, {
+} & {}> & {
+    "onUpdate:file-list"?: (...args: any[]) => any;
+}, {
     fileList: FileItem[];
     disabled: boolean;
     multiple: boolean;

@@ -1,6 +1,12 @@
+export type FileStatus = 'init' | 'pending' | 'error' | 'done';
+
 export interface FileItem {
-    file: File,
-    name: string
+    name: string;
+    file?: File;
+    url?: string;
+    status?: FileStatus;
+    percent?: number;
+    response?: any;
 }
 
 export interface RequestOption {

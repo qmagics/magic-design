@@ -313,6 +313,15 @@ const isString = (val) => typeof val === 'string';
 const isFragment = (node) => node?.type === Fragment;
 const isComment = (node) => node.type === Comment;
 const isValidElementNode = (node) => isVNode(node) && !isFragment(node) && !isComment(node);
+const blobToDataUrl = (blob) => {
+    return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onload = (e) => {
+            resolve(e.target.result);
+        };
+    });
+};
 
 const GUTTER_MAP = {
     mini: 5,
@@ -1592,42 +1601,72 @@ var script = defineComponent({
             default: ajax
         }
     },
+    emits: ['update:file-list'],
     setup(props, { emit }) {
         const inputRef = ref(null);
-        const handleInputFiles = (files) => {
+        const fileItems = reactive(props.fileList);
+        watch(fileItems, (val) => {
+            emit("update:file-list", val);
+        });
+        const handleInputFiles = async (files) => {
+            const items = await handlerInitFiles(files);
+            addItems(items);
             if (props.autoUpload) {
-                uploadFiles(files);
+                uploadFiles(items);
             }
         };
-        const uploadFiles = (files) => {
-            Array.from(files).map(i => ({ file: i, name: i.name })).forEach((file) => {
-                props.request({
+        // 图片初始化处理
+        const handlerInitFiles = async (files) => {
+            const p_items = [...files].map(async (file) => {
+                return {
+                    file,
+                    name: file.name,
+                    url: await blobToDataUrl(file),
+                    response: '',
+                    percent: 0,
+                    status: 'init'
+                };
+            });
+            const items = await Promise.all(p_items);
+            return items;
+        };
+        // 添加新文件
+        const addItems = (items) => {
+            fileItems.push(...items);
+        };
+        const uploadFiles = (items) => {
+            items.forEach(async (item) => {
+                await props.request({
                     method: 'post',
                     url: props.action,
-                    fileItem: file,
+                    fileItem: item,
                     name: "file"
                 }).then(res => {
-                    console.log(res);
+                    item.status = 'done';
+                    item.response = res;
+                }).catch(err => {
+                    item.status = 'error';
+                    item.response = err;
                 });
             });
-            // blobToDataUrl(files[0]).then(data=>{
-            //   console.log(data);
-            // })
         };
+        // 触发上传按钮
         const handleTriggerClick = () => {
             if (!props.disabled) {
                 inputRef.value.value = null;
                 inputRef.value.click();
             }
         };
+        // file-input文件变更
         const handleInputChange = (e) => {
             const files = e.target.files;
             handleInputFiles(files);
         };
         return {
             inputRef,
+            fileItems,
             handleTriggerClick,
-            handleInputChange
+            handleInputChange,
         };
     },
 });
@@ -1667,11 +1706,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3)
     ]),
     createElementVNode("div", _hoisted_4, [
-      createElementVNode("ul", null, [
-        (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.fileList, (file) => {
-          return (openBlock(), createElementBlock("li", null, toDisplayString(file.name), 1 /* TEXT */))
-        }), 256 /* UNKEYED_FRAGMENT */))
-      ])
+      createElementVNode("pre", null, toDisplayString(_ctx.fileItems), 1 /* TEXT */),
+      createCommentVNode(" <ul>\n        <li v-for=\"file in fileItems\">{{ file.name }}</li>\n      </ul>")
     ])
   ]))
 }
