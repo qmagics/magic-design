@@ -2,14 +2,17 @@ import { UploadRequest } from "./interface";
 
 const ajax: UploadRequest = (options) => {
     return new Promise((resolve, reject) => {
-        const { fileItem, method, url, name } = options;
+        const { fileItem, method, url, name, onSuccess, onError } = options;
         const xhr: XMLHttpRequest = new XMLHttpRequest();
 
         xhr.onload = function () {
-            resolve(JSON.parse(xhr.responseText));
+            const data = JSON.parse(xhr.responseText);
+            onSuccess && onSuccess(data);
+            resolve(data);
         }
 
-        xhr.onerror = function () {
+        xhr.onerror = function (e) {
+            onError && onError(e);
             reject("请求失败");
         }
 

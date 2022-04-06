@@ -9,6 +9,10 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<FileItem[]>;
         default: () => any[];
     };
+    listType: {
+        type: StringConstructor;
+        default: string;
+    };
     disabled: {
         type: BooleanConstructor;
         default: boolean;
@@ -31,12 +35,13 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {
     inputRef: Ref<HTMLInputElement>;
-    fileItems: FileItem[];
+    fileItems: Ref<FileItem[]>;
     handleTriggerClick: () => void;
-    handleInputChange: (e: DragEvent) => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, "update:file-list"[], "update:file-list", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
+    handleInputChange: (e: DragEvent) => Promise<void>;
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:file-list" | "change")[], "update:file-list" | "change", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     action?: unknown;
     fileList?: unknown;
+    listType?: unknown;
     disabled?: unknown;
     multiple?: unknown;
     accept?: unknown;
@@ -45,6 +50,7 @@ declare const _default: import("vue").DefineComponent<{
 } & {
     action: string;
     fileList: FileItem[];
+    listType: string;
     disabled: boolean;
     multiple: boolean;
     accept: string;
@@ -52,8 +58,10 @@ declare const _default: import("vue").DefineComponent<{
     request: UploadRequest;
 } & {}> & {
     "onUpdate:file-list"?: (...args: any[]) => any;
+    onChange?: (...args: any[]) => any;
 }, {
     fileList: FileItem[];
+    listType: string;
     disabled: boolean;
     multiple: boolean;
     accept: string;

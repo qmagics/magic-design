@@ -16,7 +16,7 @@
       />
     </div>
     <div class="m-uploader__list">
-      <pre>{{ fileItems }}</pre>
+      <FileList :file-items="fileItems"></FileList>
       <!-- <ul>
         <li v-for="file in fileItems">{{ file.name }}</li>
       </ul>-->
@@ -24,13 +24,18 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, reactive, Ref, ref, toRefs, watch } from "vue";
+import { defineComponent, PropType, reactive, Ref, ref, watch } from "vue";
 import { FileItem, UploadRequest } from "./interface";
 import ajax from './ajax';
 import { blobToDataUrl } from "@magic-design/utils/src";
+import { isImage } from "./utils";
+import FileList from './file-list.vue';
 
 export default defineComponent({
   name: "MUploader",
+  components: {
+    FileList
+  },
   props: {
     action: {
       required: true,
@@ -39,6 +44,10 @@ export default defineComponent({
     fileList: {
       type: Array as PropType<FileItem[]>,
       default: () => []
+    },
+    listType: {
+      type: String,
+      default: 'list-item'
     },
     disabled: {
       type: Boolean,
@@ -61,61 +70,31 @@ export default defineComponent({
       default: ajax
     }
   },
-  emits: ['update:file-list'],
+  emits: ['update:file-list', 'change'],
   setup(props, { emit }) {
     const inputRef = ref(null as HTMLInputElement);
 
-    const fileItems = <FileItem[]>reactive(props.fileList);
-    watch(fileItems, (val) => {
-      emit("update:file-list", val);
-    })
+    const fileItems = <Ref<FileItem[]>>ref();
 
-    const handleInputFiles = async (files: FileList) => {
-      const items = await handlerInitFiles(files);
-      addItems(items);
-
-      if (props.autoUpload) {
-        uploadFiles(items);
-      }
-    }
-
-    // 图片初始化处理
-    const handlerInitFiles = async (files: FileList) => {
-      const p_items = [...files].map(async file => {
+    const normalizeFileItems = (items: FileItem[]) => {
+      const list = <FileItem[]>items.map((item, index) => {
+        const status = item.status || 'done';
         return {
-          file,
-          name: file.name,
-          url: await blobToDataUrl(file),
-          response: '',
-          percent: 0,
-          status: 'init'
+          ...item,
+          status,
+          percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
         }
       });
-      const items = await Promise.all(p_items);
-      return items as FileItem[];
+
+      fileItems.value = list;
     }
 
-    // 添加新文件
-    const addItems = (items: FileItem[]) => {
-      fileItems.push(...items);
-    }
-
-    const uploadFiles = (items: FileItem[]) => {
-      items.forEach(async (item) => {
-        await props.request({
-          method: 'post',
-          url: props.action,
-          fileItem: item,
-          name: "file"
-        }).then(res => {
-          item.status = 'done';
-          item.response = res;
-        }).catch(err => {
-          item.status = 'error';
-          item.response = err;
-        })
-      })
-    }
+    normalizeFileItems(props.fileList);
+    watch(() => props.fileList, newList => {
+      if (newList) {
+        normalizeFileItems(newList);
+      }
+    }, { deep: true, immediate: true });
 
     // 触发上传按钮
     const handleTriggerClick = () => {
@@ -126,16 +105,67 @@ export default defineComponent({
     }
 
     // file-input文件变更
-    const handleInputChange = (e: DragEvent) => {
+    const handleInputChange = async (e: DragEvent) => {
       const files = (e.target as HTMLInputElement).files;
-      handleInputFiles(files);
+      [...files].forEach((file, index) => {
+        initFile(file, index);
+      })
+    }
+
+    // 初始化文件
+    const initFile = async (file: File, index: number) => {
+      const item = await createFileItem(file, index);
+
+      fileItems.value.push(item);
+      emitUpdate(item);
+
+      if (props.autoUpload) {
+        uploadFile(item, index);
+      }
+    }
+
+    // 根据file对象创建FileItem
+    const createFileItem = async (file: File, index: number) => {
+      return <FileItem>reactive({
+        file,
+        name: file.name,
+        url: isImage(file) ? await blobToDataUrl(file) : undefined,
+        response: '',
+        percent: 0,
+        status: 'init'
+      })
+    }
+
+    // 触发更新
+    const emitUpdate = (fileItem: FileItem) => {
+      const newValue = fileItems.value;
+      emit("update:file-list", newValue, fileItem);
+      emit("change", newValue);
+    }
+
+    // 上传单个文件
+    const uploadFile = (fileItem: FileItem, index: number) => {
+      props.request({
+        method: 'post',
+        url: props.action,
+        fileItem: fileItem,
+        name: "file"
+      })
+        .then(res => {
+          fileItem.status = 'done';
+          fileItem.response = res;
+        })
+        .catch(err => {
+          fileItem.status = 'error';
+          fileItem.response = err;
+        })
     }
 
     return {
       inputRef,
       fileItems,
       handleTriggerClick,
-      handleInputChange,
+      handleInputChange
     }
   },
 });
