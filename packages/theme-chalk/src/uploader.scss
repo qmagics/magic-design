@@ -7,7 +7,53 @@ $cname: $namespace+'-'+"uploader";
 
     @include e(trigger) {}
 
-    @include e(list) {}
+    @include e(tip) {
+        font-size: 12px;
+        margin-top: 7px;
+        color: $color-text-2;
+    }
+
+    .m-uploader-list {
+        margin-top: 10px;
+    }
+
+    .m-uploader-item {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        background-color: rgb(239, 242, 247);
+        margin-bottom: 7px;
+        padding: 0 7px;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+
+        &__info {
+            align-items: center;
+            margin-right: 40px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+
+            .info-icon {
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+            .info-text {}
+        }
+
+        &__toolbar {
+            display: flex;
+            position: absolute;
+            right: 7px;
+        }
+    }
+
+    .m-uploader-icon-btn {
+        cursor: pointer;
+    }
 
     .#{$cname}-input {
         display: none;

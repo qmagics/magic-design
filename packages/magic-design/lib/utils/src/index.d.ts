@@ -6,4 +6,5 @@ export declare const isValidElementNode: (node: unknown) => node is VNode<import
     [key: string]: any;
 }>;
 export declare const blobToDataUrl: (blob: Blob) => Promise<string>;
+export declare const getUID: (prefix?: string | number, affix?: string | number) => string;
 export { isArray, isString };

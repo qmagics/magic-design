@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, getCurrentInstance, watch, onMounted, onUpdated, resolveDirective, withCtx, withDirectives, normalizeStyle, vShow, createTextVNode, toDisplayString, renderList, onBeforeUnmount } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, getCurrentInstance, watch, onMounted, onUpdated, resolveDirective, withCtx, withDirectives, normalizeStyle, vShow, createTextVNode, toDisplayString, renderList, onBeforeUnmount, resolveDynamicComponent } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -7,7 +7,7 @@ const withInstall = (main) => {
     return main;
 };
 
-var script$j = defineComponent({
+var script$l = defineComponent({
     name: "MButton",
     props: {
         loading: Boolean,
@@ -48,13 +48,13 @@ var script$j = defineComponent({
 });
 
 const _hoisted_1$c = ["type", "autofocus"];
-const _hoisted_2$7 = {
+const _hoisted_2$8 = {
   key: 0,
   class: "m-button-icon"
 };
-const _hoisted_3$6 = { key: 1 };
+const _hoisted_3$7 = { key: 1 };
 
-function render$i(_ctx, _cache, $props, $setup, $data, $options) {
+function render$k(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("button", {
@@ -74,7 +74,7 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.handleClick && _ctx.handleClick(...args)))
   }, [
     (_ctx.loading || _ctx.icon)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$7, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$8, [
           createCommentVNode(" <m-icon-loading v-if=\"loading\" name=\"m-icon-loading\"></m-icon-loading> "),
           createCommentVNode(" <component v-else :is=\"icon\"></component> "),
           (_ctx.loading)
@@ -87,19 +87,19 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.default)
-      ? (openBlock(), createElementBlock("span", _hoisted_3$6, [
+      ? (openBlock(), createElementBlock("span", _hoisted_3$7, [
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
   ], 10 /* CLASS, PROPS */, _hoisted_1$c))
 }
 
-script$j.render = render$i;
-script$j.__file = "packages/components/button/src/button.vue";
+script$l.render = render$k;
+script$l.__file = "packages/components/button/src/button.vue";
 
-const MButton = withInstall(script$j);
+const MButton = withInstall(script$l);
 
-var script$i = defineComponent({
+var script$k = defineComponent({
     name: "MIcon",
     props: {
         name: String,
@@ -107,24 +107,25 @@ var script$i = defineComponent({
     setup() { },
 });
 
-function render$h(_ctx, _cache, $props, $setup, $data, $options) {
+function render$j(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("i", {
     class: normalizeClass(_ctx.name)
   }, null, 2 /* CLASS */))
 }
 
-script$i.render = render$h;
-script$i.__file = "packages/components/icon/src/icon.vue";
+script$k.render = render$j;
+script$k.__file = "packages/components/icon/src/icon.vue";
 
-const MIcon = withInstall(script$i);
+const MIcon = withInstall(script$k);
 
 const UPDATE_MODEL_EVENT = 'update:modelValue';
 const RADIO_GROUP_KEY = Symbol("radioGroup");
 const CHECKBOX_GROUP_KEY = Symbol("checkboxGroup");
 const SELECT_KEY = Symbol("select");
 const TABLE_KEY = Symbol("table");
+const UPLOADER_KEY = Symbol("uploader");
 
-var script$h = defineComponent({
+var script$j = defineComponent({
     name: "MInput",
     props: {
         modelValue: {
@@ -214,21 +215,21 @@ const _hoisted_1$b = {
   key: 0,
   class: "m-input__prepend"
 };
-const _hoisted_2$6 = {
+const _hoisted_2$7 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3$5 = ["placeholder", "disabled", "readonly", "value", "type"];
-const _hoisted_4$1 = {
+const _hoisted_3$6 = ["placeholder", "disabled", "readonly", "value", "type"];
+const _hoisted_4$2 = {
   key: 2,
   class: "m-input__suffix"
 };
-const _hoisted_5 = {
+const _hoisted_5$1 = {
   key: 3,
   class: "m-input__append"
 };
 
-function render$g(_ctx, _cache, $props, $setup, $data, $options) {
+function render$i(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
 
   return (openBlock(), createElementBlock("div", {
@@ -253,7 +254,7 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.prefix)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$6, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$7, [
           renderSlot(_ctx.$slots, "prefix")
         ]))
       : createCommentVNode("v-if", true),
@@ -268,9 +269,9 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[1] || (_cache[1] = (...args) => (_ctx.handleChange && _ctx.handleChange(...args))),
       onFocus: _cache[2] || (_cache[2] = (...args) => (_ctx.handleFocus && _ctx.handleFocus(...args))),
       onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.handleBlur && _ctx.handleBlur(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$5),
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$6),
     (_ctx.hasSuffix)
-      ? (openBlock(), createElementBlock("span", _hoisted_4$1, [
+      ? (openBlock(), createElementBlock("span", _hoisted_4$2, [
           renderSlot(_ctx.$slots, "suffix"),
           (_ctx.showClearBtn)
             ? (openBlock(), createBlock(_component_m_icon, {
@@ -283,17 +284,17 @@ function render$g(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.hasAppend)
-      ? (openBlock(), createElementBlock("span", _hoisted_5, [
+      ? (openBlock(), createElementBlock("span", _hoisted_5$1, [
           renderSlot(_ctx.$slots, "append")
         ]))
       : createCommentVNode("v-if", true)
   ], 2 /* CLASS */))
 }
 
-script$h.render = render$g;
-script$h.__file = "packages/components/input/src/input.vue";
+script$j.render = render$i;
+script$j.__file = "packages/components/input/src/input.vue";
 
-const MInput = withInstall(script$h);
+const MInput = withInstall(script$j);
 
 /**
  * Make a map and return a function for checking if a key
@@ -322,6 +323,9 @@ const blobToDataUrl = (blob) => {
         };
     });
 };
+const getUID = (prefix = '', affix = '') => {
+    return `${prefix}${Date.now}${affix}`;
+};
 
 const GUTTER_MAP = {
     mini: 5,
@@ -329,7 +333,7 @@ const GUTTER_MAP = {
     medium: 10,
     large: 12
 };
-var script$g = defineComponent({
+var script$i = defineComponent({
     name: "MSpace",
     props: {
         direction: {
@@ -430,11 +434,11 @@ var script$g = defineComponent({
     },
 });
 
-script$g.__file = "packages/components/space/src/space.vue";
+script$i.__file = "packages/components/space/src/space.vue";
 
-const MSpace = withInstall(script$g);
+const MSpace = withInstall(script$i);
 
-var script$f = defineComponent({
+var script$h = defineComponent({
     name: "MRadio",
     props: {
         modelValue: {
@@ -481,10 +485,10 @@ var script$f = defineComponent({
 });
 
 const _hoisted_1$a = ["disabled", "value", "name", "checked"];
-const _hoisted_2$5 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$4 = { class: "m-radio__label" };
+const _hoisted_2$6 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$5 = { class: "m-radio__label" };
 
-function render$f(_ctx, _cache, $props, $setup, $data, $options) {
+function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-radio',
@@ -503,19 +507,19 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
     }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$a),
-    _hoisted_2$5,
-    createElementVNode("span", _hoisted_3$4, [
+    _hoisted_2$6,
+    createElementVNode("span", _hoisted_3$5, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
 }
 
-script$f.render = render$f;
-script$f.__file = "packages/components/radio/src/radio.vue";
+script$h.render = render$h;
+script$h.__file = "packages/components/radio/src/radio.vue";
 
-const MRadio = withInstall(script$f);
+const MRadio = withInstall(script$h);
 
-var script$e = defineComponent({
+var script$g = defineComponent({
     name: "MRadioGroup",
     props: {
         modelValue: {
@@ -538,18 +542,18 @@ var script$e = defineComponent({
 
 const _hoisted_1$9 = { class: "m-radio-group" };
 
-function render$e(_ctx, _cache, $props, $setup, $data, $options) {
+function render$g(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$9, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$e.render = render$e;
-script$e.__file = "packages/components/radio/src/radio-group.vue";
+script$g.render = render$g;
+script$g.__file = "packages/components/radio/src/radio-group.vue";
 
-const MRadioGroup = withInstall(script$e);
+const MRadioGroup = withInstall(script$g);
 
-var script$d = defineComponent({
+var script$f = defineComponent({
     name: "MCheckbox",
     props: {
         modelValue: {
@@ -622,10 +626,10 @@ var script$d = defineComponent({
 });
 
 const _hoisted_1$8 = ["disabled", "value", "name", "checked"];
-const _hoisted_2$4 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$3 = { class: "m-checkbox__label" };
+const _hoisted_2$5 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$4 = { class: "m-checkbox__label" };
 
-function render$d(_ctx, _cache, $props, $setup, $data, $options) {
+function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
     class: normalizeClass([
             'm-checkbox',
@@ -644,19 +648,19 @@ function render$d(_ctx, _cache, $props, $setup, $data, $options) {
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
     }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$8),
-    _hoisted_2$4,
-    createElementVNode("span", _hoisted_3$3, [
+    _hoisted_2$5,
+    createElementVNode("span", _hoisted_3$4, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
 }
 
-script$d.render = render$d;
-script$d.__file = "packages/components/checkbox/src/checkbox.vue";
+script$f.render = render$f;
+script$f.__file = "packages/components/checkbox/src/checkbox.vue";
 
-const MCheckbox = withInstall(script$d);
+const MCheckbox = withInstall(script$f);
 
-var script$c = defineComponent({
+var script$e = defineComponent({
     name: "MCheckboxGroup",
     props: {
         modelValue: {
@@ -688,29 +692,29 @@ var script$c = defineComponent({
 
 const _hoisted_1$7 = { class: "m-checkbox-group" };
 
-function render$c(_ctx, _cache, $props, $setup, $data, $options) {
+function render$e(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1$7, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$c.render = render$c;
-script$c.__file = "packages/components/checkbox/src/checkbox-group.vue";
+script$e.render = render$e;
+script$e.__file = "packages/components/checkbox/src/checkbox-group.vue";
 
-const MCheckboxGroup = withInstall(script$c);
+const MCheckboxGroup = withInstall(script$e);
 
-var script$b = defineComponent({
+var script$d = defineComponent({
     name: "MTeleport",
 });
 
-function render$b(_ctx, _cache, $props, $setup, $data, $options) {
+function render$d(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createBlock(Teleport, { to: "body" }, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
 
-script$b.render = render$b;
-script$b.__file = "packages/components/trigger/src/teleport.vue";
+script$d.render = render$d;
+script$d.__file = "packages/components/trigger/src/teleport.vue";
 
 /* istanbul ignore next */
 const on = function (element, event, handler, useCapture = false) {
@@ -842,10 +846,10 @@ const useContentLayout = (props, triggerRef) => {
         clickoutsideOptions
     };
 };
-var script$a = defineComponent({
+var script$c = defineComponent({
     name: "MTrigger",
     components: {
-        MTeleport: script$b
+        MTeleport: script$d
     },
     directives: {
         clickoutside: ClickOutside
@@ -875,7 +879,7 @@ var script$a = defineComponent({
     }
 });
 
-function render$a(_ctx, _cache, $props, $setup, $data, $options) {
+function render$c(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_MTeleport = resolveComponent("MTeleport");
   const _directive_clickoutside = resolveDirective("clickoutside");
 
@@ -904,12 +908,12 @@ function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   ], 64 /* STABLE_FRAGMENT */))
 }
 
-script$a.render = render$a;
-script$a.__file = "packages/components/trigger/src/trigger.vue";
+script$c.render = render$c;
+script$c.__file = "packages/components/trigger/src/trigger.vue";
 
-const MTrigger = withInstall(script$a);
+const MTrigger = withInstall(script$c);
 
-var script$9 = defineComponent({
+var script$b = defineComponent({
     components: {
         MTrigger,
         MInput,
@@ -1043,7 +1047,7 @@ var script$9 = defineComponent({
 
 const _hoisted_1$6 = { class: "m-select__dropdown" };
 
-function render$9(_ctx, _cache, $props, $setup, $data, $options) {
+function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
   const _component_m_input = resolveComponent("m-input");
   const _component_m_trigger = resolveComponent("m-trigger");
@@ -1095,12 +1099,12 @@ function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   ], 34 /* CLASS, HYDRATE_EVENTS */))
 }
 
-script$9.render = render$9;
-script$9.__file = "packages/components/select/src/select.vue";
+script$b.render = render$b;
+script$b.__file = "packages/components/select/src/select.vue";
 
-const MSelect = withInstall(script$9);
+const MSelect = withInstall(script$b);
 
-var script$8 = defineComponent({
+var script$a = defineComponent({
     name: "MOption",
     props: {
         value: {
@@ -1134,7 +1138,7 @@ var script$8 = defineComponent({
     }
 });
 
-function render$8(_ctx, _cache, $props, $setup, $data, $options) {
+function render$a(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("li", {
     class: normalizeClass([
             'm-option',
@@ -1150,12 +1154,12 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$8.render = render$8;
-script$8.__file = "packages/components/select/src/option.vue";
+script$a.render = render$a;
+script$a.__file = "packages/components/select/src/option.vue";
 
-const MOption = withInstall(script$8);
+const MOption = withInstall(script$a);
 
-var script$7 = defineComponent({
+var script$9 = defineComponent({
     name: "MTag",
     props: {
         size: {
@@ -1185,7 +1189,7 @@ var script$7 = defineComponent({
     }
 });
 
-function render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function render$9(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("span", {
     class: normalizeClass([
             'm-tag',
@@ -1202,12 +1206,12 @@ function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   ], 2 /* CLASS */))
 }
 
-script$7.render = render$7;
-script$7.__file = "packages/components/tag/src/tag.vue";
+script$9.render = render$9;
+script$9.__file = "packages/components/tag/src/tag.vue";
 
-const MTag = withInstall(script$7);
+const MTag = withInstall(script$9);
 
-var script$6 = defineComponent({
+var script$8 = defineComponent({
     name: "MLink",
     props: {
         underline: {
@@ -1225,9 +1229,9 @@ var script$6 = defineComponent({
 });
 
 const _hoisted_1$5 = ["href", "target"];
-const _hoisted_2$3 = { class: "m-link__inner" };
+const _hoisted_2$4 = { class: "m-link__inner" };
 
-function render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("a", {
     class: normalizeClass([
             'm-link',
@@ -1240,18 +1244,18 @@ function render$6(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.href,
     target: _ctx.target
   }, [
-    createElementVNode("span", _hoisted_2$3, [
+    createElementVNode("span", _hoisted_2$4, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 10 /* CLASS, PROPS */, _hoisted_1$5))
 }
 
-script$6.render = render$6;
-script$6.__file = "packages/components/link/src/link.vue";
+script$8.render = render$8;
+script$8.__file = "packages/components/link/src/link.vue";
 
-const MLink = withInstall(script$6);
+const MLink = withInstall(script$8);
 
-var script$5 = defineComponent({
+var script$7 = defineComponent({
     props: {
         data: {
             type: Array,
@@ -1262,21 +1266,21 @@ var script$5 = defineComponent({
 });
 
 const _hoisted_1$4 = { class: "m-table__header" };
-const _hoisted_2$2 = ["width"];
-const _hoisted_3$2 = { class: "m-table-tr" };
+const _hoisted_2$3 = ["width"];
+const _hoisted_3$3 = { class: "m-table-tr" };
 
-function render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function render$7(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("table", _hoisted_1$4, [
     createElementVNode("colgroup", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
         return (openBlock(), createElementBlock("col", {
           key: column.prop,
           width: column.width
-        }, null, 8 /* PROPS */, _hoisted_2$2))
+        }, null, 8 /* PROPS */, _hoisted_2$3))
       }), 128 /* KEYED_FRAGMENT */))
     ]),
     createElementVNode("thead", null, [
-      createElementVNode("tr", _hoisted_3$2, [
+      createElementVNode("tr", _hoisted_3$3, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
           return (openBlock(), createElementBlock("th", {
             class: normalizeClass([
@@ -1293,8 +1297,8 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-script$5.render = render$5;
-script$5.__file = "packages/components/table/src/header/index.vue";
+script$7.render = render$7;
+script$7.__file = "packages/components/table/src/header/index.vue";
 
 var TableCell = defineComponent({
     props: {
@@ -1318,7 +1322,7 @@ var TableCell = defineComponent({
     }
 });
 
-var script$4 = defineComponent({
+var script$6 = defineComponent({
     components: {
         TableCell
     },
@@ -1334,10 +1338,10 @@ var script$4 = defineComponent({
 });
 
 const _hoisted_1$3 = { class: "m-table__body" };
-const _hoisted_2$1 = ["width"];
-const _hoisted_3$1 = { class: "m-table-tr" };
+const _hoisted_2$2 = ["width"];
+const _hoisted_3$2 = { class: "m-table-tr" };
 
-function render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_cell = resolveComponent("table-cell");
 
   return (openBlock(), createElementBlock("table", _hoisted_1$3, [
@@ -1346,12 +1350,12 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
         return (openBlock(), createElementBlock("col", {
           key: column.prop,
           width: column.width
-        }, null, 8 /* PROPS */, _hoisted_2$1))
+        }, null, 8 /* PROPS */, _hoisted_2$2))
       }), 128 /* KEYED_FRAGMENT */))
     ]),
     createElementVNode("tbody", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.data, (i, rowIndex) => {
-        return (openBlock(), createElementBlock("tr", _hoisted_3$1, [
+        return (openBlock(), createElementBlock("tr", _hoisted_3$2, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column, columnIndex) => {
             return (openBlock(), createElementBlock("td", {
               class: normalizeClass([
@@ -1377,8 +1381,8 @@ function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   ]))
 }
 
-script$4.render = render$4;
-script$4.__file = "packages/components/table/src/body/index.vue";
+script$6.render = render$6;
+script$6.__file = "packages/components/table/src/body/index.vue";
 
 const useStyle = (props) => {
     const isFixedHeight = computed(() => !!props.height || props.height === 0);
@@ -1437,11 +1441,11 @@ const useScroll = () => {
         onBodyWrapperScroll
     };
 };
-var script$3 = defineComponent({
+var script$5 = defineComponent({
     name: "MTable",
     components: {
-        TableHeader: script$5,
-        TableBody: script$4,
+        TableHeader: script$7,
+        TableBody: script$6,
     },
     props: {
         data: {
@@ -1475,7 +1479,7 @@ var script$3 = defineComponent({
 
 const _hoisted_1$2 = { class: "m-table__container" };
 
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_header = resolveComponent("table-header");
   const _component_table_body = resolveComponent("table-body");
 
@@ -1512,12 +1516,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
   ], 6 /* CLASS, STYLE */))
 }
 
-script$3.render = render$3;
-script$3.__file = "packages/components/table/src/table.vue";
+script$5.render = render$5;
+script$5.__file = "packages/components/table/src/table.vue";
 
-const MTable = withInstall(script$3);
+const MTable = withInstall(script$5);
 
-var script$2 = defineComponent({
+var script$4 = defineComponent({
     name: "MTableColumn",
     props: {
         label: [String, Number],
@@ -1542,14 +1546,14 @@ var script$2 = defineComponent({
     }
 });
 
-function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("span"))
 }
 
-script$2.render = render$2;
-script$2.__file = "packages/components/table/src/column.vue";
+script$4.render = render$4;
+script$4.__file = "packages/components/table/src/column.vue";
 
-const MTableColumn = withInstall(script$2);
+const MTableColumn = withInstall(script$4);
 
 const ajax = (options) => {
     return new Promise((resolve, reject) => {
@@ -1576,6 +1580,66 @@ const isImage = (file) => {
     return file.type?.includes('image');
 };
 
+var script$3 = {};
+
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", null, " img-card-item "))
+}
+
+script$3.render = render$3;
+script$3.__file = "packages/components/uploader/src/item-card.vue";
+
+var script$2 = defineComponent({
+    props: {
+        fileItem: {
+            type: Object,
+            required: true
+        },
+        listType: {
+            type: String,
+            default: 'text'
+        }
+    },
+    setup(props) {
+        const uploader = inject(UPLOADER_KEY);
+        const removeFile = () => {
+            uploader.removeFileById(props.fileItem.id);
+        };
+        return {
+            removeFile
+        };
+    }
+});
+
+const _hoisted_1$1 = { class: "m-uploader-item m-uploader-item--text" };
+const _hoisted_2$1 = { class: "m-uploader-item__info" };
+const _hoisted_3$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-file info-icon" }, null, -1 /* HOISTED */);
+const _hoisted_4$1 = { class: "info-text" };
+const _hoisted_5 = { class: "m-uploader-item__toolbar" };
+const _hoisted_6 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
+const _hoisted_7 = [
+  _hoisted_6
+];
+
+function render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", _hoisted_1$1, [
+    createElementVNode("div", _hoisted_2$1, [
+      _hoisted_3$1,
+      createTextVNode(" " + toDisplayString(_ctx.fileItem.status) + " ", 1 /* TEXT */),
+      createElementVNode("span", _hoisted_4$1, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
+    ]),
+    createElementVNode("div", _hoisted_5, [
+      createElementVNode("span", {
+        class: "m-uploader-icon-btn",
+        onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.removeFile && _ctx.removeFile(...args)))
+      }, _hoisted_7)
+    ])
+  ]))
+}
+
+script$2.render = render$2;
+script$2.__file = "packages/components/uploader/src/item-text.vue";
+
 var script$1 = defineComponent({
     props: {
         fileItems: {
@@ -1587,11 +1651,15 @@ var script$1 = defineComponent({
             default: 'text'
         }
     },
-    setup() {
+    setup(props) {
+        const ItemComp = computed(() => {
+            return props.listType.includes('card') ? script$3 : script$2;
+        });
+        return {
+            ItemComp
+        };
     }
 });
-
-const _hoisted_1$1 = ["src"];
 
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
@@ -1600,11 +1668,13 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         `m-uploader-list--${_ctx.listType}`
     ])
   }, [
-    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.fileItems, (i) => {
-      return (openBlock(), createElementBlock("img", {
-        src: i.url
-      }, null, 8 /* PROPS */, _hoisted_1$1))
-    }), 256 /* UNKEYED_FRAGMENT */))
+    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.fileItems, (fileItem, index) => {
+      return (openBlock(), createBlock(resolveDynamicComponent(_ctx.ItemComp), {
+        key: index,
+        fileItem: fileItem,
+        listType: _ctx.listType
+      }, null, 8 /* PROPS */, ["fileItem", "listType"]))
+    }), 128 /* KEYED_FRAGMENT */))
   ], 2 /* CLASS */))
 }
 
@@ -1648,7 +1718,8 @@ var script = defineComponent({
         request: {
             type: Function,
             default: ajax
-        }
+        },
+        tip: String
     },
     emits: ['update:file-list', 'change'],
     setup(props, { emit }) {
@@ -1659,6 +1730,7 @@ var script = defineComponent({
                 const status = item.status || 'done';
                 return {
                     ...item,
+                    id: item.id || getUID(index),
                     status,
                     percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
                 };
@@ -1682,12 +1754,12 @@ var script = defineComponent({
         const handleInputChange = async (e) => {
             const files = e.target.files;
             [...files].forEach((file, index) => {
-                initFile(file);
+                initFile(file, index);
             });
         };
         // 初始化文件
         const initFile = async (file, index) => {
-            const item = await createFileItem(file);
+            const item = await createFileItem(file, index);
             fileItems.value.push(item);
             emitUpdate(item);
             if (props.autoUpload) {
@@ -1697,6 +1769,7 @@ var script = defineComponent({
         // 根据file对象创建FileItem
         const createFileItem = async (file, index) => {
             return reactive({
+                id: getUID(index),
                 file,
                 name: file.name,
                 url: isImage(file) ? await blobToDataUrl(file) : undefined,
@@ -1728,6 +1801,21 @@ var script = defineComponent({
                 fileItem.response = err;
             });
         };
+        const getFileItemById = (id) => {
+            return fileItems.value.find(i => i.id === id);
+        };
+        // 删除文件
+        const removeFileById = (id) => {
+            const fileItem = getFileItemById(id);
+            if (fileItem) {
+                const index = fileItems.value.indexOf(fileItem);
+                fileItems.value.splice(index, 1);
+            }
+        };
+        // provide
+        provide(UPLOADER_KEY, reactive({
+            removeFileById
+        }));
         return {
             inputRef,
             fileItems,
@@ -1744,7 +1832,10 @@ const _hoisted_1 = {
 };
 const _hoisted_2 = /*#__PURE__*/createTextVNode("点击上传");
 const _hoisted_3 = ["multiple", "accept"];
-const _hoisted_4 = { class: "m-uploader__list" };
+const _hoisted_4 = {
+  key: 0,
+  class: "m-uploader__tip"
+};
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_button = resolveComponent("m-button");
@@ -1772,10 +1863,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.handleInputChange && _ctx.handleInputChange(...args)))
       }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3)
     ]),
-    createElementVNode("div", _hoisted_4, [
-      createVNode(_component_FileList, { "file-items": _ctx.fileItems }, null, 8 /* PROPS */, ["file-items"]),
-      createCommentVNode(" <ul>\n        <li v-for=\"file in fileItems\">{{ file.name }}</li>\n      </ul>")
-    ])
+    (_ctx.tip)
+      ? (openBlock(), createElementBlock("div", _hoisted_4, toDisplayString(_ctx.tip), 1 /* TEXT */))
+      : createCommentVNode("v-if", true),
+    createVNode(_component_FileList, { "file-items": _ctx.fileItems }, null, 8 /* PROPS */, ["file-items"])
   ]))
 }
 

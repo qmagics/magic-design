@@ -15,21 +15,19 @@
         @change="handleInputChange"
       />
     </div>
-    <div class="m-uploader__list">
-      <FileList :file-items="fileItems"></FileList>
-      <!-- <ul>
-        <li v-for="file in fileItems">{{ file.name }}</li>
-      </ul>-->
-    </div>
+    <div class="m-uploader__tip" v-if="tip">{{ tip }}</div>
+    <FileList :file-items="fileItems"></FileList>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, reactive, Ref, ref, watch } from "vue";
-import { FileItem, UploadRequest } from "./interface";
+import { defineComponent, PropType, provide, reactive, Ref, ref, watch } from "vue";
+import { FileItem, UploadRequest, UploaderProvideContext } from "./interface";
 import ajax from './ajax';
 import { blobToDataUrl } from "@magic-design/utils/src";
 import { isImage } from "./utils";
 import FileList from './file-list.vue';
+import { UPLOADER_KEY } from "@magic-design/utils/src/const";
+import { getUID } from "@magic-design/utils/src";
 
 export default defineComponent({
   name: "MUploader",
@@ -68,7 +66,8 @@ export default defineComponent({
     request: {
       type: Function as PropType<UploadRequest>,
       default: ajax
-    }
+    },
+    tip: String
   },
   emits: ['update:file-list', 'change'],
   setup(props, { emit }) {
@@ -81,6 +80,7 @@ export default defineComponent({
         const status = item.status || 'done';
         return {
           ...item,
+          id: item.id || getUID(index),
           status,
           percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
         }
@@ -127,6 +127,7 @@ export default defineComponent({
     // 根据file对象创建FileItem
     const createFileItem = async (file: File, index: number) => {
       return <FileItem>reactive({
+        id: getUID(index),
         file,
         name: file.name,
         url: isImage(file) ? await blobToDataUrl(file) : undefined,
@@ -160,6 +161,26 @@ export default defineComponent({
           fileItem.response = err;
         })
     }
+
+    const getFileItemById = (id: string) => {
+      return fileItems.value.find(i => i.id === id);
+    }
+
+    // 删除文件
+    const removeFileById = (id: string) => {
+      const fileItem = getFileItemById(id);
+      if (fileItem) {
+        const index = fileItems.value.indexOf(fileItem);
+        fileItems.value.splice(index, 1);
+      }
+    }
+
+    // provide
+    provide(UPLOADER_KEY,
+      reactive({
+        removeFileById
+      }) as unknown as UploaderProvideContext
+    );
 
     return {
       inputRef,

@@ -1,7 +1,8 @@
 export declare type FileStatus = 'init' | 'pending' | 'error' | 'done';
-export declare type ListType = 'text' | 'img' | 'img-list';
+export declare type ListType = 'text' | 'img' | 'text-card' | 'img-card';
 export interface FileItem {
     name: string;
+    id?: string;
     file?: File;
     url?: string;
     status?: FileStatus;
@@ -21,3 +22,6 @@ export interface UploadRequestOptions {
     onProgress?: Function;
 }
 export declare type UploadRequest = (options: UploadRequestOptions) => Promise<any>;
+export interface UploaderProvideContext {
+    removeFileById: (id: string) => void;
+}

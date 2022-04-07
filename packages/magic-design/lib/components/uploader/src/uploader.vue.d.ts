@@ -33,6 +33,7 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<UploadRequest>;
         default: UploadRequest;
     };
+    tip: StringConstructor;
 }, {
     inputRef: Ref<HTMLInputElement>;
     fileItems: Ref<FileItem[]>;
@@ -47,6 +48,7 @@ declare const _default: import("vue").DefineComponent<{
     accept?: unknown;
     autoUpload?: unknown;
     request?: unknown;
+    tip?: unknown;
 } & {
     action: string;
     fileList: FileItem[];
@@ -56,7 +58,9 @@ declare const _default: import("vue").DefineComponent<{
     accept: string;
     autoUpload: boolean;
     request: UploadRequest;
-} & {}> & {
+} & {
+    tip?: string;
+}> & {
     "onUpdate:file-list"?: (...args: any[]) => any;
     onChange?: (...args: any[]) => any;
 }, {

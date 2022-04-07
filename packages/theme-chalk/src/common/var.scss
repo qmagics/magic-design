@@ -86,6 +86,12 @@ body {
     --m-text-color-3: #86909c;
     --m-text-color-4: #c9cdd4;
 
+    // 边框颜色
+    --m-border-color-1:rgba(0,0,0, .16);
+    --m-border-color-2:rgba(0,0,0, .12);
+    --m-border-color-3:rgba(0,0,0, .08);
+    --m-border-color-4:rgba(0,0,0, .04);
+
     // 填充颜色
     --m-fill-color-1: rgb(var(--gray-1));
     --m-fill-color-2: rgb(var(--gray-2));
@@ -184,6 +190,12 @@ body[m-theme="dark"] {
     --m-text-color-3: rgba(255, 255, 255, .5);
     --m-text-color-4: rgba(255, 255, 255, .3);
 
+    // 边框颜色
+    --m-border-color-1:rgba(255, 255, 255, .5);
+    --m-border-color-2:rgba(255, 255, 255, .4);
+    --m-border-color-3:rgba(255, 255, 255, .3);
+    --m-border-color-4:rgba(255, 255, 255, .2);
+
     // 填充颜色
     --m-fill-color-1: rgba(255, 255, 255, .04);
     --m-fill-color-2: rgba(255, 255, 255, .08);
@@ -222,6 +234,12 @@ $color-text-1: var(--m-text-color-1);
 $color-text-2: var(--m-text-color-2);
 $color-text-3: var(--m-text-color-3);
 $color-text-4: var(--m-text-color-4);
+
+/** border color **/
+$color-border-1: var(--m-border-color-1);
+$color-border-2: var(--m-border-color-2);
+$color-border-3: var(--m-border-color-3);
+$color-border-4: var(--m-border-color-4);
 
 /** fill color **/
 $color-fill-1: var(--m-fill-color-1);

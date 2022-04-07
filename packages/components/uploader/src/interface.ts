@@ -1,8 +1,9 @@
 export type FileStatus = 'init' | 'pending' | 'error' | 'done';
-export type ListType = 'text' | 'img' | 'img-list';
+export type ListType = 'text' | 'img' | 'text-card' | 'img-card';
 
 export interface FileItem {
     name: string;
+    id?: string;
     file?: File;
     url?: string;
     status?: FileStatus;
@@ -25,3 +26,7 @@ export interface UploadRequestOptions {
 }
 
 export type UploadRequest = (options: UploadRequestOptions) => Promise<any>
+
+export interface UploaderProvideContext {
+    removeFileById: (id: string) => void
+}

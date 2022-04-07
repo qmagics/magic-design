@@ -3,13 +3,21 @@
         'm-uploader-list',
         `m-uploader-list--${listType}`
     ]">
-        <img v-for="i in fileItems" :src="i.url" />
+        <component
+            v-for="(fileItem, index) in fileItems"
+            :key="index"
+            :is="ItemComp"
+            :fileItem="fileItem"
+            :listType="listType"
+        ></component>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { computed, defineComponent, PropType } from "vue";
 import { FileItem, ListType } from "./interface";
+import ItemCard from './item-card.vue';
+import ItemText from './item-text.vue';
 
 export default defineComponent({
     props: {
@@ -22,8 +30,13 @@ export default defineComponent({
             default: 'text'
         }
     },
-    setup() {
-
+    setup(props) {
+        const ItemComp = computed(() => {
+            return props.listType.includes('card') ? ItemCard : ItemText;
+        });
+        return {
+            ItemComp
+        }
     }
 })
 </script>
