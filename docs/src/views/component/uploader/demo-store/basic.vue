@@ -10,7 +10,11 @@
 import { reactive, ref } from 'vue';
 const vm = ref([
     {
-        name:"阿迪归属感阿迪归属感阿迪归属感阿迪归属感阿迪阿迪归属感阿迪归属感阿迪归属感归属感.png"
+        name:"一个文件.txt",
+        status:'error'
+    },
+    {
+        name:"一张图片.png"
     }
 ]);
 

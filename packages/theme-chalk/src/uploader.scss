@@ -5,7 +5,9 @@ $cname: $namespace+'-'+"uploader";
 
 @include b(uploader) {
 
-    @include e(trigger) {}
+    @include e(trigger) {
+        display: inline-flex;
+    }
 
     @include e(tip) {
         font-size: 12px;
@@ -18,30 +20,65 @@ $cname: $namespace+'-'+"uploader";
     }
 
     .m-uploader-item {
-        height: 32px;
         display: flex;
         align-items: center;
-        background-color: rgb(239, 242, 247);
-        margin-bottom: 7px;
-        padding: 0 7px;
+        // margin-bottom: 7px;
+        padding: 5px;
         border-radius: 3px;
         position: relative;
         overflow: hidden;
+        transition: background-color .2s ease;
+        cursor: pointer;
+
+        &--status-pending {}
+
+        &--status-done {
+            .m-uploader-status-icon {
+                color: $color-success-4;
+            }
+        }
+
+        &--status-init {}
+
+        &--status-error {
+            .m-uploader-status-icon {
+                color: $color-danger-4;
+            }
+        }
+
+
+        &:hover {
+            background-color: rgb(239, 242, 247);
+
+            .btn-remove {
+                display: block;
+            }
+
+            .m-uploader-status-icon {
+                display: none;
+            }
+
+        }
 
         &__info {
             align-items: center;
+            display: flex;
             margin-right: 40px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             font-size: 13px;
+            font-weight: 500;
 
             .info-icon {
                 margin-right: 5px;
                 cursor: pointer;
+                color: $color-text-3;
             }
 
-            .info-text {}
+            .info-text {
+                color: $color-text-2;
+            }
         }
 
         &__toolbar {
@@ -53,6 +90,14 @@ $cname: $namespace+'-'+"uploader";
 
     .m-uploader-icon-btn {
         cursor: pointer;
+    }
+
+    .m-uploader-status-icon {
+        display: block;
+    }
+
+    .btn-remove {
+        display: none;
     }
 
     .#{$cname}-input {

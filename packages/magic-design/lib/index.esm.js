@@ -1589,6 +1589,12 @@ function render$3(_ctx, _cache, $props, $setup, $data, $options) {
 script$3.render = render$3;
 script$3.__file = "packages/components/uploader/src/item-card.vue";
 
+const STATUS_ICON_MAP = {
+    'pending': 'm-icon-loading',
+    'done': 'm-icon-check-o',
+    'error': 'm-icon-error-o',
+    'init': ''
+};
 var script$2 = defineComponent({
     props: {
         fileItem: {
@@ -1605,36 +1611,47 @@ var script$2 = defineComponent({
         const removeFile = () => {
             uploader.removeFileById(props.fileItem.id);
         };
+        const stateIconClass = computed(() => {
+            // return `${props.fileItem.status===''}`;
+            return STATUS_ICON_MAP[props.fileItem.status];
+        });
         return {
-            removeFile
+            removeFile,
+            stateIconClass
         };
     }
 });
 
-const _hoisted_1$1 = { class: "m-uploader-item m-uploader-item--text" };
-const _hoisted_2$1 = { class: "m-uploader-item__info" };
-const _hoisted_3$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-file info-icon" }, null, -1 /* HOISTED */);
-const _hoisted_4$1 = { class: "info-text" };
-const _hoisted_5 = { class: "m-uploader-item__toolbar" };
-const _hoisted_6 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
-const _hoisted_7 = [
-  _hoisted_6
+const _hoisted_1$1 = { class: "m-uploader-item__info" };
+const _hoisted_2$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-file info-icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$1 = { class: "info-text" };
+const _hoisted_4$1 = { class: "m-uploader-item__toolbar" };
+const _hoisted_5 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
+const _hoisted_6 = [
+  _hoisted_5
 ];
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1$1, [
-    createElementVNode("div", _hoisted_2$1, [
-      _hoisted_3$1,
-      createTextVNode(" " + toDisplayString(_ctx.fileItem.status) + " ", 1 /* TEXT */),
-      createElementVNode("span", _hoisted_4$1, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
+  return (openBlock(), createElementBlock("div", {
+    class: normalizeClass([
+            'm-uploader-item m-uploader-item--text',
+            `m-uploader-item--status-${_ctx.fileItem.status}`
+        ])
+  }, [
+    createElementVNode("div", _hoisted_1$1, [
+      _hoisted_2$1,
+      createElementVNode("span", _hoisted_3$1, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
     ]),
-    createElementVNode("div", _hoisted_5, [
+    createElementVNode("div", _hoisted_4$1, [
+      createElementVNode("i", {
+        class: normalizeClass([_ctx.stateIconClass, 'm-uploader-status-icon'])
+      }, null, 2 /* CLASS */),
       createElementVNode("span", {
-        class: "m-uploader-icon-btn",
+        class: "m-uploader-icon-btn btn-remove",
         onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.removeFile && _ctx.removeFile(...args)))
-      }, _hoisted_7)
+      }, _hoisted_6)
     ])
-  ]))
+  ], 2 /* CLASS */))
 }
 
 script$2.render = render$2;
