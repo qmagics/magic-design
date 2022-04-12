@@ -87,10 +87,10 @@ body {
     --m-text-color-4: #c9cdd4;
 
     // 边框颜色
-    --m-border-color-1:rgba(0,0,0, .16);
-    --m-border-color-2:rgba(0,0,0, .12);
-    --m-border-color-3:rgba(0,0,0, .08);
-    --m-border-color-4:rgba(0,0,0, .04);
+    --m-border-color-1: rgba(0, 0, 0, .16);
+    --m-border-color-2: rgba(0, 0, 0, .12);
+    --m-border-color-3: rgba(0, 0, 0, .08);
+    --m-border-color-4: rgba(0, 0, 0, .04);
 
     // 填充颜色
     --m-fill-color-1: rgb(var(--gray-1));
@@ -100,6 +100,13 @@ body {
 
     // popper颜色
     --m-popper-color: #ffffff;
+
+    // 背景颜色
+    // 背景颜色
+    --m-bg-color-1: rgba(var(--blue-10), .06);
+    --m-bg-color-2: rgba(var(--blue-10), .12);
+    --m-bg-color-3: rgba(var(--blue-10), .18);
+    --m-bg-color-4: rgba(var(--blue-10), .24);
 
     // 阴影颜色
     --m-shadow-color-primary-1: rgb(var(--blue-1));
@@ -164,11 +171,11 @@ body {
     --m-color-danger-10: rgb(var(--red-10));
 
     /** radius **/
-    --m-radius-1:2px;
-    --m-radius-2:3px;
-    --m-radius-3:4px;
-    --m-radius-4:6px;
-    --m-radius-5:8px;
+    --m-radius-1: 2px;
+    --m-radius-2: 3px;
+    --m-radius-3: 4px;
+    --m-radius-4: 6px;
+    --m-radius-5: 8px;
 }
 
 // root vars dark-theme
@@ -191,10 +198,10 @@ body[m-theme="dark"] {
     --m-text-color-4: rgba(255, 255, 255, .3);
 
     // 边框颜色
-    --m-border-color-1:rgba(255, 255, 255, .5);
-    --m-border-color-2:rgba(255, 255, 255, .4);
-    --m-border-color-3:rgba(255, 255, 255, .3);
-    --m-border-color-4:rgba(255, 255, 255, .2);
+    --m-border-color-1: rgba(255, 255, 255, .5);
+    --m-border-color-2: rgba(255, 255, 255, .4);
+    --m-border-color-3: rgba(255, 255, 255, .3);
+    --m-border-color-4: rgba(255, 255, 255, .2);
 
     // 填充颜色
     --m-fill-color-1: rgba(255, 255, 255, .04);
@@ -204,6 +211,12 @@ body[m-theme="dark"] {
 
     // popper颜色
     --m-popper-color: rgb(31, 31, 31);
+
+    // 背景颜色
+    --m-bg-color-1: rgba(var(--blue-1), .06);
+    --m-bg-color-2: rgba(var(--blue-1), .12);
+    --m-bg-color-3: rgba(var(--blue-1), .18);
+    --m-bg-color-4: rgba(var(--blue-1), .24);
 
     // 阴影颜色
     --m-shadow-color-primary-1: rgba(255, 255, 255, .1);
@@ -246,6 +259,12 @@ $color-fill-1: var(--m-fill-color-1);
 $color-fill-2: var(--m-fill-color-2);
 $color-fill-3: var(--m-fill-color-3);
 $color-fill-4: var(--m-fill-color-4);
+
+/** fill color **/
+$color-bg-1:var(--m-bg-color-1);
+$color-bg-2:var(--m-bg-color-2);
+$color-bg-3:var(--m-bg-color-3);
+$color-bg-4:var(--m-bg-color-4);
 
 /** popper color **/
 $color-popper:var(--m-popper-color);

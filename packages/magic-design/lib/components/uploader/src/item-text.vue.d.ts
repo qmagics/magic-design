@@ -11,7 +11,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {
     removeFile: () => void;
-    stateIconClass: import("vue").ComputedRef<string>;
+    stateIconClass: import("vue").ComputedRef<any>;
+    fileIconClass: import("vue").ComputedRef<"m-icon-file" | "m-icon-image">;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     fileItem?: unknown;
     listType?: unknown;

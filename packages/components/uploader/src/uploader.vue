@@ -2,9 +2,9 @@
   <div :class="[
     'm-uploader'
   ]">
-    <div class="m-uploader__trigger" @click="handleTriggerClick">
+    <div class="m-uploader__trigger" @click="chooseFile" v-show="showButtonTrigger">
       <slot name="trigger">
-        <m-button type="primary">点击上传</m-button>
+        <m-button type="primary" :disabled="disabled">点击上传</m-button>
       </slot>
       <input
         class="m-uploader-input"
@@ -16,12 +16,12 @@
       />
     </div>
     <div class="m-uploader__tip" v-if="tip">{{ tip }}</div>
-    <FileList :file-items="fileItems"></FileList>
+    <FileList :file-items="fileItems" :listType="listType"></FileList>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, provide, reactive, Ref, ref, watch } from "vue";
-import { FileItem, UploadRequest, UploaderProvideContext } from "./interface";
+import { computed, defineComponent, PropType, provide, reactive, Ref, ref, toRefs, watch } from "vue";
+import { FileItem, UploadRequest, UploaderProvideContext, ListType } from "./interface";
 import ajax from './ajax';
 import { blobToDataUrl } from "@magic-design/utils/src";
 import { isImage } from "./utils";
@@ -31,9 +31,11 @@ import { getUID } from "@magic-design/utils/src";
 
 export default defineComponent({
   name: "MUploader",
+
   components: {
     FileList
   },
+
   props: {
     action: {
       required: true,
@@ -44,8 +46,8 @@ export default defineComponent({
       default: () => []
     },
     listType: {
-      type: String,
-      default: 'list-item'
+      type: String as PropType<ListType>,
+      default: 'text'
     },
     disabled: {
       type: Boolean,
@@ -69,7 +71,9 @@ export default defineComponent({
     },
     tip: String
   },
+
   emits: ['update:file-list', 'change'],
+
   setup(props, { emit }) {
     const inputRef = ref(null as HTMLInputElement);
 
@@ -96,8 +100,13 @@ export default defineComponent({
       }
     }, { deep: true, immediate: true });
 
-    // 触发上传按钮
-    const handleTriggerClick = () => {
+    // 是否显示上传按钮
+    const showButtonTrigger = computed(() => {
+      return !props.listType.includes('card');
+    });
+
+    // 选择文件
+    const chooseFile = () => {
       if (!props.disabled) {
         inputRef.value.value = null;
         inputRef.value.click();
@@ -146,20 +155,24 @@ export default defineComponent({
 
     // 上传单个文件
     const uploadFile = (fileItem: FileItem, index: number) => {
+      fileItem.status = 'pending';
+
       props.request({
         method: 'post',
         url: props.action,
         fileItem: fileItem,
         name: "file"
       })
-        .then(res => {
+        .then((res) => {
+          fileItem = getFileItemById(fileItem.id);
+
           fileItem.status = 'done';
           fileItem.response = res;
         })
         .catch(err => {
           fileItem.status = 'error';
           fileItem.response = err;
-        })
+        });
     }
 
     const getFileItemById = (id: string) => {
@@ -178,15 +191,18 @@ export default defineComponent({
     // provide
     provide(UPLOADER_KEY,
       reactive({
-        removeFileById
+        ...toRefs(props),
+        removeFileById,
+        chooseFile,
       }) as unknown as UploaderProvideContext
     );
 
     return {
       inputRef,
       fileItems,
-      handleTriggerClick,
-      handleInputChange
+      chooseFile,
+      handleInputChange,
+      showButtonTrigger
     }
   },
 });

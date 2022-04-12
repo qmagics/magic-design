@@ -1,12 +1,12 @@
 <template>
     <div
         :class="[
-            'm-uploader-item m-uploader-item--text',
+            `m-uploader-item`,
             `m-uploader-item--status-${fileItem.status}`
         ]"
     >
         <div class="m-uploader-item__info">
-            <i class="m-icon-file info-icon"></i>
+            <i :class="[fileIconClass, 'info-icon']"></i>
             <span class="info-text">{{ fileItem.name }}</span>
         </div>
         <div class="m-uploader-item__toolbar">
@@ -19,16 +19,9 @@
 </template>
 
 <script lang="ts">
-import { UPLOADER_KEY } from "@magic-design/utils/src/const";
-import { computed, defineComponent, inject, PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import { FileItem, ListType } from "./interface";
-
-const STATUS_ICON_MAP = {
-    'pending': 'm-icon-loading',
-    'done': 'm-icon-check-o',
-    'error': 'm-icon-error-o',
-    'init': ''
-}
+import useItem from "./useItem";
 
 export default defineComponent({
     props: {
@@ -42,20 +35,12 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const uploader = inject(UPLOADER_KEY);
-
-        const removeFile = () => {
-            uploader.removeFileById(props.fileItem.id);
-        }
-
-        const stateIconClass = computed(() => {
-            // return `${props.fileItem.status===''}`;
-            return STATUS_ICON_MAP[props.fileItem.status];
-        });
+        const { removeFile, stateIconClass, fileIconClass } = useItem(props);
 
         return {
             removeFile,
-            stateIconClass
+            stateIconClass,
+            fileIconClass
         }
     }
 })

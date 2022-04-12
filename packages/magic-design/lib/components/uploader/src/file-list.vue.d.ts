@@ -11,6 +11,8 @@ declare const _default: import("vue").DefineComponent<{
     };
 }, {
     ItemComp: import("vue").ComputedRef<any>;
+    chooseFile: () => void;
+    hasUploadBtn: import("vue").ComputedRef<boolean>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     fileItems?: unknown;
     listType?: unknown;

@@ -24,4 +24,6 @@ export interface UploadRequestOptions {
 export declare type UploadRequest = (options: UploadRequestOptions) => Promise<any>;
 export interface UploaderProvideContext {
     removeFileById: (id: string) => void;
+    chooseFile: () => void;
+    disabled: boolean;
 }

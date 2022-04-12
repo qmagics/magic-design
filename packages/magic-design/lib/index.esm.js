@@ -1,4 +1,4 @@
-import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, getCurrentInstance, watch, onMounted, onUpdated, resolveDirective, withCtx, withDirectives, normalizeStyle, vShow, createTextVNode, toDisplayString, renderList, onBeforeUnmount, resolveDynamicComponent } from 'vue';
+import { defineComponent, resolveComponent, openBlock, createElementBlock, normalizeClass, createCommentVNode, createBlock, createVNode, renderSlot, reactive, computed, createElementVNode, withModifiers, Fragment, isVNode, Comment, ref, watchEffect, inject, provide, toRef, Teleport, getCurrentInstance, watch, onMounted, onUpdated, resolveDirective, withCtx, withDirectives, normalizeStyle, vShow, createTextVNode, toDisplayString, renderList, onBeforeUnmount, resolveDynamicComponent, toRefs } from 'vue';
 
 const withInstall = (main) => {
     main.install = (app) => {
@@ -47,12 +47,12 @@ var script$l = defineComponent({
     },
 });
 
-const _hoisted_1$c = ["type", "autofocus"];
-const _hoisted_2$8 = {
+const _hoisted_1$e = ["type", "autofocus"];
+const _hoisted_2$a = {
   key: 0,
   class: "m-button-icon"
 };
-const _hoisted_3$7 = { key: 1 };
+const _hoisted_3$8 = { key: 1 };
 
 function render$k(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
@@ -74,7 +74,7 @@ function render$k(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.handleClick && _ctx.handleClick(...args)))
   }, [
     (_ctx.loading || _ctx.icon)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$8, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$a, [
           createCommentVNode(" <m-icon-loading v-if=\"loading\" name=\"m-icon-loading\"></m-icon-loading> "),
           createCommentVNode(" <component v-else :is=\"icon\"></component> "),
           (_ctx.loading)
@@ -87,11 +87,11 @@ function render$k(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.default)
-      ? (openBlock(), createElementBlock("span", _hoisted_3$7, [
+      ? (openBlock(), createElementBlock("span", _hoisted_3$8, [
           renderSlot(_ctx.$slots, "default")
         ]))
       : createCommentVNode("v-if", true)
-  ], 10 /* CLASS, PROPS */, _hoisted_1$c))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$e))
 }
 
 script$l.render = render$k;
@@ -211,20 +211,20 @@ var script$j = defineComponent({
     },
 });
 
-const _hoisted_1$b = {
+const _hoisted_1$d = {
   key: 0,
   class: "m-input__prepend"
 };
-const _hoisted_2$7 = {
+const _hoisted_2$9 = {
   key: 1,
   class: "m-input__prefix"
 };
-const _hoisted_3$6 = ["placeholder", "disabled", "readonly", "value", "type"];
-const _hoisted_4$2 = {
+const _hoisted_3$7 = ["placeholder", "disabled", "readonly", "value", "type"];
+const _hoisted_4$3 = {
   key: 2,
   class: "m-input__suffix"
 };
-const _hoisted_5$1 = {
+const _hoisted_5$2 = {
   key: 3,
   class: "m-input__append"
 };
@@ -249,12 +249,12 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
         ])
   }, [
     (_ctx.hasPrepend)
-      ? (openBlock(), createElementBlock("span", _hoisted_1$b, [
+      ? (openBlock(), createElementBlock("span", _hoisted_1$d, [
           renderSlot(_ctx.$slots, "prepend")
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.$slots.prefix)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$7, [
+      ? (openBlock(), createElementBlock("span", _hoisted_2$9, [
           renderSlot(_ctx.$slots, "prefix")
         ]))
       : createCommentVNode("v-if", true),
@@ -269,9 +269,9 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
       onChange: _cache[1] || (_cache[1] = (...args) => (_ctx.handleChange && _ctx.handleChange(...args))),
       onFocus: _cache[2] || (_cache[2] = (...args) => (_ctx.handleFocus && _ctx.handleFocus(...args))),
       onBlur: _cache[3] || (_cache[3] = (...args) => (_ctx.handleBlur && _ctx.handleBlur(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$6),
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3$7),
     (_ctx.hasSuffix)
-      ? (openBlock(), createElementBlock("span", _hoisted_4$2, [
+      ? (openBlock(), createElementBlock("span", _hoisted_4$3, [
           renderSlot(_ctx.$slots, "suffix"),
           (_ctx.showClearBtn)
             ? (openBlock(), createBlock(_component_m_icon, {
@@ -284,7 +284,7 @@ function render$i(_ctx, _cache, $props, $setup, $data, $options) {
         ]))
       : createCommentVNode("v-if", true),
     (_ctx.hasAppend)
-      ? (openBlock(), createElementBlock("span", _hoisted_5$1, [
+      ? (openBlock(), createElementBlock("span", _hoisted_5$2, [
           renderSlot(_ctx.$slots, "append")
         ]))
       : createCommentVNode("v-if", true)
@@ -324,7 +324,7 @@ const blobToDataUrl = (blob) => {
     });
 };
 const getUID = (prefix = '', affix = '') => {
-    return `${prefix}${Date.now}${affix}`;
+    return `${prefix}${Date.now()}${affix}`;
 };
 
 const GUTTER_MAP = {
@@ -484,9 +484,9 @@ var script$h = defineComponent({
     },
 });
 
-const _hoisted_1$a = ["disabled", "value", "name", "checked"];
-const _hoisted_2$6 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$5 = { class: "m-radio__label" };
+const _hoisted_1$c = ["disabled", "value", "name", "checked"];
+const _hoisted_2$8 = /*#__PURE__*/createElementVNode("span", { class: "m-radio__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$6 = { class: "m-radio__label" };
 
 function render$h(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
@@ -506,9 +506,9 @@ function render$h(_ctx, _cache, $props, $setup, $data, $options) {
       name: _ctx.name,
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$a),
-    _hoisted_2$6,
-    createElementVNode("span", _hoisted_3$5, [
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$c),
+    _hoisted_2$8,
+    createElementVNode("span", _hoisted_3$6, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
@@ -540,10 +540,10 @@ var script$g = defineComponent({
     }
 });
 
-const _hoisted_1$9 = { class: "m-radio-group" };
+const _hoisted_1$b = { class: "m-radio-group" };
 
 function render$g(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1$9, [
+  return (openBlock(), createElementBlock("div", _hoisted_1$b, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
@@ -625,9 +625,9 @@ var script$f = defineComponent({
     },
 });
 
-const _hoisted_1$8 = ["disabled", "value", "name", "checked"];
-const _hoisted_2$5 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$4 = { class: "m-checkbox__label" };
+const _hoisted_1$a = ["disabled", "value", "name", "checked"];
+const _hoisted_2$7 = /*#__PURE__*/createElementVNode("span", { class: "m-checkbox__icon" }, null, -1 /* HOISTED */);
+const _hoisted_3$5 = { class: "m-checkbox__label" };
 
 function render$f(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("label", {
@@ -647,9 +647,9 @@ function render$f(_ctx, _cache, $props, $setup, $data, $options) {
       name: _ctx.name,
       checked: _ctx.isChecked,
       onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.onChange && _ctx.onChange(...args)))
-    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$8),
-    _hoisted_2$5,
-    createElementVNode("span", _hoisted_3$4, [
+    }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_1$a),
+    _hoisted_2$7,
+    createElementVNode("span", _hoisted_3$5, [
       renderSlot(_ctx.$slots, "default")
     ])
   ], 2 /* CLASS */))
@@ -690,10 +690,10 @@ var script$e = defineComponent({
     }
 });
 
-const _hoisted_1$7 = { class: "m-checkbox-group" };
+const _hoisted_1$9 = { class: "m-checkbox-group" };
 
 function render$e(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", _hoisted_1$7, [
+  return (openBlock(), createElementBlock("div", _hoisted_1$9, [
     renderSlot(_ctx.$slots, "default")
   ]))
 }
@@ -1045,7 +1045,7 @@ var script$b = defineComponent({
     }
 });
 
-const _hoisted_1$6 = { class: "m-select__dropdown" };
+const _hoisted_1$8 = { class: "m-select__dropdown" };
 
 function render$b(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_m_icon = resolveComponent("m-icon");
@@ -1070,7 +1070,7 @@ function render$b(_ctx, _cache, $props, $setup, $data, $options) {
       "popper-offset": [0, 5]
     }, {
       content: withCtx(() => [
-        createElementVNode("ul", _hoisted_1$6, [
+        createElementVNode("ul", _hoisted_1$8, [
           renderSlot(_ctx.$slots, "default")
         ])
       ]),
@@ -1228,8 +1228,8 @@ var script$8 = defineComponent({
     }
 });
 
-const _hoisted_1$5 = ["href", "target"];
-const _hoisted_2$4 = { class: "m-link__inner" };
+const _hoisted_1$7 = ["href", "target"];
+const _hoisted_2$6 = { class: "m-link__inner" };
 
 function render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("a", {
@@ -1244,10 +1244,10 @@ function render$8(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.href,
     target: _ctx.target
   }, [
-    createElementVNode("span", _hoisted_2$4, [
+    createElementVNode("span", _hoisted_2$6, [
       renderSlot(_ctx.$slots, "default")
     ])
-  ], 10 /* CLASS, PROPS */, _hoisted_1$5))
+  ], 10 /* CLASS, PROPS */, _hoisted_1$7))
 }
 
 script$8.render = render$8;
@@ -1265,22 +1265,22 @@ var script$7 = defineComponent({
     }
 });
 
-const _hoisted_1$4 = { class: "m-table__header" };
-const _hoisted_2$3 = ["width"];
-const _hoisted_3$3 = { class: "m-table-tr" };
+const _hoisted_1$6 = { class: "m-table__header" };
+const _hoisted_2$5 = ["width"];
+const _hoisted_3$4 = { class: "m-table-tr" };
 
 function render$7(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("table", _hoisted_1$4, [
+  return (openBlock(), createElementBlock("table", _hoisted_1$6, [
     createElementVNode("colgroup", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
         return (openBlock(), createElementBlock("col", {
           key: column.prop,
           width: column.width
-        }, null, 8 /* PROPS */, _hoisted_2$3))
+        }, null, 8 /* PROPS */, _hoisted_2$5))
       }), 128 /* KEYED_FRAGMENT */))
     ]),
     createElementVNode("thead", null, [
-      createElementVNode("tr", _hoisted_3$3, [
+      createElementVNode("tr", _hoisted_3$4, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
           return (openBlock(), createElementBlock("th", {
             class: normalizeClass([
@@ -1337,25 +1337,25 @@ var script$6 = defineComponent({
     }
 });
 
-const _hoisted_1$3 = { class: "m-table__body" };
-const _hoisted_2$2 = ["width"];
-const _hoisted_3$2 = { class: "m-table-tr" };
+const _hoisted_1$5 = { class: "m-table__body" };
+const _hoisted_2$4 = ["width"];
+const _hoisted_3$3 = { class: "m-table-tr" };
 
 function render$6(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_cell = resolveComponent("table-cell");
 
-  return (openBlock(), createElementBlock("table", _hoisted_1$3, [
+  return (openBlock(), createElementBlock("table", _hoisted_1$5, [
     createElementVNode("colgroup", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column) => {
         return (openBlock(), createElementBlock("col", {
           key: column.prop,
           width: column.width
-        }, null, 8 /* PROPS */, _hoisted_2$2))
+        }, null, 8 /* PROPS */, _hoisted_2$4))
       }), 128 /* KEYED_FRAGMENT */))
     ]),
     createElementVNode("tbody", null, [
       (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.data, (i, rowIndex) => {
-        return (openBlock(), createElementBlock("tr", _hoisted_3$2, [
+        return (openBlock(), createElementBlock("tr", _hoisted_3$3, [
           (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.columns, (column, columnIndex) => {
             return (openBlock(), createElementBlock("td", {
               class: normalizeClass([
@@ -1477,7 +1477,7 @@ var script$5 = defineComponent({
     }
 });
 
-const _hoisted_1$2 = { class: "m-table__container" };
+const _hoisted_1$4 = { class: "m-table__container" };
 
 function render$5(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_table_header = resolveComponent("table-header");
@@ -1490,7 +1490,7 @@ function render$5(_ctx, _cache, $props, $setup, $data, $options) {
     ]),
     style: normalizeStyle(_ctx.style)
   }, [
-    createElementVNode("div", _hoisted_1$2, [
+    createElementVNode("div", _hoisted_1$4, [
       createElementVNode("div", {
         class: "m-table__header-wrapper",
         style: normalizeStyle(_ctx.headerWrapperStyle),
@@ -1580,21 +1580,106 @@ const isImage = (file) => {
     return file.type?.includes('image');
 };
 
-var script$3 = {};
-
-function render$3(_ctx, _cache, $props, $setup, $data, $options) {
-  return (openBlock(), createElementBlock("div", null, " img-card-item "))
-}
-
-script$3.render = render$3;
-script$3.__file = "packages/components/uploader/src/item-card.vue";
-
 const STATUS_ICON_MAP = {
     'pending': 'm-icon-loading',
     'done': 'm-icon-check-o',
     'error': 'm-icon-error-o',
     'init': ''
 };
+var useItem = (props) => {
+    const uploader = inject(UPLOADER_KEY);
+    const removeFile = () => {
+        uploader.removeFileById(props.fileItem.id);
+    };
+    const stateIconClass = computed(() => {
+        return STATUS_ICON_MAP[props.fileItem.status];
+    });
+    const fileIconClass = computed(() => {
+        if (!props.fileItem?.file) {
+            return 'm-icon-file';
+        }
+        return isImage(props.fileItem.file) ? 'm-icon-image' : 'm-icon-file';
+    });
+    return {
+        removeFile,
+        stateIconClass,
+        fileIconClass
+    };
+};
+
+var script$3 = defineComponent({
+    props: {
+        fileItem: {
+            type: Object,
+        },
+        listType: {
+            type: String,
+            default: 'img-card'
+        }
+    },
+    setup(props) {
+        const { removeFile, stateIconClass, fileIconClass } = useItem(props);
+        return {
+            removeFile,
+            stateIconClass,
+            fileIconClass
+        };
+    }
+});
+
+const _hoisted_1$3 = ["src"];
+const _hoisted_2$3 = ["title"];
+const _hoisted_3$2 = { class: "m-uploader-item__title-text" };
+const _hoisted_4$2 = { class: "m-uploader-item__toolbox" };
+const _hoisted_5$1 = {
+  key: 2,
+  class: "m-uploader-item__loading"
+};
+const _hoisted_6 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-loading" }, null, -1 /* HOISTED */);
+const _hoisted_7 = [
+  _hoisted_6
+];
+
+function render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  return (openBlock(), createElementBlock("div", {
+    class: normalizeClass([
+            `m-uploader-item`,
+            `m-uploader-item--status-${_ctx.fileItem.status}`
+        ])
+  }, [
+    (_ctx.listType === 'img-card')
+      ? (openBlock(), createElementBlock("img", {
+          key: 0,
+          class: "m-uploader-item__img",
+          src: _ctx.fileItem.url
+        }, null, 8 /* PROPS */, _hoisted_1$3))
+      : (_ctx.listType === 'text-card')
+        ? (openBlock(), createElementBlock("div", {
+            key: 1,
+            class: "m-uploader-item__title",
+            title: _ctx.fileItem.name
+          }, [
+            createElementVNode("i", {
+              class: normalizeClass([_ctx.fileIconClass, 'm-uploader-item__title-icon'])
+            }, null, 2 /* CLASS */),
+            createElementVNode("span", _hoisted_3$2, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
+          ], 8 /* PROPS */, _hoisted_2$3))
+        : createCommentVNode("v-if", true),
+    createElementVNode("div", _hoisted_4$2, [
+      createElementVNode("i", {
+        class: "m-icon-delete",
+        onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.removeFile && _ctx.removeFile(...args)))
+      })
+    ]),
+    (_ctx.fileItem.status==='pending')
+      ? (openBlock(), createElementBlock("div", _hoisted_5$1, _hoisted_7))
+      : createCommentVNode("v-if", true)
+  ], 2 /* CLASS */))
+}
+
+script$3.render = render$3;
+script$3.__file = "packages/components/uploader/src/item-card.vue";
+
 var script$2 = defineComponent({
     props: {
         fileItem: {
@@ -1607,49 +1692,44 @@ var script$2 = defineComponent({
         }
     },
     setup(props) {
-        const uploader = inject(UPLOADER_KEY);
-        const removeFile = () => {
-            uploader.removeFileById(props.fileItem.id);
-        };
-        const stateIconClass = computed(() => {
-            // return `${props.fileItem.status===''}`;
-            return STATUS_ICON_MAP[props.fileItem.status];
-        });
+        const { removeFile, stateIconClass, fileIconClass } = useItem(props);
         return {
             removeFile,
-            stateIconClass
+            stateIconClass,
+            fileIconClass
         };
     }
 });
 
-const _hoisted_1$1 = { class: "m-uploader-item__info" };
-const _hoisted_2$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-file info-icon" }, null, -1 /* HOISTED */);
-const _hoisted_3$1 = { class: "info-text" };
-const _hoisted_4$1 = { class: "m-uploader-item__toolbar" };
-const _hoisted_5 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
-const _hoisted_6 = [
-  _hoisted_5
+const _hoisted_1$2 = { class: "m-uploader-item__info" };
+const _hoisted_2$2 = { class: "info-text" };
+const _hoisted_3$1 = { class: "m-uploader-item__toolbar" };
+const _hoisted_4$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
+const _hoisted_5 = [
+  _hoisted_4$1
 ];
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
     class: normalizeClass([
-            'm-uploader-item m-uploader-item--text',
+            `m-uploader-item`,
             `m-uploader-item--status-${_ctx.fileItem.status}`
         ])
   }, [
-    createElementVNode("div", _hoisted_1$1, [
-      _hoisted_2$1,
-      createElementVNode("span", _hoisted_3$1, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
+    createElementVNode("div", _hoisted_1$2, [
+      createElementVNode("i", {
+        class: normalizeClass([_ctx.fileIconClass, 'info-icon'])
+      }, null, 2 /* CLASS */),
+      createElementVNode("span", _hoisted_2$2, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
     ]),
-    createElementVNode("div", _hoisted_4$1, [
+    createElementVNode("div", _hoisted_3$1, [
       createElementVNode("i", {
         class: normalizeClass([_ctx.stateIconClass, 'm-uploader-status-icon'])
       }, null, 2 /* CLASS */),
       createElementVNode("span", {
         class: "m-uploader-icon-btn btn-remove",
         onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.removeFile && _ctx.removeFile(...args)))
-      }, _hoisted_6)
+      }, _hoisted_5)
     ])
   ], 2 /* CLASS */))
 }
@@ -1669,14 +1749,26 @@ var script$1 = defineComponent({
         }
     },
     setup(props) {
+        const uploader = inject(UPLOADER_KEY);
         const ItemComp = computed(() => {
             return props.listType.includes('card') ? script$3 : script$2;
         });
+        const chooseFile = uploader.chooseFile;
+        const hasUploadBtn = computed(() => {
+            return props.listType.includes('card') && !uploader.disabled;
+        });
         return {
-            ItemComp
+            ItemComp,
+            chooseFile,
+            hasUploadBtn
         };
     }
 });
+
+const _hoisted_1$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-plus" }, null, -1 /* HOISTED */);
+const _hoisted_2$1 = [
+  _hoisted_1$1
+];
 
 function render$1(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
@@ -1691,7 +1783,14 @@ function render$1(_ctx, _cache, $props, $setup, $data, $options) {
         fileItem: fileItem,
         listType: _ctx.listType
       }, null, 8 /* PROPS */, ["fileItem", "listType"]))
-    }), 128 /* KEYED_FRAGMENT */))
+    }), 128 /* KEYED_FRAGMENT */)),
+    (_ctx.hasUploadBtn)
+      ? (openBlock(), createElementBlock("div", {
+          key: 0,
+          class: "m-uploader-item-trigger",
+          onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.chooseFile && _ctx.chooseFile(...args)))
+        }, _hoisted_2$1))
+      : createCommentVNode("v-if", true)
   ], 2 /* CLASS */))
 }
 
@@ -1714,7 +1813,7 @@ var script = defineComponent({
         },
         listType: {
             type: String,
-            default: 'list-item'
+            default: 'text'
         },
         disabled: {
             type: Boolean,
@@ -1760,8 +1859,12 @@ var script = defineComponent({
                 normalizeFileItems(newList);
             }
         }, { deep: true, immediate: true });
-        // 触发上传按钮
-        const handleTriggerClick = () => {
+        // 是否显示上传按钮
+        const showButtonTrigger = computed(() => {
+            return !props.listType.includes('card');
+        });
+        // 选择文件
+        const chooseFile = () => {
             if (!props.disabled) {
                 inputRef.value.value = null;
                 inputRef.value.click();
@@ -1803,13 +1906,15 @@ var script = defineComponent({
         };
         // 上传单个文件
         const uploadFile = (fileItem, index) => {
+            fileItem.status = 'pending';
             props.request({
                 method: 'post',
                 url: props.action,
                 fileItem: fileItem,
                 name: "file"
             })
-                .then(res => {
+                .then((res) => {
+                fileItem = getFileItemById(fileItem.id);
                 fileItem.status = 'done';
                 fileItem.response = res;
             })
@@ -1831,13 +1936,16 @@ var script = defineComponent({
         };
         // provide
         provide(UPLOADER_KEY, reactive({
-            removeFileById
+            ...toRefs(props),
+            removeFileById,
+            chooseFile,
         }));
         return {
             inputRef,
             fileItems,
-            handleTriggerClick,
-            handleInputChange
+            chooseFile,
+            handleInputChange,
+            showButtonTrigger
         };
     },
 });
@@ -1859,17 +1967,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_FileList = resolveComponent("FileList");
 
   return (openBlock(), createElementBlock("div", _hoisted_1, [
-    createElementVNode("div", {
+    withDirectives(createElementVNode("div", {
       class: "m-uploader__trigger",
-      onClick: _cache[1] || (_cache[1] = (...args) => (_ctx.handleTriggerClick && _ctx.handleTriggerClick(...args)))
+      onClick: _cache[1] || (_cache[1] = (...args) => (_ctx.chooseFile && _ctx.chooseFile(...args)))
     }, [
       renderSlot(_ctx.$slots, "trigger", {}, () => [
-        createVNode(_component_m_button, { type: "primary" }, {
+        createVNode(_component_m_button, {
+          type: "primary",
+          disabled: _ctx.disabled
+        }, {
           default: withCtx(() => [
             _hoisted_2
           ]),
           _: 1 /* STABLE */
-        })
+        }, 8 /* PROPS */, ["disabled"])
       ]),
       createElementVNode("input", {
         class: "m-uploader-input",
@@ -1879,11 +1990,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ref: "inputRef",
         onChange: _cache[0] || (_cache[0] = (...args) => (_ctx.handleInputChange && _ctx.handleInputChange(...args)))
       }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_3)
+    ], 512 /* NEED_PATCH */), [
+      [vShow, _ctx.showButtonTrigger]
     ]),
     (_ctx.tip)
       ? (openBlock(), createElementBlock("div", _hoisted_4, toDisplayString(_ctx.tip), 1 /* TEXT */))
       : createCommentVNode("v-if", true),
-    createVNode(_component_FileList, { "file-items": _ctx.fileItems }, null, 8 /* PROPS */, ["file-items"])
+    createVNode(_component_FileList, {
+      "file-items": _ctx.fileItems,
+      listType: _ctx.listType
+    }, null, 8 /* PROPS */, ["file-items", "listType"])
   ]))
 }
 

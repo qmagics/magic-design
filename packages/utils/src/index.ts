@@ -20,7 +20,7 @@ export const blobToDataUrl = (blob: Blob): Promise<string> => {
 }
 
 export const getUID = (prefix: string | number = '', affix: string | number = '') => {
-    return `${prefix}${Date.now}${affix}`
+    return `${prefix}${Date.now()}${affix}`
 }
 
 export {
