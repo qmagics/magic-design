@@ -107,6 +107,20 @@ $card-gutter:10px;
             }
         }
 
+        &--img {
+            .m-uploader-item {
+                border: 1px solid $color-bg-1;
+                margin-bottom: 10px;
+
+                &__img {
+                    width: 42px;
+                    height: 42px;
+                    object-fit: cover;
+                    margin-right: 5px;
+                }
+            }
+        }
+
         &--text-card,
         &--img-card {
             display: flex;
@@ -194,8 +208,8 @@ $card-gutter:10px;
                     }
                 }
 
-                &:hover{
-                    .m-uploader-item__toolbox{
+                &:hover {
+                    .m-uploader-item__toolbox {
                         opacity: 1;
                     }
                 }

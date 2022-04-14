@@ -1635,9 +1635,9 @@ const _hoisted_5$1 = {
   key: 2,
   class: "m-uploader-item__loading"
 };
-const _hoisted_6 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-loading" }, null, -1 /* HOISTED */);
+const _hoisted_6$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-loading" }, null, -1 /* HOISTED */);
 const _hoisted_7 = [
-  _hoisted_6
+  _hoisted_6$1
 ];
 
 function render$3(_ctx, _cache, $props, $setup, $data, $options) {
@@ -1702,34 +1702,44 @@ var script$2 = defineComponent({
 });
 
 const _hoisted_1$2 = { class: "m-uploader-item__info" };
-const _hoisted_2$2 = { class: "info-text" };
-const _hoisted_3$1 = { class: "m-uploader-item__toolbar" };
-const _hoisted_4$1 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
-const _hoisted_5 = [
-  _hoisted_4$1
+const _hoisted_2$2 = ["src"];
+const _hoisted_3$1 = { class: "info-text" };
+const _hoisted_4$1 = { class: "m-uploader-item__toolbar" };
+const _hoisted_5 = /*#__PURE__*/createElementVNode("i", { class: "m-icon-delete" }, null, -1 /* HOISTED */);
+const _hoisted_6 = [
+  _hoisted_5
 ];
 
 function render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", {
     class: normalizeClass([
-            `m-uploader-item`,
-            `m-uploader-item--status-${_ctx.fileItem.status}`
-        ])
+        `m-uploader-item`,
+        `m-uploader-item--status-${_ctx.fileItem.status}`
+    ])
   }, [
     createElementVNode("div", _hoisted_1$2, [
-      createElementVNode("i", {
-        class: normalizeClass([_ctx.fileIconClass, 'info-icon'])
-      }, null, 2 /* CLASS */),
-      createElementVNode("span", _hoisted_2$2, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
+      (_ctx.listType === 'text')
+        ? (openBlock(), createElementBlock("i", {
+            key: 0,
+            class: normalizeClass([_ctx.fileIconClass, 'info-icon'])
+          }, null, 2 /* CLASS */))
+        : (_ctx.listType === 'img')
+          ? (openBlock(), createElementBlock("img", {
+              key: 1,
+              class: "m-uploader-item__img",
+              src: _ctx.fileItem.url
+            }, null, 8 /* PROPS */, _hoisted_2$2))
+          : createCommentVNode("v-if", true),
+      createElementVNode("span", _hoisted_3$1, toDisplayString(_ctx.fileItem.name), 1 /* TEXT */)
     ]),
-    createElementVNode("div", _hoisted_3$1, [
+    createElementVNode("div", _hoisted_4$1, [
       createElementVNode("i", {
         class: normalizeClass([_ctx.stateIconClass, 'm-uploader-status-icon'])
       }, null, 2 /* CLASS */),
       createElementVNode("span", {
         class: "m-uploader-icon-btn btn-remove",
         onClick: _cache[0] || (_cache[0] = (...args) => (_ctx.removeFile && _ctx.removeFile(...args)))
-      }, _hoisted_5)
+      }, _hoisted_6)
     ])
   ], 2 /* CLASS */))
 }

@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
 const state = reactive({
     fileList: [
         {
@@ -28,7 +28,7 @@ const state = reactive({
             url: "https://pic2.zhimg.com/v2-97e6e78a4194a2d2da66171dfc53422e_1440w.jpg?source=172ae18b"
         }
     ],
-    listType: 'img-card'
+    listType: 'img'
 })
 
 </script>

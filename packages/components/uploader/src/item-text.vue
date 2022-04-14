@@ -1,12 +1,11 @@
 <template>
-    <div
-        :class="[
-            `m-uploader-item`,
-            `m-uploader-item--status-${fileItem.status}`
-        ]"
-    >
+    <div :class="[
+        `m-uploader-item`,
+        `m-uploader-item--status-${fileItem.status}`
+    ]">
         <div class="m-uploader-item__info">
-            <i :class="[fileIconClass, 'info-icon']"></i>
+            <i v-if="listType === 'text'" :class="[fileIconClass, 'info-icon']"></i>
+            <img class="m-uploader-item__img" v-else-if="listType === 'img'" :src="fileItem.url" />
             <span class="info-text">{{ fileItem.name }}</span>
         </div>
         <div class="m-uploader-item__toolbar">
