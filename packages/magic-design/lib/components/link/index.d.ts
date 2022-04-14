@@ -1,2 +1,2 @@
-declare const MLink: any;
-export default MLink;
+declare const Link: any;
+export default Link;

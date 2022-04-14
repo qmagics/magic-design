@@ -1,2 +1,2 @@
-declare const MSpace: any;
-export default MSpace;
+declare const Space: any;
+export default Space;

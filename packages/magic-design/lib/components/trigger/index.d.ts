@@ -1,2 +1,2 @@
-declare const MTrigger: any;
-export default MTrigger;
+declare const Trigger: any;
+export default Trigger;

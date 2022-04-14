@@ -1,2 +1,2 @@
-declare const MCheckbox: any;
-export default MCheckbox;
+declare const Checkbox: any;
+export default Checkbox;

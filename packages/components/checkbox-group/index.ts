@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import CheckboxGroup from '../checkbox/src/checkbox-group.vue';
+import MCheckboxGroup from '../checkbox/src/checkbox-group.vue';
 
-const MCheckboxGroup = withInstall(CheckboxGroup);
+const CheckboxGroup = withInstall(MCheckboxGroup);
 
-export default MCheckboxGroup;
+export default CheckboxGroup;

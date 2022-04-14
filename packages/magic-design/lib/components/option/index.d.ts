@@ -1,2 +1,2 @@
-declare const MOption: any;
-export default MOption;
+declare const Option: any;
+export default Option;

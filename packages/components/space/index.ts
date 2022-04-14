@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Space from './src/space.vue';
+import MSpace from './src/space.vue';
 
-const MSpace = withInstall(Space);
+const Space = withInstall(MSpace);
 
-export default MSpace;
+export default Space;

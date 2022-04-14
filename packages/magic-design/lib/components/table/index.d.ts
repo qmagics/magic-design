@@ -1,3 +1,3 @@
-declare const MTable: any;
+declare const Table: any;
+export default Table;
 export * from './src/interface';
-export default MTable;

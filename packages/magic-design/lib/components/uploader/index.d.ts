@@ -1,2 +1,2 @@
-declare const MUploader: any;
-export default MUploader;
+declare const Uploader: any;
+export default Uploader;

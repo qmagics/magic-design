@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Checkbox from './src/checkbox.vue';
+import MCheckbox from './src/checkbox.vue';
 
-const MCheckbox = withInstall(Checkbox);
+const Checkbox = withInstall(MCheckbox);
 
-export default MCheckbox;
+export default Checkbox;

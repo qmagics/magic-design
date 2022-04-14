@@ -1,0 +1,37 @@
+@import "./common/var.scss";
+
+@include b(message) {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 240px;
+    border-radius: 4px;
+    background-color: #ddd;
+    z-index: 1000;
+    padding: 20px;
+    transition: all .3s;
+
+    @include m(success) {
+        background-color: $color-success-1;
+        color: $color-success-5;
+    }
+
+    @include m(danger) {
+        background-color: $color-danger-1;
+        color: $color-danger-5;
+    }
+
+    @include m(warning) {
+        background-color: $color-warning-1;
+        color: $color-warning-6;
+    }
+
+    @include e(content) {
+    }
+}
+
+.m-message-fade-enter-from,
+.m-message-fade-leave-to {
+    transform: translate(-50%, -100%);
+}

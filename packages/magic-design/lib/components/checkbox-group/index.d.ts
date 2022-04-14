@@ -1,2 +1,2 @@
-declare const MCheckboxGroup: any;
-export default MCheckboxGroup;
+declare const CheckboxGroup: any;
+export default CheckboxGroup;

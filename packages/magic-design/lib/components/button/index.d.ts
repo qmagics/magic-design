@@ -1,2 +1,2 @@
-declare const MButton: any;
-export default MButton;
+declare const Button: any;
+export default Button;

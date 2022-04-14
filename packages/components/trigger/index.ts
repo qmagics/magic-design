@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Trigger from './src/trigger.vue';
+import MTrigger from './src/trigger.vue';
 
-const MTrigger = withInstall(Trigger);
+const Trigger = withInstall(MTrigger);
 
-export default MTrigger;
+export default Trigger;

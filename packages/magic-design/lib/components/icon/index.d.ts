@@ -1,2 +1,2 @@
-declare const MIcon: any;
-export default MIcon;
+declare const Icon: any;
+export default Icon;

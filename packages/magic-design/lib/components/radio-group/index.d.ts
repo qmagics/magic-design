@@ -1,2 +1,2 @@
-declare const MRadioGroup: any;
-export default MRadioGroup;
+declare const RadioGroup: any;
+export default RadioGroup;

@@ -1,7 +1,7 @@
 import { withInstall } from '../utils';
-import Select from './src/select.vue';
+import MSelect from './src/select.vue';
 
-const MSelect = withInstall(Select);
+const Select = withInstall(MSelect);
 
-export default MSelect;
+export default Select;
 export * from './src/interface';

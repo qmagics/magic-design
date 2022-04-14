@@ -1,2 +1,2 @@
-declare const MTag: any;
-export default MTag;
+declare const Tag: any;
+export default Tag;

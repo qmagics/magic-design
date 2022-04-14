@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Option from '../select/src/option.vue';
+import MOption from '../select/src/option.vue';
 
-const MOption = withInstall(Option);
+const Option = withInstall(MOption);
 
-export default MOption;
+export default Option;

@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import RadioGroup from '../radio/src/radio-group.vue';
+import MRadioGroup from '../radio/src/radio-group.vue';
 
-const MRadioGroup = withInstall(RadioGroup);
+const RadioGroup = withInstall(MRadioGroup);
 
-export default MRadioGroup;
+export default RadioGroup;

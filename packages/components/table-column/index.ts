@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import TableColumn from '../table/src/column.vue';
+import MTableColumn from '../table/src/column.vue';
 
-const MTableColumn = withInstall(TableColumn);
+const TableColumn = withInstall(MTableColumn);
 
-export default MTableColumn;
+export default TableColumn;

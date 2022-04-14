@@ -1,3 +1,3 @@
-declare const MSelect: any;
-export default MSelect;
+declare const Select: any;
+export default Select;
 export * from './src/interface';

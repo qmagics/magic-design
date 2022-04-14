@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Radio from './src/radio.vue';
+import MRadio from './src/radio.vue';
 
-const MRadio = withInstall(Radio);
+const Radio = withInstall(MRadio);
 
-export default MRadio;
+export default Radio;

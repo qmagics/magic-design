@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Icon from './src/icon.vue';
+import MIcon from './src/icon.vue';
 
-const MIcon = withInstall(Icon);
+const Icon = withInstall(MIcon);
 
-export default MIcon;
+export default Icon;

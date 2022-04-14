@@ -1,2 +1,2 @@
-declare const MInput: any;
-export default MInput;
+declare const Input: any;
+export default Input;

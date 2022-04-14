@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Tag from './src/tag.vue';
+import MTag from './src/tag.vue';
 
-const MTag = withInstall(Tag);
+const Tag = withInstall(MTag);
 
-export default MTag;
+export default Tag;

@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Uploader from './src/uploader.vue';
+import MUploader from './src/uploader.vue';
 
-const MUploader = withInstall(Uploader);
+const Uploader = withInstall(MUploader);
 
-export default MUploader;
+export default Uploader;

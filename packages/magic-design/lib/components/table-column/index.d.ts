@@ -1,2 +1,2 @@
-declare const MTableColumn: any;
-export default MTableColumn;
+declare const TableColumn: any;
+export default TableColumn;

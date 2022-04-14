@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Input from './src/input.vue';
+import MInput from './src/input.vue';
 
-const MInput = withInstall(Input);
+const Input = withInstall(MInput);
 
-export default MInput;
+export default Input;

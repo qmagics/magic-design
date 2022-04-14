@@ -1,2 +1,2 @@
-declare const MRadio: any;
-export default MRadio;
+declare const Radio: any;
+export default Radio;

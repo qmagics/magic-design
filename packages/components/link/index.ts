@@ -1,6 +1,6 @@
 import { withInstall } from '../utils';
-import Link from './src/link.vue';
+import MLink from './src/link.vue';
 
-const MLink = withInstall(Link);
+const Link = withInstall(MLink);
 
-export default MLink;
+export default Link;

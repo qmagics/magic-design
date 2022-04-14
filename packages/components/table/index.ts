@@ -1,8 +1,7 @@
 import { withInstall } from '../utils';
-import Table from './src/table.vue';
+import MTable from './src/table.vue';
 
-const MTable = withInstall(Table);
+const Table = withInstall(MTable);
 
+export default Table;
 export * from './src/interface';
-
-export default MTable;
