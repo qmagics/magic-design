@@ -1,6 +1,6 @@
 <template>
     <transition name="m-message-fade" @before-leave="onClose" @after-leave="$emit('destroy')">
-        <div :class="classes" v-show="state.visible">
+        <div :class="classes" :style="styles" v-show="state.visible">
             <div class="m-message__content">
                 {{ content }}
             </div>
@@ -29,11 +29,15 @@ export default defineComponent({
         },
         duration: {
             type: Number,
-            default: 2000
+            default: 3000
         },
         closable: Boolean,
         onClose: {
             type: Function as PropType<() => void>
+        },
+        offset: {
+            type: Number,
+            default: 50
         }
     },
 
@@ -51,6 +55,12 @@ export default defineComponent({
             ]
         });
 
+        const styles = computed(() => {
+            return {
+                top: `${props.offset}px`
+            }
+        });
+
         const startTimer = () => {
             timer = setTimeout(() => {
                 state.visible = false;
@@ -60,6 +70,10 @@ export default defineComponent({
         const clearTimer = () => {
             clearTimeout(timer);
             timer = null;
+        }
+
+        const close = () => {
+            state.visible = false;
         }
 
         onMounted(() => {
@@ -73,7 +87,9 @@ export default defineComponent({
 
         return {
             state,
-            classes
+            classes,
+            styles,
+            close
         }
     }
 });

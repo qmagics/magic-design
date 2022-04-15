@@ -170,6 +170,17 @@ body {
     --m-color-danger-9: rgb(var(--red-9));
     --m-color-danger-10: rgb(var(--red-10));
 
+    --m-color-info-1: rgb(var(--gray-1));
+    --m-color-info-2: rgb(var(--gray-2));
+    --m-color-info-3: rgb(var(--gray-3));
+    --m-color-info-4: rgb(var(--gray-4));
+    --m-color-info-5: rgb(var(--gray-5));
+    --m-color-info-6: rgb(var(--gray-6));
+    --m-color-info-7: rgb(var(--gray-7));
+    --m-color-info-8: rgb(var(--gray-8));
+    --m-color-info-9: rgb(var(--gray-9));
+    --m-color-info-10: rgb(var(--gray-10));
+
     /** radius **/
     --m-radius-1: 2px;
     --m-radius-2: 3px;
@@ -334,6 +345,18 @@ $color-danger-7: var(--m-color-danger-7);
 $color-danger-8: var(--m-color-danger-8);
 $color-danger-9: var(--m-color-danger-9);
 $color-danger-10: var(--m-color-danger-10);
+
+/** info **/
+$color-info-1: var(--m-color-info-1);
+$color-info-2: var(--m-color-info-2);
+$color-info-3: var(--m-color-info-3);
+$color-info-4: var(--m-color-info-4);
+$color-info-5: var(--m-color-info-5);
+$color-info-6: var(--m-color-info-6);
+$color-info-7: var(--m-color-info-7);
+$color-info-8: var(--m-color-info-8);
+$color-info-9: var(--m-color-info-9);
+$color-info-10: var(--m-color-info-10);
 
 /* radius */
 $radius-1:var(--m-radius-1);

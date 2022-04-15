@@ -21,11 +21,19 @@ declare const _default: import("vue").DefineComponent<{
     onClose: {
         type: PropType<() => void>;
     };
+    offset: {
+        type: NumberConstructor;
+        default: number;
+    };
 }, {
     state: {
         visible: boolean;
     };
     classes: import("vue").ComputedRef<string[]>;
+    styles: import("vue").ComputedRef<{
+        top: string;
+    }>;
+    close: () => void;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     id?: unknown;
     content?: unknown;
@@ -33,12 +41,14 @@ declare const _default: import("vue").DefineComponent<{
     duration?: unknown;
     closable?: unknown;
     onClose?: unknown;
+    offset?: unknown;
 } & {
     id: string;
     content: string;
     type: MessageType;
     duration: number;
     closable: boolean;
+    offset: number;
 } & {
     onClose?: () => void;
 }>, {
@@ -46,5 +56,6 @@ declare const _default: import("vue").DefineComponent<{
     type: MessageType;
     duration: number;
     closable: boolean;
+    offset: number;
 }>;
 export default _default;

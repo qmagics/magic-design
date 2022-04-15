@@ -1,4 +1,4 @@
-import type { App } from "vue";
+import type { App, VNode } from "vue";
 
 export type MessageType = 'info' | 'warning' | 'danger' | 'success';
 
@@ -9,10 +9,20 @@ export interface MessageOptions {
     closable?: boolean;
     duration?: number;
     type: MessageType;
-    onClose?: () => void;
+    offset?: number;
+    onClose?: (vm: VNode) => void;
 }
 
+export type MessageStateFn = (
+    options: MessageOptions | string,
+) => { close: () => void }
+
 export interface MessageMethod {
-    (msg: MessageOptions | string): void;
+    (msg: MessageOptions | string): { close: () => void };
+    info: MessageStateFn;
+    warning: MessageStateFn;
+    danger: MessageStateFn;
+    success: MessageStateFn;
+    closeAll: () => void;
     install: (app: App) => void;
 }

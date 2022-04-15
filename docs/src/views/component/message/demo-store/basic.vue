@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { Message } from 'magic-design';
 const showMsg = () => {
-    Message('111');
+    Message(`这是一条消息`);
 }
 </script>
 

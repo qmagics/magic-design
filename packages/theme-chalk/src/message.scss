@@ -9,8 +9,14 @@
     border-radius: 4px;
     background-color: #ddd;
     z-index: 1000;
-    padding: 20px;
+    padding:15px 20px;
     transition: all .3s;
+    opacity: 1;
+
+    @include m(info) {
+        background-color: $color-info-1;
+        color: $color-info-6;
+    }
 
     @include m(success) {
         background-color: $color-success-1;
@@ -33,5 +39,6 @@
 
 .m-message-fade-enter-from,
 .m-message-fade-leave-to {
+    opacity: 0;
     transform: translate(-50%, -100%);
 }

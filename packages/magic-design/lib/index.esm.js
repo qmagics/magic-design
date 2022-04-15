@@ -2054,11 +2054,15 @@ var script = defineComponent({
         },
         duration: {
             type: Number,
-            default: 2000
+            default: 3000
         },
         closable: Boolean,
         onClose: {
             type: Function
+        },
+        offset: {
+            type: Number,
+            default: 50
         }
     },
     setup(props) {
@@ -2072,6 +2076,11 @@ var script = defineComponent({
                 `m-message--${props.type}`
             ];
         });
+        const styles = computed(() => {
+            return {
+                top: `${props.offset}px`
+            };
+        });
         const startTimer = () => {
             timer = setTimeout(() => {
                 state.visible = false;
@@ -2080,6 +2089,9 @@ var script = defineComponent({
         const clearTimer = () => {
             clearTimeout(timer);
             timer = null;
+        };
+        const close = () => {
+            state.visible = false;
         };
         onMounted(() => {
             state.visible = true;
@@ -2090,7 +2102,9 @@ var script = defineComponent({
         });
         return {
             state,
-            classes
+            classes,
+            styles,
+            close
         };
     }
 });
@@ -2105,10 +2119,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, {
     default: withCtx(() => [
       withDirectives(createElementVNode("div", {
-        class: normalizeClass(_ctx.classes)
+        class: normalizeClass(_ctx.classes),
+        style: normalizeStyle(_ctx.styles)
       }, [
         createElementVNode("div", _hoisted_1, toDisplayString(_ctx.content), 1 /* TEXT */)
-      ], 2 /* CLASS */), [
+      ], 6 /* CLASS, STYLE */), [
         [vShow, _ctx.state.visible]
       ])
     ]),
@@ -2122,10 +2137,14 @@ script.__file = "packages/components/message/src/message.vue";
 const DEFAULT_OPTIONS = {
     content: "",
     icon: "",
-    type: 'warning',
+    type: 'info',
     closable: false,
-    duration: 2000
+    duration: 3000,
+    offset: 40
 };
+const OFFSET_GUTTER = 16;
+let seed = 0;
+const instances = [];
 const Message = (options) => {
     if (typeof options === 'string') {
         options = { ...DEFAULT_OPTIONS, content: options };
@@ -2133,20 +2152,75 @@ const Message = (options) => {
     else {
         options = { ...DEFAULT_OPTIONS, ...options };
     }
-    const containerEl = document.createElement('div');
     const userOnClose = options.onClose;
-    options.onClose = () => {
-        userOnClose?.();
-    };
+    let offset = instances.reduce((pre, cur) => pre + cur.el.offsetHeight + OFFSET_GUTTER, options.offset);
+    const id = `el-message${seed++}`;
     const vnode = createVNode(script, {
-        ...options
+        id,
+        ...options,
+        offset,
+        onClose: () => {
+            handleClose(id, userOnClose);
+        }
     });
+    // 创建容器元素
+    const containerEl = document.createElement('div');
     vnode.props.onDestroy = () => {
         render$m(null, containerEl);
     };
     render$m(vnode, containerEl);
     document.body.appendChild(containerEl.firstElementChild);
+    instances.push(vnode);
+    return {
+        close: () => {
+            vnode.component.proxy.close();
+        }
+    };
 };
+const handleClose = (id, userOnClose) => {
+    const index = instances.findIndex(i => i.props.id === id);
+    if (index === -1)
+        return;
+    const vm = instances[index];
+    if (!vm)
+        return;
+    userOnClose?.(vm);
+    const deltaHeight = vm.el.offsetHeight || 0;
+    instances.splice(index, 1);
+    const len = instances.length;
+    if (!len)
+        return;
+    for (let i = index; i < len; i++) {
+        let pos = parseFloat(instances[i].el.style.top) - deltaHeight - OFFSET_GUTTER;
+        instances[i].component.props.offset = pos;
+    }
+};
+const closeAll = () => {
+    const len = instances.length;
+    for (let i = len - 1; i >= 0; i--) {
+        const vm = instances[i].component?.proxy;
+        vm?.close();
+    }
+};
+const buildStateFn = (type) => {
+    return (options) => {
+        if (typeof options === 'string') {
+            options = {
+                content: options,
+                type
+            };
+        }
+        else {
+            options.type = type;
+        }
+        return Message(options);
+    };
+};
+Message.info = buildStateFn('info');
+Message.warning = buildStateFn('warning');
+Message.success = buildStateFn('success');
+Message.danger = buildStateFn('danger');
+Message.closeAll = closeAll;
 Message.install = (app) => {
     app.config.globalProperties.$message = Message;
 };
