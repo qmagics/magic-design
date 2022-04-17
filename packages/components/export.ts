@@ -15,3 +15,4 @@ export { default as Table } from './table';
 export { default as TableColumn } from './table-column';
 export { default as Uploader } from './uploader';
 export { default as Message } from './message';
+export { default as Vlist } from './vlist';

@@ -103,8 +103,11 @@ export default defineComponent({
                                     class: spaceItemClass.value,
                                     style: spaceItemStyle.value
                                 },
-                                [i],
-                                PatchFlags.PROPS | PatchFlags.STYLE
+                                {
+                                    default: () => [i],
+                                },
+                                // [i],
+                                // PatchFlags.PROPS | PatchFlags.STYLE
                             ))
                         });
                     }
@@ -117,7 +120,10 @@ export default defineComponent({
                                 class: spaceItemClass.value,
                                 style: spaceItemStyle.value
                             },
-                            [child],
+                            {
+                                default: () => [child],
+                            },
+                            // [child],
                             // PatchFlags.PROPS | PatchFlags.STYLE,
                         ))
                     }
@@ -129,7 +135,7 @@ export default defineComponent({
                         class: spaceClass.value,
                     },
                     wrapedItems,
-                    PatchFlags.STYLE | PatchFlags.CLASS
+                    // PatchFlags.STYLE | PatchFlags.CLASS
                 )
             }
             else {

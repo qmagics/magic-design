@@ -1,0 +1,19 @@
+@import "./mixins/mixin.scss";
+
+@include b(vlist) {
+    position: relative;
+    overflow-y: scroll;
+
+    @include e(scrollbar) {
+        
+    }
+
+    @include e(content) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    @include e(item) {}
+}

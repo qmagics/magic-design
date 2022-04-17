@@ -14,6 +14,7 @@ import Link from './link';
 import Table from './table';
 import TableColumn from './table-column';
 import Uploader from './uploader';
+import Vlist from './vlist';
 
 const components = [
     Button,
@@ -31,7 +32,8 @@ const components = [
     Link,
     Table,
     TableColumn,
-    Uploader
+    Uploader,
+    Vlist
 ];
 
 export default components;

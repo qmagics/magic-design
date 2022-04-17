@@ -74,6 +74,10 @@ const routes: RouteRecordRaw[] = [
                 component: () => import("@/views/component/message/index.vue")
             },
             {
+                path: "vlist",
+                component: () => import("@/views/component/vlist/index.vue")
+            },
+            {
                 path: ":pathMatch(.*)",
                 component: () => import("@/views/common/todo.vue")
             },

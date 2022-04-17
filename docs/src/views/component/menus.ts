@@ -87,6 +87,11 @@ const menus: MenuItemRaw[] = [
                 type: "menu",
                 label: "Tag 标签",
                 path: "tag"
+            },
+            {
+                type: "menu",
+                label: "Vlist 虚拟列表",
+                path: "vlist"
             }
         ]
     },
