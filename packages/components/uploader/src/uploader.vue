@@ -6,14 +6,8 @@
       <slot name="trigger">
         <m-button type="primary" :disabled="disabled">点击上传</m-button>
       </slot>
-      <input
-        class="m-uploader-input"
-        type="file"
-        :multiple="multiple"
-        :accept="accept"
-        ref="inputRef"
-        @change="handleInputChange"
-      />
+      <input class="m-uploader-input" type="file" :multiple="multiple" :accept="accept" ref="inputRef"
+        @change="handleInputChange" />
     </div>
     <div class="m-uploader__tip" v-if="tip">{{ tip }}</div>
     <FileList :file-items="fileItems" :listType="listType"></FileList>
@@ -76,20 +70,18 @@ export default defineComponent({
 
   setup(props, { emit }) {
     const inputRef = ref(null as HTMLInputElement);
-
-    const fileItems = <Ref<FileItem[]>>ref();
+    const fileItems = ref<FileItem[]>();
 
     const normalizeFileItems = (items: FileItem[]) => {
-      const list = <FileItem[]>items.map((item, index) => {
+      const list = items.map((item, index) => {
         const status = item.status || 'done';
         return {
           ...item,
           id: item.id || getUID(index),
           status,
-          percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
-        }
+          percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1)
+        } as FileItem
       });
-
       fileItems.value = list;
     }
 
@@ -135,7 +127,7 @@ export default defineComponent({
 
     // 根据file对象创建FileItem
     const createFileItem = async (file: File, index: number) => {
-      return <FileItem>reactive({
+      return reactive<FileItem>({
         id: getUID(index),
         file,
         name: file.name,

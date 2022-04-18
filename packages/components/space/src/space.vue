@@ -1,6 +1,5 @@
 <script lang="ts">
 import { isFragment, isArray, isString, isValidElementNode } from "@magic-design/utils/src";
-import { PatchFlags } from "@vue/shared";
 import { computed, defineComponent, PropType, reactive, renderSlot, createVNode, watchEffect, ref } from "vue";
 
 export type SpaceSize = 'mini' | 'small' | 'medium' | 'large' | number | [number, number];

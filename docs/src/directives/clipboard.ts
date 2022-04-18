@@ -1,5 +1,6 @@
 import { Directive } from "vue";
 import Clipboard from 'clipboard';
+import { Message } from 'magic-design';
 
 export default {
     mounted(el, binding, vnode) {
@@ -8,7 +9,7 @@ export default {
         });
 
         clip.on('success', e => {
-            console.log(e.text);
+            Message.success("复制成功 ~");
         });
 
         clip.on('error', function (e) {

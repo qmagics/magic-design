@@ -1,5 +1,8 @@
 import { PropType } from "vue";
 declare const _default: import("vue").DefineComponent<{
+    /**
+     * 显示的项
+     */
     items: {
         type: PropType<any[]>;
         default: () => any[];

@@ -1862,7 +1862,7 @@ var script$2 = defineComponent({
                     ...item,
                     id: item.id || getUID(index),
                     status,
-                    percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1),
+                    percent: item.percent ?? (['error', 'init'].indexOf(status) > -1 ? 0 : 1)
                 };
             });
             fileItems.value = list;
@@ -2051,6 +2051,9 @@ var throttle = (fn, wait) => {
 var script$1 = defineComponent({
     name: "MVlist",
     props: {
+        /**
+         * 显示的项
+         */
         items: {
             type: Array,
             default: () => []

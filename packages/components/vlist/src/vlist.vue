@@ -16,6 +16,9 @@ import throttle from '@magic-design/utils/src/throttle';
 export default defineComponent({
     name: "MVlist",
     props: {
+        /**
+         * 显示的项
+         */
         items: {
             type: Array as PropType<any[]>,
             default: () => []

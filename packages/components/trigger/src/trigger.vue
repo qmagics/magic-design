@@ -96,7 +96,7 @@ export default defineComponent({
 
     setup(props, { emit }) {
 
-        const triggerRef = <Ref<HTMLElement>>ref();
+        const triggerRef = ref<HTMLElement>();
 
         const { contentVisible, contentStyle, clickoutsideOptions } = useContentLayout(props, triggerRef);
 
