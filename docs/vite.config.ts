@@ -34,20 +34,6 @@ const resolveSourceCodeMap = () => {
       }
       return null;
     }
-    // async resolveId(source, importer, options) {
-    //   if (source.includes('.$text')) {
-    //     return path.join(path.dirname(importer), source);
-    //   }
-    //   return null;
-    // },
-    // load(id) {
-    //   if (id.endsWith('.$text')) {
-    //     const realFilePath = id.replace('.$text', '');
-    //     const code = JSON.stringify(`${fs.readFileSync(realFilePath)}`);
-    //     return `export default ${code}`;
-    //   }
-    //   return null;
-    // }
   }
 }
 

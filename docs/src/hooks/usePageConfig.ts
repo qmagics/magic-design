@@ -1,5 +1,6 @@
 import { UsePageConfigOptions, ResolvedPageConfig } from "@/types";
 import { reactive, shallowRef } from "vue";
+import docs_map from '../docs_map.json';
 
 export default (options: UsePageConfigOptions) => {
     const { name, demePageGlob, sourceCodeMap } = options;
@@ -22,7 +23,8 @@ export default (options: UsePageConfigOptions) => {
 
     const config = reactive<ResolvedPageConfig>({
         name,
-        demos: rawDemos
+        demos: rawDemos,
+        docs: (docs_map as any)[name as string]
     });
 
     return config;

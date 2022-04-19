@@ -21,7 +21,8 @@ export interface DemoItem extends DemoItemRaw {
 
 export interface PageConfig {
     demos: DemoItemRaw[],
-    name?: string
+    name?: string,
+    docs: Record<string, string>
 }
 
 export interface ResolvedPageConfig extends PageConfig {

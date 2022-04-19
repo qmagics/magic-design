@@ -10,5 +10,10 @@ glob(COMPONENTS_PATH, async (er, files) => {
 
     const docs_json_arr = await Promise.all(files.map(componentFilePath => vueDocs.parse(path.resolve(__dirname, `../${componentFilePath}`))));
 
-    fs.writeFileSync("ci.json", JSON.stringify(docs_json_arr));
+    const docs_json_map = docs_json_arr.filter(i => i.displayName.startsWith('M')).reduce((pre, cur) => {
+        pre[cur.displayName] = cur;
+        return pre;
+    }, {});
+
+    fs.writeFileSync(path.resolve(__dirname, '../docs/src/docs_map.json'), JSON.stringify(docs_json_map));
 })
