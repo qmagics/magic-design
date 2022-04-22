@@ -6,14 +6,11 @@
     <main class="page-main">
       <router-view></router-view>
     </main>
-    <!-- <aside class="page-aside page-aside--right">
-      
-    </aside>-->
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeUnmount, onMounted, } from "vue";
+import { defineComponent } from "vue";
 import AppMenu from "@/components/AppMenu.vue";
 import menus from "./menus";
 
@@ -21,9 +18,15 @@ export default defineComponent({
   components: {
     AppMenu,
   },
+  props: {
+    componentName: {
+      type: String,
+      required: true
+    }
+  },
   setup() {
     return {
-      menus,
+      menus
     };
   },
 
@@ -32,11 +35,8 @@ export default defineComponent({
 
 <style lang="scss">
 .page-component {
-  &__aside {
-  }
-  &__main {
-    // padding: 20px;
-    // background-color: $colorBgWhite;
-  }
+  &__aside {}
+
+  &__main {}
 }
 </style>

@@ -7,7 +7,7 @@
     --m-table--header-bg-color: #{$color-secondary-2};
     --m-table--cell-padding: 12px;
     --m-table--font-size: 14px;
-    --m-table--text-color: #{$color-text-1};
+    --m-table--text-color: #{$color-text-2};
 
     @include m(size-large) {
         --m-table--cell-padding: 16px;

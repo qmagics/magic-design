@@ -8,6 +8,19 @@
 <script lang="tsx">
 import { defineComponent, ref } from 'vue';
 
+const isEmpty = (value: string) => {
+    return value === '' || value === '""' || value === "''" || value == null;
+}
+
+const getDisplayValue = (value: string) => {
+    if (isEmpty(value)) {
+        return '—';
+    }
+    else {
+        return value.replace(/\"/g, '');
+    }
+}
+
 const configMap: any = {
     props: {
         title: "属性",
@@ -19,19 +32,22 @@ const configMap: any = {
             {
                 label: "说明",
                 prop: "description",
+                render({ value }) {
+                    return <span>{getDisplayValue(value)}</span>
+                },
             },
             {
                 label: "类型",
                 prop: "type",
                 render({ row }) {
-                    return <span>{row?.defaultValue?.name}</span>
+                    return <span>{getDisplayValue(row?.type?.name)}</span>
                 }
             },
             {
                 label: "默认值",
                 prop: "defaultValue",
                 render({ row }) {
-                    return <span>{row?.defaultValue?.value}</span>
+                    return <span>{getDisplayValue(row?.defaultValue?.value)}</span>
                 }
             }
         ]
@@ -46,10 +62,14 @@ const configMap: any = {
             {
                 label: "名称",
                 prop: "name",
+
             },
             {
                 label: "说明",
                 prop: "description",
+                render({ value }) {
+                    return <span>{getDisplayValue(value)}</span>
+                }
             },
         ]
     },

@@ -12,6 +12,7 @@
           </li>
         </ul>
       </app-demo-block>
+      <app-docs-block :docs="config.docs"></app-docs-block>
     </div>
     <div class="demo-page__aside">
       <app-anchor-menu :menus="demos"></app-anchor-menu>
@@ -27,6 +28,7 @@ import ICON_META from './meta.json';
 export default defineComponent({
   setup() {
     const config = usePageConfig({
+      name: "MIcon",
       demePageGlob: import.meta.globEager('./demo-store/*.vue'),
       sourceCodeMap,
     });
@@ -55,6 +57,7 @@ $borderColor: $colorBorderLight;
 $itemWidth: 120px;
 $itemHeight: 120px;
 $border: 1px solid $borderColor;
+
 .demo-page--icon {
   .icon-list {
     border-top: $border;
@@ -63,8 +66,9 @@ $border: 1px solid $borderColor;
     // display: flex;
     // flex-wrap: wrap;
     display: grid;
-    grid-template-columns: repeat(7,1fr);
+    grid-template-columns: repeat(7, 1fr);
   }
+
   .icon-item {
     // width: $itemWidth;
     height: $itemHeight;
@@ -78,7 +82,7 @@ $border: 1px solid $borderColor;
     cursor: pointer;
     transition: all .2s ease;
 
-    &:hover{
+    &:hover {
       background-color: $colorBgLight;
     }
 
